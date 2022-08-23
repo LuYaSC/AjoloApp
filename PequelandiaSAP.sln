@@ -3,17 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Service", "SAP.Service\SAP.Service.csproj", "{6389A0F9-7AF3-40E2-A984-8DF5A831471F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.Service", "SAP.Service\SAP.Service.csproj", "{6389A0F9-7AF3-40E2-A984-8DF5A831471F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Core", "SAP.Core\SAP.Core.csproj", "{4D36E252-3564-4C2A-A663-C498BFEE6CB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.Core", "SAP.Core\SAP.Core.csproj", "{4D36E252-3564-4C2A-A663-C498BFEE6CB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.DataEngine", "SAP.DataEngine\SAP.DataEngine.csproj", "{921CD4D6-E868-4275-B9AD-6049D63802FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.DataEngine", "SAP.DataEngine\SAP.DataEngine.csproj", "{921CD4D6-E868-4275-B9AD-6049D63802FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Model", "SAP.Model\SAP.Model.csproj", "{9CC53852-A174-42E0-A7DB-25C05E8F6319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.Model", "SAP.Model\SAP.Model.csproj", "{9CC53852-A174-42E0-A7DB-25C05E8F6319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.RuleEngine", "SAP.RuleEngine\SAP.RuleEngine.csproj", "{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.RuleEngine", "SAP.RuleEngine\SAP.RuleEngine.csproj", "{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Repository", "SAP.Repository\SAP.Repository.csproj", "{72F4F8D8-2096-4DFC-8A17-354D84450ADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP.Repository", "SAP.Repository\SAP.Repository.csproj", "{72F4F8D8-2096-4DFC-8A17-354D84450ADE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4B061E0F-CB7B-4B95-BF02-2C954B10D72A}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Base de datos NIÑOS  -San Pedro 2022.xlsx = Documentation\Base de datos NIÑOS  -San Pedro 2022.xlsx
+		Documentation\COMPROBANTES DE PAGO .docx = Documentation\COMPROBANTES DE PAGO .docx
+		Documentation\HOJA DE DATOS GENERALES pequelandia (1).docx = Documentation\HOJA DE DATOS GENERALES pequelandia (1).docx
+		Documentation\RENDICION DE CUENTAS PEQUELANDIA 2020-2021.xlsx = Documentation\RENDICION DE CUENTAS PEQUELANDIA 2020-2021.xlsx
+		Documentation\SEGUIMIENTO DE MENSUALIDADES.docx = Documentation\SEGUIMIENTO DE MENSUALIDADES.docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
