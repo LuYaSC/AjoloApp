@@ -10,3 +10,15 @@ C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Model\obj\Debug\net6.0\SAP.Mo
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Model\obj\Debug\net6.0\refint\SAP.Model.dll
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Model\obj\Debug\net6.0\SAP.Model.pdb
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Model\obj\Debug\net6.0\ref\SAP.Model.dll
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\bin\Debug\net6.0\SAP.Model.deps.json
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\bin\Debug\net6.0\SAP.Model.dll
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\bin\Debug\net6.0\SAP.Model.pdb
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.csproj.AssemblyReference.cache
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.AssemblyInfoInputs.cache
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.AssemblyInfo.cs
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.csproj.CoreCompileInputs.cache
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.dll
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\refint\SAP.Model.dll
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\SAP.Model.pdb
+C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Model\obj\Debug\net6.0\ref\SAP.Model.dll
