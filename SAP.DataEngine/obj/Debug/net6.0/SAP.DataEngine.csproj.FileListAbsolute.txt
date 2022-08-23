@@ -1,0 +1,12 @@
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\bin\Debug\net6.0\SAP.DataEngine.deps.json
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\bin\Debug\net6.0\SAP.DataEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\bin\Debug\net6.0\SAP.DataEngine.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.csproj.AssemblyReference.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.AssemblyInfoInputs.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.AssemblyInfo.cs
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.csproj.CoreCompileInputs.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\refint\SAP.DataEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\SAP.DataEngine.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.DataEngine\obj\Debug\net6.0\ref\SAP.DataEngine.dll

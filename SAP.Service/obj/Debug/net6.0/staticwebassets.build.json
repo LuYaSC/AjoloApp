@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "d0s+LAq/tct1+TYXMp3RA0TA1GxsqS/T4GbzBW77/5w=",
+  "Source": "SAP.Service",
+  "BasePath": "_content/SAP.Service",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

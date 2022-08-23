@@ -1,0 +1,12 @@
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.RuleEngine.deps.json
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.RuleEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.RuleEngine.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.csproj.AssemblyReference.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.AssemblyInfoInputs.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.AssemblyInfo.cs
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.csproj.CoreCompileInputs.cache
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\refint\SAP.RuleEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\ref\SAP.RuleEngine.dll
