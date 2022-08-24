@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.Kid
+namespace SAP.Model.Kid
 {
-    public class KidService: IKidService
+    public class KidsResult
     {
     }
 }

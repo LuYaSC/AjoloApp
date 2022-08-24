@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.Kid
+namespace SAP.DataEngine.KidRepository
 {
-    public interface IKidService
+    public class KidRepository
     {
     }
 }

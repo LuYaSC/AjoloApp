@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.DataEngine.Kid
+namespace SAP.Model.Kid
 {
-    internal interface IKidRepository
+    public class KidByIdResult
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

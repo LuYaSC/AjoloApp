@@ -82,3 +82,12 @@ C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Service\obj\Debug\net6.0\ref
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Service\obj\Debug\net6.0\SAP.Service.pdb
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Service\obj\Debug\net6.0\SAP.Service.genruntimeconfig.cache
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.Service\obj\Debug\net6.0\ref\SAP.Service.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Model.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Model.pdb
