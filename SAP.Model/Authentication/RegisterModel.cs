@@ -18,7 +18,7 @@ namespace SAP.Model.Authentication
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
-        public int OfficePlace { get; set; }
+        public int BranchOfficeId { get; set; }
 
         public List<int> Roles { get; set; }
     }

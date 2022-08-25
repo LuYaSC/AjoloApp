@@ -27,6 +27,8 @@ namespace SAP.Repository.SAPRepository
         public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
+        public DbSet<BranchOffice> BranchOffices { get; set; }
+        public DbSet<City> Cities { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -152,7 +154,7 @@ namespace SAP.Repository.SAPRepository
             where TEntity : class, IBase<TypeKey>
             where TypeKey : IEquatable<TypeKey>, IConvertible
         {
-            var claimsIdentity = (ClaimsIdentity)this.userInfo.Identity;
+            var claimsIdentity = userInfo != null ? (ClaimsIdentity)this.userInfo.Identity : null;
             if (entity == null)
             {
                 return;
@@ -162,28 +164,22 @@ namespace SAP.Repository.SAPRepository
                 Entry(entity).State = EntityState.Added;
                 if (entity is IDateCreation)
                 {
-                    (entity as IDateCreation).DateCreation = DateTime.Now;
+                    (entity as IDateCreation).DateCreation = DateTime.UtcNow;
                 }
                 if (entity is IDateModification)
                 {
-                    (entity as IDateModification).DateModification = DateTime.Now;
+                    (entity as IDateModification).DateModification = DateTime.UtcNow;
                 }
                 if (entity is IUserCreation<int>)
                 {
-                    (entity as IUserCreation<int>).UserCreation = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                    (entity as IUserCreation<int>).UserCreation = 9;
+                    //(entity as IUserCreation<int>).UserCreation = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
                 }
                 if (entity is IUserModification<int>)
                 {
-                    (entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                    (entity as IUserModification<int>).UserModification = 9;
+                    //(entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
                 }
-                //if (entity is IUserCreation<string>)
-                //{
-                //    (entity as IUserCreation<string>).UserCreation = this.userInfo.Identity.GetUserId<string>();
-                //}
-                //if (entity is IUserModification<string>)
-                //{
-                //    (entity as IUserModification<string>).UserModification = this.userInfo.Identity.GetUserId<string>();
-                //}
             }
             else
             {
@@ -195,15 +191,16 @@ namespace SAP.Repository.SAPRepository
            where TEntity : class, IBase<TypeKey>
            where TypeKey : IEquatable<TypeKey>, IConvertible
         {
-            var claimsIdentity = (ClaimsIdentity)this.userInfo.Identity;
+            var claimsIdentity = userInfo != null ? (ClaimsIdentity)this.userInfo.Identity : null;
 
             if (entity is IDateModification)
             {
-                (entity as IDateModification).DateModification = DateTime.Now;
+                (entity as IDateModification).DateModification = DateTime.UtcNow;
             }
             if (entity is IUserModification<int>)
             {
-                (entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                (entity as IUserModification<int>).UserModification = 9;
+                //(entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
             }
         }
     }

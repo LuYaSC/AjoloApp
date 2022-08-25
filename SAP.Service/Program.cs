@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SAP.Repository.SAPRepository;
 using SAP.Repository.SAPRepository.Entities;
+using SAP.RuleEngine.TypeBusinessService;
+using System.Security.Principal;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,14 +18,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
+
+#region ServiceType Based
+builder.Services.AddScoped<ITypeBusinessService<Turn>, TypeBusinessService<Turn>>();
+builder.Services.AddScoped<ITypeBusinessService<Modality>, TypeBusinessService<Modality>>();
+builder.Services.AddScoped<ITypeBusinessService<Room>, TypeBusinessService<Room>>();
+builder.Services.AddScoped<ITypeBusinessService<City>, TypeBusinessService<City>>();
+builder.Services.AddScoped<ITypeBusinessService<BranchOffice>, TypeBusinessService<BranchOffice>>();
+builder.Services.AddScoped<ITypeBusinessService<PaymentType>, TypeBusinessService<PaymentType>>();
+builder.Services.AddScoped<ITypeBusinessService<Relationship>, TypeBusinessService<Relationship>>();
+builder.Services.AddScoped<ITypeBusinessService<DocumentType>, TypeBusinessService<DocumentType>>();
+#endregion
+
+
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SAPContext>(options => options.UseNpgsql(mySqlConnectionStr));
 builder.Services.AddIdentityCore<User>(
-        options =>
-        {
-            options.SignIn.RequireConfirmedAccount = false;
-        }
+        //options =>
+        //{
+        //    options.SignIn.RequireConfirmedAccount = false;
+        //}
         )
+     .AddRoles<Role>()
     .AddEntityFrameworkStores<SAPContext>();
 //jwt
 builder.Services.AddAuthentication(options =>
@@ -35,23 +52,23 @@ builder.Services.AddAuthentication(options =>
 // Adding Jwt Bearer  
 .AddJwtBearer(options =>
 {
-     options.SaveToken = true;
-     options.RequireHttpsMetadata = false;
-     options.TokenValidationParameters = new TokenValidationParameters()
-     {
-         ValidateIssuer = true,
-         ValidateAudience = true,
-         ValidAudience = builder.Configuration["JWT:ValidAudience"],
-         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
-     };
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+    };
 });
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsDevPolicy", builder =>
     {
         builder.WithOrigins("*")
-            .WithMethods("POST")
+            .WithMethods("POST, GET")
             .AllowAnyHeader();
     });
 
@@ -67,8 +84,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("CorsDevPolicy");
-app.UseAuthorization();
 
+app.UseAuthorization();
+app.UseAuthentication();
 app.MapControllers();
 
 app.Run();

@@ -82,7 +82,7 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
                 audience: _configuration["JWT:ValidAudience"],
-                expires: DateTime.Now.AddHours(10),
+                expires: DateTime.UtcNow.AddHours(10),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
@@ -92,7 +92,7 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
                 Action = "Ingreso correcto",
                 Name = model.Username,
                 Password = user.PasswordHash,
-                DateCreation = DateTime.Now
+                DateCreation = DateTime.UtcNow
             });
             Context.SaveChanges();
 
@@ -117,19 +117,21 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username,
                 AvailableDays = 120,
-                DateCreation = DateTime.Now,
+                DateCreation = DateTime.UtcNow,
                 IsActive = true,
                 State = "C"
             };
             var result = await userManager.CreateAsync(user, model.Password);
+            if(!result.Succeeded) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = result.Errors.First().Description });
             var newUser = Context.Users.Where(x => x.UserName == user.UserName).FirstOrDefault();
 
             foreach (var role in model.Roles)
             {
                 UserRole userRole = new UserRole
                 {
-                    DateCreation = DateTime.Now,
+                    DateCreation = DateTime.UtcNow,
                     RoleId = role,
+                    BranchOfficeId = model.BranchOfficeId,
                     UserId = newUser.Id
                 };
                 Context.UserRoles.Add(userRole);
@@ -142,5 +144,16 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
+
+        [HttpPost]
+        [Route("UpdateUser")]
+        public async Task<IActionResult> UpdateUser([FromBody] RegisterModel model)
+        {
+            var userExists = await userManager.FindByNameAsync(model.Username);
+            if (userExists == null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User doesn't exists!" });
+
+            return null;
+        }
     }
 }

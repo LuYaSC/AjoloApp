@@ -22,3 +22,10 @@ C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.RuleEngine\obj\Debug\net6.0\
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.RuleEngine\obj\Debug\net6.0\refint\SAP.RuleEngine.dll
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.pdb
 C:\Users\luisj\Desktop\projects\Pequelandia\SAP\SAP.RuleEngine\obj\Debug\net6.0\ref\SAP.RuleEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Core.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Model.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Repository.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Core.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Model.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\bin\Debug\net6.0\SAP.Repository.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.RuleEngine\obj\Debug\net6.0\SAP.RuleEngine.csproj.CopyComplete

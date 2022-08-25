@@ -34,5 +34,10 @@ namespace SAP.Repository.SAPRepository.Entities
 
         [ForeignKey("ModalityId")]
         public Modality Modality { get; set; }
+
+        public int BranchOfficeId { get; set; }
+
+        [ForeignKey("BranchOfficeId")]
+        public BranchOffice BranchOffice { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace SAP.Repository.Base
     public class BaseType : BaseTrace
     {
         public string Description { get; set; }
+
+        public string? Initial { get; set; }
     }
 }

@@ -91,3 +91,8 @@ C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\Micr
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Model.dll
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Model.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Core.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.RuleEngine.dll
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.RuleEngine.pdb
+C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Service\bin\Debug\net6.0\SAP.Core.pdb
