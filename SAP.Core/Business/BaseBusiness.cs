@@ -38,11 +38,10 @@
             : base(configuration, userInfo)
         {
             this.Context = context;
-            //this.Context.userInfo = userInfo;
+            this.Context.userInfo = userInfo;
             this.UserInfo = userInfo;
-            var claimsIdentity = (ClaimsIdentity)userInfo.Identity;
-            //userId = userInfo != null ? int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value) : 0;
-            userId = 0;
+            var claimsIdentity = (ClaimsIdentity) userInfo.Identity;
+            userId = userInfo != null ? int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault()?.Value) : 0;
         }
 
         public void Dispose()

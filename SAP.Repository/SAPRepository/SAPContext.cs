@@ -172,13 +172,13 @@ namespace SAP.Repository.SAPRepository
                 }
                 if (entity is IUserCreation<int>)
                 {
-                    (entity as IUserCreation<int>).UserCreation = 9;
-                    //(entity as IUserCreation<int>).UserCreation = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                    (entity as IUserCreation<int>).UserCreation = claimsIdentity != null ? 
+                        int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value) : 9;
                 }
                 if (entity is IUserModification<int>)
                 {
-                    (entity as IUserModification<int>).UserModification = 9;
-                    //(entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                    (entity as IUserModification<int>).UserModification = claimsIdentity != null ? 
+                        int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value) : 9;
                 }
             }
             else
@@ -199,8 +199,8 @@ namespace SAP.Repository.SAPRepository
             }
             if (entity is IUserModification<int>)
             {
-                (entity as IUserModification<int>).UserModification = 9;
-                //(entity as IUserModification<int>).UserModification = int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value);
+                (entity as IUserModification<int>).UserModification = claimsIdentity != null ?
+                       int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault().Value) : 9;
             }
         }
     }

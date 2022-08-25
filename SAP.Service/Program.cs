@@ -41,7 +41,7 @@ builder.Services.AddIdentityCore<User>(
         //}
         )
      .AddRoles<Role>()
-    .AddEntityFrameworkStores<SAPContext>();
+     .AddEntityFrameworkStores<SAPContext>();
 //jwt
 builder.Services.AddAuthentication(options =>
 {
@@ -85,8 +85,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("CorsDevPolicy");
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
