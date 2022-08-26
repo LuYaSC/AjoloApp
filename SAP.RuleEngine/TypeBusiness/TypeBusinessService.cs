@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SAP.Core.Business;
@@ -47,7 +43,7 @@ namespace SAP.RuleEngine.TypeBusinessService
                 var data = Get(dto.Id);
                 if (data == null) return Result<string>.SetError("Doesnt Exist Type");
 
-                data.Description = dto.Description;
+                data.Description = dto.Description.Trim().ToUpper();
                 data.IsDeleted = dto.IsDisabled;
                 Save(data);
                 return Result<string>.SetOk("Update Success");
@@ -64,7 +60,7 @@ namespace SAP.RuleEngine.TypeBusinessService
             {
                 Save(new T
                 {
-                    Description = dto.Description,
+                    Description = dto.Description.Trim().ToUpper(),
                     IsDeleted = false
                 });
                 return Result<string>.SetOk("Create Success"); ;

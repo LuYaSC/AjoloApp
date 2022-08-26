@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Kid
+namespace SAP.Model.Parent
 {
-    public class KidByIdResult
+    public class ParentByIdDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

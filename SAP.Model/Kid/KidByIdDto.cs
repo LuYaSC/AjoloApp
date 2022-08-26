@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.Parent
+namespace SAP.Model.Kid
 {
-    public interface IParentService
+    public class KidByIdDto
     {
+        public int Id { get; set; }
     }
 }

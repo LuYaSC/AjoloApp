@@ -23,7 +23,6 @@ namespace SAP.Repository.SAPRepository
         public DbSet<Parent> Parents { get; set; }
         public DbSet<AssignedRoom> AssignedRooms { get; set; }
         public DbSet<AssignedTutor> AssignedTutors { get; set; }
-        public DbSet<KidBackground> KidBackgrounds { get; set; }
         public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }

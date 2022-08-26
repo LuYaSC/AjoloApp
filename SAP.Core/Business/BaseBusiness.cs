@@ -1,5 +1,6 @@
 ﻿namespace SAP.Core.Business
 {
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using SAP.Repository.SAPRepository;
     using SAP.Repository.SAPRepository.Base;
@@ -55,6 +56,25 @@
             return entity;
         }
 
+        public virtual T GetById<T>(int id)
+            where T : BaseTrace
+        {
+            var entity = this.Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated).Where(x => x.Id == id).FirstOrDefault();
+            return entity;
+        }
+
+        public virtual IQueryable<ENTITY> GetComplete<ENTITY>(string name, string firstLastName, string secondLastName, string sex)
+           where ENTITY : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+        {
+            IQueryable<ENTITY> entity = this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated);
+            if (!string.IsNullOrEmpty(name)) entity = entity.Where(x => x.Name.Contains(name.ToUpper()));
+            if (!string.IsNullOrEmpty(firstLastName)) entity = entity.Where(x => x.FirstLastName.Contains(firstLastName.ToUpper()));
+            if (!string.IsNullOrEmpty(secondLastName)) 
+                entity = entity.Where(x => x.SecondLastName != null ? x.SecondLastName.Contains(secondLastName.ToUpper()) : x.SecondLastName == string.Empty );
+            if (!string.IsNullOrEmpty(sex)) entity = entity.Where(x => x.Sex.Contains(sex.ToUpper()));
+            return entity;
+        }
+
         public virtual IQueryable<T> List()
         {
             var isLogical = typeof(T).GetInterfaces().Contains(typeof(ILogicalDelete));
@@ -65,6 +85,22 @@
             else
             {
                 var returnCol = this.Context.Set<T>().Where(x => (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
+                return returnCol;
+            }
+        }
+
+        public virtual IQueryable<ENTITY> ListComplete<ENTITY>()
+            where ENTITY : BaseTrace
+        {
+            var isLogical = typeof(T).GetInterfaces().Contains(typeof(ILogicalDelete));
+            if (!isLogical)
+            {
+                return this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated);
+            }
+            else
+            {
+                var returnCol = this.Context.Set<ENTITY>().Include(x => x.UserCreated)
+                                            .Include(x => x.UserModificated).Where(x => (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
         }

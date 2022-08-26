@@ -1,7 +1,9 @@
 ﻿namespace SAP.Core.Business
 {
     using AutoMapper;
+    using AutoMapper.Configuration;
     using System.Linq;
+    using System.Reflection;
 
     public static class MapperExtensions
     {
@@ -24,6 +26,7 @@
             foreach (var property in typeof(TDestination).GetProperties().Where(p => p.GetGetMethod().IsVirtual && !p.GetGetMethod().IsFinal))
             {
                 mapperExpression.ForMember(property.Name, opt => opt.Ignore());
+
             }
             return mapperExpression;
         }

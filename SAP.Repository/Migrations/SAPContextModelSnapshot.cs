@@ -415,6 +415,9 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AgePregnancyMother")
+                        .HasColumnType("integer");
+
                     b.Property<string>("BloodType")
                         .IsRequired()
                         .HasColumnType("text");
@@ -442,69 +445,6 @@ namespace SAP.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("KidBackgroudId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PlaceBorn")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("SecondLastName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("UserCreation")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserModification")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DocumentTypeId");
-
-                    b.HasIndex("KidBackgroudId");
-
-                    b.HasIndex("UserCreation");
-
-                    b.HasIndex("UserModification");
-
-                    b.ToTable("Kids");
-                });
-
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AgePregnancyMother")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("DateCreation")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("DateModification")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -519,7 +459,15 @@ namespace SAP.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("PhysicalsConditions")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PlaceBorn")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -529,6 +477,16 @@ namespace SAP.Repository.Migrations
                     b.Property<string>("PsychologicalConditions")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("SecondLastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Sex")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("ThreatenedAbortion")
                         .HasColumnType("boolean");
@@ -548,11 +506,13 @@ namespace SAP.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DocumentTypeId");
+
                     b.HasIndex("UserCreation");
 
                     b.HasIndex("UserModification");
 
-                    b.ToTable("KidBackgrounds");
+                    b.ToTable("Kids");
                 });
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Modality", b =>
@@ -642,6 +602,10 @@ namespace SAP.Repository.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("SecondLastName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Sex")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("UserCreation")
@@ -1309,12 +1273,6 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.KidBackground", "KidBackground")
-                        .WithMany()
-                        .HasForeignKey("KidBackgroudId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
@@ -1328,27 +1286,6 @@ namespace SAP.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("DocumentType");
-
-                    b.Navigation("KidBackground");
-
-                    b.Navigation("UserCreated");
-
-                    b.Navigation("UserModificated");
-                });
-
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
-                {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
-                        .WithMany()
-                        .HasForeignKey("UserCreation")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
-                        .WithMany()
-                        .HasForeignKey("UserModification")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("UserCreated");
 

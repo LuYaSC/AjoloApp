@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.Parent
+namespace SAP.Repository.SAPRepository.Base
 {
-    public class ParentService
+    public interface IName
     {
+        string Name { get; set; }
     }
 }
