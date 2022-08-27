@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SAP.Repository.SAPRepository.Entities
 {
-    public class Collaborator : BaseTrace
+    public class Collaborator : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
     {
         [Required]
         public string Name { get; set; }
@@ -35,5 +35,6 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public User User { get; set; }
 
+        public string Sex { get; set; }
     }
 }
