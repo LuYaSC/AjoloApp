@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8qkBFYMWJbqcHos0X5uH34waFfoq16vs5lymlLH8qIrk5Oox/pLCAk/nTCdsHIfKsIa3aVqOa4KTmWDt5IeK/Q==",
+  "dgSpecHash": "7WoxhEkWIAznOei3CdQMEi0d7WOkEmAWC7BnPpNFQ78AzwWyghCxJc0og6GLDNyNjD/CW15Ca0z6oEusO4ApEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Service\\SAP.Service.csproj",
+  "projectFilePath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Service\\SAP.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luisj\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\luisj\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

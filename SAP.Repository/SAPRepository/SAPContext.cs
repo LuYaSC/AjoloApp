@@ -28,7 +28,7 @@ namespace SAP.Repository.SAPRepository
         public DbSet<PaymentType> PaymentTypes { get; set; }
         public DbSet<BranchOffice> BranchOffices { get; set; }
         public DbSet<City> Cities { get; set; }
-
+        public DbSet<UserDetail> UserDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

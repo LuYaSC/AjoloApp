@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj": {}
+    "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj": {
+    "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj",
+        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj",
         "projectName": "SAP.Core",
-        "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj",
+        "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj",
         "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\obj\\",
+        "outputPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -26,7 +26,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
@@ -34,8 +34,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\SAP.Repository.csproj": {
-                "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\SAP.Repository.csproj"
+              "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\SAP.Repository.csproj": {
+                "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\SAP.Repository.csproj"
               }
             }
           }
@@ -75,14 +75,14 @@
         }
       }
     },
-    "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj": {
+    "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\SAP.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj",
+        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\SAP.Model.csproj",
         "projectName": "SAP.Model",
-        "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj",
+        "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\SAP.Model.csproj",
         "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\obj\\",
+        "outputPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -97,7 +97,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
@@ -136,14 +136,14 @@
         }
       }
     },
-    "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\SAP.Repository.csproj": {
+    "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\SAP.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\SAP.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\SAP.Repository.csproj",
         "projectName": "SAP.Repository",
-        "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\SAP.Repository.csproj",
+        "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\SAP.Repository.csproj",
         "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Repository\\obj\\",
+        "outputPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -158,7 +158,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
@@ -227,14 +227,14 @@
         }
       }
     },
-    "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj": {
+    "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
+        "projectUniqueName": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
         "projectName": "SAP.RuleEngine",
-        "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
+        "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
         "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\obj\\",
+        "outputPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.RuleEngine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -249,7 +249,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
@@ -257,11 +257,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj": {
-                "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj"
+              "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj": {
+                "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj"
               },
-              "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj": {
-                "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj"
+              "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\SAP.Model.csproj": {
+                "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Model\\SAP.Model.csproj"
               }
             }
           }
@@ -279,6 +279,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[11.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.8, )"
             }
           },
           "imports": [

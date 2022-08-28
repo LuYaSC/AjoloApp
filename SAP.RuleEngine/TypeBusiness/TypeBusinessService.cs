@@ -44,6 +44,7 @@ namespace SAP.RuleEngine.TypeBusinessService
                 if (data == null) return Result<string>.SetError("Doesnt Exist Type");
 
                 data.Description = dto.Description.Trim().ToUpper();
+                data.Initial = dto.Initial.Trim().ToUpper();
                 data.IsDeleted = dto.IsDisabled;
                 Save(data);
                 return Result<string>.SetOk("Update Success");
@@ -61,6 +62,7 @@ namespace SAP.RuleEngine.TypeBusinessService
                 Save(new T
                 {
                     Description = dto.Description.Trim().ToUpper(),
+                    Initial = dto.Initial.Trim().ToUpper(),
                     IsDeleted = false
                 });
                 return Result<string>.SetOk("Create Success"); ;

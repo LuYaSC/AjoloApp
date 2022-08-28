@@ -234,9 +234,6 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("timestamp with time zone");
 
@@ -260,8 +257,6 @@ namespace SAP.Repository.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.HasIndex("UserCreation");
 
@@ -789,12 +784,6 @@ namespace SAP.Repository.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
-                    b.Property<int>("UserCreation")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserModification")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
@@ -994,15 +983,46 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BranchOfficeId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchOfficeId");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDetails");
+                });
+
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserRole", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.Property<int>("RoleId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("BranchOfficeId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DateCreation")
@@ -1015,8 +1035,6 @@ namespace SAP.Repository.Migrations
                         .HasColumnType("boolean");
 
                     b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("BranchOfficeId");
 
                     b.HasIndex("RoleId");
 
@@ -1171,12 +1189,6 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BranchOffice", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
@@ -1188,8 +1200,6 @@ namespace SAP.Repository.Migrations
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("City");
 
                     b.Navigation("UserCreated");
 
@@ -1453,7 +1463,7 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserRole", b =>
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserDetail", b =>
                 {
                     b.HasOne("SAP.Repository.SAPRepository.Entities.BranchOffice", "BranchOffice")
                         .WithMany()
@@ -1461,6 +1471,27 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BranchOffice");
+
+                    b.Navigation("City");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserRole", b =>
+                {
                     b.HasOne("SAP.Repository.SAPRepository.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -1472,8 +1503,6 @@ namespace SAP.Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BranchOffice");
                 });
 #pragma warning restore 612, 618
         }

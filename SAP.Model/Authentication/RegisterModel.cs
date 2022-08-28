@@ -20,6 +20,10 @@ namespace SAP.Model.Authentication
 
         public int BranchOfficeId { get; set; }
 
+        public int CityId { get; set; }
+
+        public bool HaveDetail { get; set; }
+
         public List<int> Roles { get; set; }
     }
 }

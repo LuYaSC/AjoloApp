@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SAP.Repository.SAPRepository;
 using SAP.Repository.SAPRepository.Entities;
+using SAP.RuleEngine.AuthenticationService;
 using SAP.RuleEngine.KidService;
 using SAP.RuleEngine.ParentService;
 using SAP.RuleEngine.TypeBusinessService;
@@ -35,6 +36,7 @@ builder.Services.AddScoped<ITypeBusinessService<DocumentType>, TypeBusinessServi
 
 builder.Services.AddScoped<IKidService, KidService>();
 builder.Services.AddScoped<IParentService, ParentService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SAPContext>(options => options.UseNpgsql(mySqlConnectionStr));

@@ -7,6 +7,8 @@ namespace SAP.Model.Authentication
 {
     public class RegisterResult
     {
+        public bool IsValid { get; set; }
+
         public string Message { get; set; }
     }
 }

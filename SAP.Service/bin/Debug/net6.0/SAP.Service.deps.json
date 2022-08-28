@@ -399,6 +399,7 @@
       "SAP.RuleEngine/1.0.0": {
         "dependencies": {
           "AutoMapper": "11.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "SAP.Core": "1.0.0",
           "SAP.Model": "1.0.0"
         },

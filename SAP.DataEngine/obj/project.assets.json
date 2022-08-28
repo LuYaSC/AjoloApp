@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.DataEngine\\SAP.DataEngine.csproj",
+      "projectUniqueName": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.DataEngine\\SAP.DataEngine.csproj",
       "projectName": "SAP.DataEngine",
-      "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.DataEngine\\SAP.DataEngine.csproj",
+      "projectPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.DataEngine\\SAP.DataEngine.csproj",
       "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.DataEngine\\obj\\",
+      "outputPath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.DataEngine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,7 +34,7 @@
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
       },
