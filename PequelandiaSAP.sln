@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DumpDatabases", "DumpDataba
 	ProjectSection(SolutionItems) = preProject
 		DumpDatabases\dump-sap-202208252314 = DumpDatabases\dump-sap-202208252314
 		DumpDatabases\dump-sap-202208252315 = DumpDatabases\dump-sap-202208252315
+		DumpDatabases\dump-sap2-202208291941 = DumpDatabases\dump-sap2-202208291941
 	EndProjectSection
 EndProject
 Global
