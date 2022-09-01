@@ -1,4 +1,4 @@
-﻿using SAP.Repository.SAPRepository.Base;
+﻿using SAP.Model.Authentication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,39 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Repository.SAPRepository.Entities
+namespace SAP.Model.Collaborator
 {
-    public class Collaborator : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+    public class CreateCollaboratorDto
     {
-        [Required]
         public string Name { get; set; }
-
-        [Required]
         public string FirstLastName { get; set; }
-
         public string? SecondLastName { get; set; }
-
-        [Required]
         public DateTime BornDate { get; set; }
-
-        [Required]
         public DateTime StartDate { get; set; }
-
         public DateTime? EndDate { get; set; }
-
-        public string DocumentNumber { get; set; }
-
         public int DocumentTypeId { get; set; }
-
-        [ForeignKey("DocumentTypeId")]
-        public DocumentType DocumentType { get; set; }
-
-        public int UserId { get; set; }
-
-        [ForeignKey("UserId")]
-
-        public User User { get; set; }
-
+        public string DocumentNumber { get; set; }
         public string Sex { get; set; }
+        public int BranchOfficeId { get; set; }
+        public int CityId { get; set; }
+        public string Email { get; set; }
+        public List<int> Roles { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace SAP.Model.Authentication
         public bool IsValid { get; set; }
 
         public string Message { get; set; }
+
+        public int UserId { get; set; } = 0;
     }
 }

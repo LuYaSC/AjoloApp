@@ -154,7 +154,8 @@ namespace SAP.RuleEngine.AuthenticationService
             return await Task.FromResult(new RegisterResult
             {
                 IsValid = true,
-                Message = "User created successfully!"
+                Message = "User created successfully!",
+                UserId = newUser.Id
             });
         }
     }

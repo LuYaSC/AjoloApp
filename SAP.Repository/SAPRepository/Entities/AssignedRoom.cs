@@ -15,11 +15,6 @@ namespace SAP.Repository.SAPRepository.Entities
         [ForeignKey("CollaboratorId")]
         public Collaborator Collaborator { get; set; }
 
-        public int AssignedTutorId { get; set; }
-
-        [ForeignKey("AssignedTutorId")]
-        public AssignedTutor AssignedTutor { get; set; }
-
         public int RoomId { get; set; }
 
         [ForeignKey("RoomId")]
