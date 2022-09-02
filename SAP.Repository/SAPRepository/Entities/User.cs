@@ -21,5 +21,9 @@ namespace SAP.Repository.SAPRepository.Entities
         public string State { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual UserDetail UserDetail { get; set; }
+
+       // public virtual ICollection<UserRole> UserRole { get; set; }
     }
 }

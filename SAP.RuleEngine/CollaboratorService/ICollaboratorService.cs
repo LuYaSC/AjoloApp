@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SAP.Core.Business;
+using SAP.Model.Collaborator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,10 @@ namespace SAP.RuleEngine.CollaboratorService
 {
     public interface ICollaboratorService
     {
+        Result<List<CollaboratorsResult>> GetCollaborators();
+
+        Result<CollaboratorsResult> GetCollaboratorById(CollaboratorByIdDto dto);
+
+        Result<string> CreateCollaborator(CreateCollaboratorDto dto);
     }
 }
