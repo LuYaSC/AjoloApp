@@ -136,6 +136,10 @@ namespace SAP.Repository.Migrations
                     b.Property<int>("ModalityId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Observations")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("RoomId")
                         .HasColumnType("integer");
 
@@ -431,6 +435,10 @@ namespace SAP.Repository.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("Observations")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("UserCreation")
                         .HasColumnType("integer");
 
@@ -682,6 +690,9 @@ namespace SAP.Repository.Migrations
                     b.Property<int>("AssignedRoomId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("AssignedTutorId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("timestamp with time zone");
 
@@ -711,6 +722,8 @@ namespace SAP.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssignedRoomId");
+
+                    b.HasIndex("AssignedTutorId");
 
                     b.HasIndex("PaymentTypeId");
 
@@ -1056,7 +1069,8 @@ namespace SAP.Repository.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("UserDetails");
                 });
@@ -1431,6 +1445,12 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.AssignedTutor", "AssignedTutor")
+                        .WithMany()
+                        .HasForeignKey("AssignedTutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SAP.Repository.SAPRepository.Entities.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
@@ -1450,6 +1470,8 @@ namespace SAP.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("AssignedRoom");
+
+                    b.Navigation("AssignedTutor");
 
                     b.Navigation("PaymentType");
 
@@ -1549,8 +1571,8 @@ namespace SAP.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("SAP.Repository.SAPRepository.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("UserDetail")
+                        .HasForeignKey("SAP.Repository.SAPRepository.Entities.UserDetail", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1573,6 +1595,12 @@ namespace SAP.Repository.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.User", b =>
+                {
+                    b.Navigation("UserDetail")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -82,6 +82,31 @@ namespace SAP.RuleEngine.CollaboratorService
             return collab.UserId != 0 ? Result<string>.SetOk("User created with success") : Result<string>.SetError("User dont created");
         }
 
+        public Result<string> Update(UpdateCollaboratorDto dto)
+        {
+            var collaborator = GetById<Collaborator>(dto.Id);
+            if (collaborator == null) return Result<string>.SetError("Collab doesnt Exists");
+
+            return null;
+            //var newUserCollab = authService.Register(new RegisterModel
+            //{
+            //    BranchOfficeId = dto.BranchOfficeId,
+            //    CityId = dto.CityId,
+            //    Email = dto.Email,
+            //    Username = dto.Email,
+            //    HaveDetail = true,
+            //    Roles = dto.Roles,
+            //    Password = $"Peq{dto.DocumentNumber}-{DateTime.Now.Year}$"
+            //});
+            ////Creation new User
+            //if (!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");
+            //newUserId = newUserCollab.Result.UserId;
+
+            ////Creation Collab
+            //var collab = Context.Save(mapper.Map<Collaborator>(dto));
+            //return collab.UserId != 0 ? Result<string>.SetOk("User created with success") : Result<string>.SetError("User dont created");
+        }
+
         #region private Methods
         private void GetRoles(List<Collaborator> listCollab)
         {
