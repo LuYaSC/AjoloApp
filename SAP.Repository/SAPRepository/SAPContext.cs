@@ -27,6 +27,8 @@ namespace SAP.Repository.SAPRepository
         public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
+        public DbSet<AuditPaymentType> AuditPaymentTypes { get; set; }
+        public DbSet<PaymentOperation> PaymentOperations { get; set; }
         public DbSet<BranchOffice> BranchOffices { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<UserDetail> UserDetails { get; set; }

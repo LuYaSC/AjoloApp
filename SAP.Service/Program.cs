@@ -31,6 +31,8 @@ builder.Services.AddScoped<ITypeBusinessService<Room>, TypeBusinessService<Room>
 builder.Services.AddScoped<ITypeBusinessService<City>, TypeBusinessService<City>>();
 builder.Services.AddScoped<ITypeBusinessService<BranchOffice>, TypeBusinessService<BranchOffice>>();
 builder.Services.AddScoped<ITypeBusinessService<PaymentType>, TypeBusinessService<PaymentType>>();
+builder.Services.AddScoped<ITypeBusinessService<PaymentOperation>, TypeBusinessService<PaymentOperation>>();
+builder.Services.AddScoped<ITypeBusinessService<AuditPaymentType>, TypeBusinessService<AuditPaymentType>>();
 builder.Services.AddScoped<ITypeBusinessService<Relationship>, TypeBusinessService<Relationship>>();
 builder.Services.AddScoped<ITypeBusinessService<DocumentType>, TypeBusinessService<DocumentType>>();
 #endregion

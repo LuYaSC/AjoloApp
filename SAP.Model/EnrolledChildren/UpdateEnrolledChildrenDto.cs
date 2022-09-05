@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SAP.Model.EnrolledChildren
 {
-    public class UpdateEnrolledChildrenDto
+    public class UpdateEnrolledChildrenDto : CreateEnrolledChildrenDto
     {
+        public int Id { get; set; }
     }
 }

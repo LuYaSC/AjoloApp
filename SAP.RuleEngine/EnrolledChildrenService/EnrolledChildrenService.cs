@@ -18,11 +18,16 @@ namespace SAP.RuleEngine.EnrolledChildrenService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<EnrolledChildren, EnrolledChildrenResult>()
-                   .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.Collaborator.Name} {s.Collaborator.FirstLastName} {s.Collaborator.SecondLastName}"))
-                   .ForMember(d => d.Room, o => o.MapFrom(s => s.Room.Description))
-                   .ForMember(d => d.Turn, o => o.MapFrom(s => s.Turn.Description))
-                   .ForMember(d => d.Modality, o => o.MapFrom(s => s.Modality.Description))
-                   .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.BranchOffice.Description))
+                   .ForMember(d => d.Parent, o => o.MapFrom(s => $"{s.AssignedTutor.Parent.Name} {s.AssignedTutor.Parent.FirstLastName} " +
+                                                                 $"{s.AssignedTutor.Parent.SecondLastName}"))
+                   .ForMember(d => d.Kid, o => o.MapFrom(s => $"{s.AssignedTutor.Kid.Name} {s.AssignedTutor.Kid.FirstLastName} " +
+                                                              $"{s.AssignedTutor.Kid.SecondLastName}"))
+                   .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.AssignedRoom.Collaborator.Name} {s.AssignedRoom.Collaborator.FirstLastName} " +
+                                                                       $"{s.AssignedRoom.Collaborator.SecondLastName}"))
+                   .ForMember(d => d.Room, o => o.MapFrom(s => s.AssignedRoom.Room.Description))
+                   .ForMember(d => d.Turn, o => o.MapFrom(s => s.AssignedRoom.Turn.Description))
+                   .ForMember(d => d.Modality, o => o.MapFrom(s => s.AssignedRoom.Modality.Description))
+                   .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.AssignedRoom.BranchOffice.Description))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateEnrolledChildrenDto, EnrolledChildren>().AfterMap<TrimAllStringProperty>();
@@ -34,7 +39,9 @@ namespace SAP.RuleEngine.EnrolledChildrenService
         public Result<List<EnrolledChildrenResult>> GetAll()
         {
             var assingations = ListComplete<EnrolledChildren>().Include(x => x.AssignedTutor).Include(x => x.AssignedRoom).Include(x => x.AssignedTutor.Kid)
-                                                               .Include(x => x.AssignedTutor.Parent).Include(x => x.AssignedTutor.Relationship).ToList();
+                                                               .Include(x => x.AssignedTutor.Parent).Include(x => x.AssignedRoom.Collaborator)
+                                                               .Include(x => x.AssignedRoom.Room).Include(x => x.AssignedRoom.Turn)
+                                                               .Include(x => x.AssignedRoom.Modality).Include(x => x.AssignedRoom.BranchOffice).ToList();
             return assingations.Any() ? Result<List<EnrolledChildrenResult>>.SetOk(mapper.Map<List<EnrolledChildrenResult>>(assingations))
                                       : Result<List<EnrolledChildrenResult>>.SetError("Doesnt Exist Data");
         }
