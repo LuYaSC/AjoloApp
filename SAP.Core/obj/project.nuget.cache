@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IIhGfoajbFpExKKvROHonDNkNABB8iGl5OAfVR6Vo84Yn98BD1viPa6499YqR4/BInL/RzlMgWmKi2MEUz4E0w==",
+  "dgSpecHash": "IucWjSUiD+KhtIQhoxb3XbSvDPu6mxvGd7ZE3FbfYcp5c3b+HNoOZaIlgQbPjzCrFAF74/sisTy4lCELpftiVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\luisj\\Desktop\\projects\\SAP\\SAP.Core\\SAP.Core.csproj",
+  "projectFilePath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luisj\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\luisj\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.8\\microsoft.aspnetcore.cryptography.internal.6.0.8.nupkg.sha512",

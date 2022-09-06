@@ -8,7 +8,7 @@ using SAP.RuleEngine.TypeBusinessService;
 namespace SAP.Service.Controllers
 {
     [ApiController]
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]/[action]")]
     public class TurnController : ControllerBase
     {

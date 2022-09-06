@@ -3,12 +3,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using SAP.Repository.SAPRepository;
 using SAP.Repository.SAPRepository.Entities;
+using SAP.RuleEngine.AssignationRoomService;
+using SAP.RuleEngine.AssignationTutorService;
 using SAP.RuleEngine.AuthenticationService;
 using SAP.RuleEngine.CollaboratorService;
+using SAP.RuleEngine.EnrolledChildrenService;
 using SAP.RuleEngine.KidService;
 using SAP.RuleEngine.ParentService;
+using SAP.RuleEngine.PaymentService;
 using SAP.RuleEngine.TypeBusinessService;
 using System.Security.Principal;
 using System.Text;
@@ -42,6 +47,11 @@ builder.Services.AddScoped<IParentService, ParentService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<ICollaboratorService, CollaboratorService>();
 
+builder.Services.AddScoped<IAssignationRoomService, AssignationRoomService>();
+builder.Services.AddScoped<IAssignationTutorService, AssignationTutorService>();
+builder.Services.AddScoped<IEnrolledChildrenService, EnrolledChildrenService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SAPContext>(options => options.UseNpgsql(mySqlConnectionStr));
 builder.Services.AddIdentityCore<User>(
@@ -72,6 +82,34 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
     };
+});
+builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setup =>
+{
+    // Include 'SecurityScheme' to use JWT Authentication
+    var jwtSecurityScheme = new OpenApiSecurityScheme
+    {
+        BearerFormat = "JWT",
+        Name = "JWT Authentication",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        Description = "Put **_ONLY_** your JWT Bearer token on textbox below!",
+
+        Reference = new OpenApiReference
+        {
+            Id = JwtBearerDefaults.AuthenticationScheme,
+            Type = ReferenceType.SecurityScheme
+        }
+    };
+
+    setup.AddSecurityDefinition(jwtSecurityScheme.Reference.Id, jwtSecurityScheme);
+
+    setup.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        { jwtSecurityScheme, Array.Empty<string>() }
+    });
+
 });
 builder.Services.AddCors(options =>
 {

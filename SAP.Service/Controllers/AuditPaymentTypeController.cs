@@ -10,11 +10,11 @@ namespace SAP.Service.Controllers
     [ApiController]
     [Authorize]
     [Route("api/[controller]/[action]")]
-    public class ModalityController : ControllerBase
+    public class AuditPaymentTypeController : ControllerBase
     {
-        ITypeBusinessService<Modality> service;
+        ITypeBusinessService<AuditPaymentType> service;
 
-        public ModalityController(ITypeBusinessService<Modality> service)
+        public AuditPaymentTypeController(ITypeBusinessService<AuditPaymentType> service)
         {
             this.service = service;
         }

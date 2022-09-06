@@ -47,7 +47,7 @@ namespace SAP.RuleEngine.KidService
 
         public Result<List<KidsResult>> GetAllKids()
         {
-            return Result<List<KidsResult>>.SetOk(mapper.Map<List<KidsResult>>(ListComplete<Kid>()));
+            return Result<List<KidsResult>>.SetOk(mapper.Map<List<KidsResult>>(ListComplete<Kid>().Include(x => x.DocumentType)));
         }
 
         public Result<string> CreateKid(CreateKidDto dto)
