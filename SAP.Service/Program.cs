@@ -111,16 +111,7 @@ builder.Services.AddSwaggerGen(setup =>
     });
 
 });
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsDevPolicy", builder =>
-    {
-        builder.WithOrigins("*")
-            .WithMethods("POST, GET")
-            .AllowAnyHeader();
-    });
 
-});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -131,7 +122,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("CorsDevPolicy");
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin 
+    .AllowCredentials());
 
 app.UseAuthentication();
 app.UseAuthorization();

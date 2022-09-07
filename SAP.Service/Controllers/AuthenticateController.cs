@@ -5,7 +5,7 @@ using SAP.RuleEngine.AuthenticationService;
 
 namespace SAM.Functions.Authorization.MicroService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
 
     public class AuthenticateController : ControllerBase
@@ -15,7 +15,6 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
         public AuthenticateController(IAuthenticationService service) => this.service = service;
 
         [HttpPost]
-        [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             var result = await service.Login(model);
@@ -23,7 +22,6 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var result = await service.Register(model);
