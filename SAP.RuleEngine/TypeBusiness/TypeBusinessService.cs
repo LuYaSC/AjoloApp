@@ -32,8 +32,9 @@ namespace SAP.RuleEngine.TypeBusinessService
 
         public Result<List<GetTypeResult>> GetAll()
         {
-            var data = Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated);
-            return Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data));
+            var data = Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated).ToList();
+            return data.Any() ? Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data)) :
+                Result<List<GetTypeResult>>.SetError("No se encontraros resultados");
         }
 
         public Result<string> Update(GetTypeByIdDto dto)

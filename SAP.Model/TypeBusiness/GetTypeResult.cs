@@ -12,6 +12,8 @@ namespace SAP.Model.TypeBusiness
 
         public string Description { get; set; }
 
+        public string Initial { get; set; }
+
         public DateTime DateCreation { get; set; }
 
         public DateTime DateModification { get; set; }
