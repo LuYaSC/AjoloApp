@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SAP.Core.Business;
 using SAP.Model.Authentication;
 using SAP.RuleEngine.AuthenticationService;
 
@@ -15,17 +16,17 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
         public AuthenticateController(IAuthenticationService service) => this.service = service;
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<Result<LoginResult>> Login([FromBody] LoginModel model)
         {
             var result = await service.Login(model);
-            return result.IsValid ? Ok(result) : Unauthorized(result.Message);
+            return result.IsValid ? Result<LoginResult>.SetOk(result) : Result<LoginResult>.SetError(result.Message);
         }
 
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var result = await service.Register(model);
-            return result.IsValid ? Ok(result) : StatusCode(StatusCodes.Status500InternalServerError, 
+            return result.IsValid ? Ok(result) : StatusCode(StatusCodes.Status500InternalServerError,
                                                             new Response { Status = "Error", Message = result.Message });
         }
 
