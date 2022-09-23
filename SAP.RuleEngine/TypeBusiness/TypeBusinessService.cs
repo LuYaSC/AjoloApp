@@ -34,8 +34,13 @@ namespace SAP.RuleEngine.TypeBusinessService
         {
             var data = Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated).ToList();
 <<<<<<< HEAD
+<<<<<<< HEAD
             return data.Any() ?  Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data)):
               Result<List<GetTypeResult>>.SetError("No se encontraron Registros");
+=======
+            return data.Any() ? Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data)) :
+                Result<List<GetTypeResult>>.SetError("No se encontraros resultados");
+>>>>>>> 59409d67ca9ef9e7187a84d39e288dd8b053df4a
 =======
             return data.Any() ? Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data)) :
                 Result<List<GetTypeResult>>.SetError("No se encontraros resultados");
