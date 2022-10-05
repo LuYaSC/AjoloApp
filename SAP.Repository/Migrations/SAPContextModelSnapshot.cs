@@ -505,9 +505,6 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AgePregnancyMother")
-                        .HasColumnType("integer");
-
                     b.Property<string>("BloodType")
                         .IsRequired()
                         .HasColumnType("text");
@@ -538,33 +535,11 @@ namespace SAP.Repository.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<bool>("IsPlanified")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Medicaments")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("MotherDrink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PhysicalsConditions")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("PlaceBorn")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("PrenatalCheckup")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("PsychologicalConditions")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -578,21 +553,11 @@ namespace SAP.Repository.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<bool>("ThreatenedAbortion")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("UrineTest")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("UserCreation")
                         .HasColumnType("integer");
 
                     b.Property<int>("UserModification")
                         .HasColumnType("integer");
-
-                    b.Property<string>("XRaysThirdMonth")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -603,6 +568,684 @@ namespace SAP.Repository.Migrations
                     b.HasIndex("UserModification");
 
                     b.ToTable("Kids");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgeMotherDuringGestation")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("BloodTestDone")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("DrinkDuringGestation")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsPlanified")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MedicinesConsumed")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("OtherTests")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhysicalConditionsDuringGestation")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PrenatalCheckUp")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("PsychologicalConditionsDuringGestation")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("ThreatOfAbortion")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("UrineTestDone")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("XRays3rdMonth")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidBackground");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBirthBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("BornInHome")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("BornInHospital")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ButtocksPositionAtBirth")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Delayed")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Fast")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("FeetPositionAtBirth")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HaveBreakupOfTheBag")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("HeadPositionAtBirth")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("HowManyTime")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Induced")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ManyMonths")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("MotherReceivedAnesthesia")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("NormalDelivery")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Postmature")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Premature")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("WasAttendedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidBirthBackground");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidConditionNewBorn", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AgeDisease")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("CryImmediately")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DescribeDisease")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeMalformations")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HadMalformations")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HeadLarge")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HeadSmall")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MedicamentsTreatDisease")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("NeedOxigen")
+                        .HasColumnType("boolean");
+
+                    b.Property<decimal>("Size")
+                        .HasColumnType("numeric");
+
+                    b.Property<bool>("SufferedAnyDisease")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("UseIncubator")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidConditionNewBorn");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidDreamBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AwakeTime")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("BabyDreamCalm")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("BabyDreamShaken")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Bedtime")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Breathes")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("CurrentlyDreamCalm")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("Enuresis")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HasSingleBed")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HasSingleRoom")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("NocturnalFear")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ScratchesTeeth")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Shifts")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("Speaks")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("WakesUpALot")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("WhoSleep")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidDreamBackground");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidFoodBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("AcceptEasilySolidFood")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ChooseFood")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("CurrentlyEatGood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DescribeAllergicFood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeChooseFood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeFoodEat")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeSolidFood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeYourChildren")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DosisInCaseFever")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HasTendencyToDiarrhea")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("HasTendencyToVomit")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("IntervalsSolidFood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsAllergicFood")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MedicationsInCaseFever")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("MotherBreastfed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("OtherPersonBreastfed")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SinceGiveSolidFood")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UntielWhenBreastfed")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("WasBreastfed")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidFoodBackground");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidLanguageBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DescribeSyllables")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("DescribeWordArticulation")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("PronounceSyllablesAt")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("WordWithCorrectArticulationAt")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidLanguageBackground");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidPsychomotorBackgroud", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AffirmTheHead")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CrawlAt")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DescribeDifficultiesMovements")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("HaveAnyDifficultiesInMovements")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SatUp")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("StandAt")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("WalkedTo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidPsychomotorBackgroud");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidRelationBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("CriesForNoReason")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("GetAlongWellWithAdults")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("HowIsCorrect")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("HowItReactsWhencontracted")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("HowShowBehavior")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsAgresive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsCheerful")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsIndependent")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("KidId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("MakeFriendsEasily")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("MotherPlays")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("PrefferOlderOrYounger")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationBetweenParentsAndChildren")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationBetweenParentsAndGrandParents")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationParentsWithSiblings")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationWithFather")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationWithMother")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationWithParents")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RelationWithSiblings")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("ShareWithOtherChildren")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("TakeCareYourToys")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("TimeOfDayPlayFather")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TimeOfDayPlayMother")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("WhatKindOfToysYouLike")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WhenIsGoodWhatDoYouDo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KidId");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("KidRelationBackground");
                 });
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Modality", b =>
@@ -1496,6 +2139,222 @@ namespace SAP.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("DocumentType");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBirthBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidConditionNewBorn", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidDreamBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidFoodBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidLanguageBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidPsychomotorBackgroud", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidRelationBackground", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                        .WithMany()
+                        .HasForeignKey("KidId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kid");
 
                     b.Navigation("UserCreated");
 

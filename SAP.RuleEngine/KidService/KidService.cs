@@ -24,12 +24,25 @@ namespace SAP.RuleEngine.KidService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Kid, KidsResult>()
+                   .ForMember(d => d.Age, o => o.MapFrom(s => CalculateAge(s.BornDate.Value)))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
             });
             mapper = new Mapper(config);
+        }
+
+        private string CalculateAge(DateTime bornDate)
+        {
+            TimeSpan dateDiff = DateTime.Now - bornDate;
+            DateTime age = new DateTime(dateDiff.Ticks);
+
+            var Years = age.Year - 1;
+            var Month = age.Month - 1;
+            var Days = age.Day - 1;
+
+            return $"{Years} años{(Month > 0 ? $", {Month} meses" : "")} {(Days > 0 ? $"y {Days} dias" : "")}";
         }
 
         public Result<KidsResult> GetKidById(KidByIdDto dto)

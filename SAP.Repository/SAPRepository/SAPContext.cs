@@ -20,6 +20,14 @@ namespace SAP.Repository.SAPRepository
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Kid> Kids { get; set; }
+        public DbSet<KidBackground> KidBackground { get; set; }
+        public DbSet<KidBirthBackground> KidBirthBackground { get; set; }
+        public DbSet<KidConditionNewBorn> KidConditionNewBorn { get; set; }
+        public DbSet<KidDreamBackground> KidDreamBackground { get; set; }
+        public DbSet<KidFoodBackground> KidFoodBackground { get; set; }
+        public DbSet<KidLanguageBackground> KidLanguageBackground { get; set; }
+        public DbSet<KidPsychomotorBackgroud> KidPsychomotorBackgroud { get; set; }
+        public DbSet<KidRelationBackground> KidRelationBackground { get; set; }
         public DbSet<Parent> Parents { get; set; }
         public DbSet<AssignedRoom> AssignedRooms { get; set; }
         public DbSet<AssignedTutor> AssignedTutors { get; set; }

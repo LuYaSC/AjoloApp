@@ -20,6 +20,8 @@ namespace SAP.Model.Kid
 
         public DateTime? BornDate { get; set; }
 
+        public string Age { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
