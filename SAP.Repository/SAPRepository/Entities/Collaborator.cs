@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SAP.Repository.SAPRepository.Entities
 {
-    public class Collaborator : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+    public class Collaborator : BaseTrace, IName, IFirstLastName, ISecondLastName, ISexType
     {
         [Required]
         public string Name { get; set; }
@@ -40,6 +40,16 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public User User { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
+
+        [ForeignKey("SexTypeId")]
+
+        public SexType SexType { get; set; }
+
+        public int BloodTypeId { get; set; }
+
+        [ForeignKey("BloodTypeId")]
+
+        public BloodType BloodType { get; set; }
     }
 }

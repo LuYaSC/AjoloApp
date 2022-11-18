@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SAP.Repository.SAPRepository.Entities
 {
-    public class Parent : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+    public class Parent : BaseTrace, IName, IFirstLastName, ISecondLastName, ISexType
     {
         public string Name { get; set; }
 
@@ -22,7 +22,12 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public string? PlaceBorn { get; set; }
 
-        public string BloodType { get; set; }
+        public int BloodTypeId { get; set; }
+
+        [ForeignKey("BloodTypeId")]
+
+        public BloodType BloodType { get; set; }
+
 
         public string DocumentNumber { get; set; }
 
@@ -32,6 +37,10 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public DocumentType DocumentType { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
+
+        [ForeignKey("SexTypeId")]
+
+        public SexType SexType { get; set; }
     }
 }

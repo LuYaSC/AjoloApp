@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace SAP.Repository.SAPRepository.Base
 {
-    public interface ISex
+    public interface ISexType
     {
-        string Sex { get; set; }
+        int SexTypeId { get; set; }
     }
 }

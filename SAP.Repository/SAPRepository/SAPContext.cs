@@ -40,6 +40,9 @@ namespace SAP.Repository.SAPRepository
         public DbSet<BranchOffice> BranchOffices { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<UserDetail> UserDetails { get; set; }
+        public DbSet<SexType> SexTypes { get; set; }
+        public DbSet<BloodType> BloodTypes { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

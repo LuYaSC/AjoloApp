@@ -40,5 +40,9 @@ namespace SAP.Model.Collaborator
         public string CityAssigned { get; set; }
 
         public List<string> Roles { get; set; }
+
+        public DateTime DateCreation { get; set; }
+
+        public DateTime DateModification { get; set; }
     }
 }

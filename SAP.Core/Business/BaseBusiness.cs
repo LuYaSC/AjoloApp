@@ -35,6 +35,7 @@
         where CONTEXT : SAPContext
     {
         public int userId;
+        public bool seeIsDeleted = false;
         public BaseBusiness(CONTEXT context, IPrincipal userInfo, IConfiguration configuration = null)
             : base(configuration, userInfo)
         {
@@ -63,15 +64,15 @@
             return entity;
         }
 
-        public virtual IQueryable<ENTITY> GetComplete<ENTITY>(string name, string firstLastName, string secondLastName, string sex)
-           where ENTITY : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+        public virtual IQueryable<ENTITY> GetComplete<ENTITY>(string name, string firstLastName, string secondLastName, int sex)
+           where ENTITY : BaseTrace, IName, IFirstLastName, ISecondLastName, ISexType
         {
             IQueryable<ENTITY> entity = this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated);
             if (!string.IsNullOrEmpty(name)) entity = entity.Where(x => x.Name.Contains(name.ToUpper()));
             if (!string.IsNullOrEmpty(firstLastName)) entity = entity.Where(x => x.FirstLastName.Contains(firstLastName.ToUpper()));
             if (!string.IsNullOrEmpty(secondLastName)) 
                 entity = entity.Where(x => x.SecondLastName != null ? x.SecondLastName.Contains(secondLastName.ToUpper()) : x.SecondLastName == string.Empty );
-            if (!string.IsNullOrEmpty(sex)) entity = entity.Where(x => x.Sex.Contains(sex.ToUpper()));
+            if (sex != 0 ) entity = entity.Where(x => x.SexTypeId == sex);
             return entity;
         }
 
@@ -84,7 +85,8 @@
             }
             else
             {
-                var returnCol = this.Context.Set<T>().Where(x => (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
+                
+                var returnCol = this.Context.Set<T>().Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
         }
@@ -100,7 +102,7 @@
             else
             {
                 var returnCol = this.Context.Set<ENTITY>().Include(x => x.UserCreated)
-                                            .Include(x => x.UserModificated).Where(x => (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
+                                            .Include(x => x.UserModificated).Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
         }

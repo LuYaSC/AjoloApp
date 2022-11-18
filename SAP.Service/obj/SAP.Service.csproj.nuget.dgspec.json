@@ -28,7 +28,7 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://faye-package-repository-132145047993.d.codeartifact.us-east-1.amazonaws.com/nuget/faye-package-repository/v3/index.json": {}
+          "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -99,7 +99,7 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://faye-package-repository-132145047993.d.codeartifact.us-east-1.amazonaws.com/nuget/faye-package-repository/v3/index.json": {}
+          "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -160,7 +160,7 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://faye-package-repository-132145047993.d.codeartifact.us-east-1.amazonaws.com/nuget/faye-package-repository/v3/index.json": {}
+          "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -251,7 +251,7 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://faye-package-repository-132145047993.d.codeartifact.us-east-1.amazonaws.com/nuget/faye-package-repository/v3/index.json": {}
+          "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -329,7 +329,7 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://faye-package-repository-132145047993.d.codeartifact.us-east-1.amazonaws.com/nuget/faye-package-repository/v3/index.json": {}
+          "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
         },
         "frameworks": {
           "net6.0": {

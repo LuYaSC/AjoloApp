@@ -36,7 +36,7 @@ namespace SAP.RuleEngine.ParentService
 
         public Result<ParentsResult> GetParent(GetParentDto dto)
         {
-            var Parent = GetComplete<Parent>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.Sex);
+            var Parent = GetComplete<Parent>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.SexTypeId);
             return Parent.FirstOrDefault() == null ? Result<ParentsResult>.SetError("Doesnt Exists") : Result<ParentsResult>.SetOk(mapper.Map<ParentsResult>(Parent.First()));
         }
 
@@ -49,7 +49,7 @@ namespace SAP.RuleEngine.ParentService
         {
             try
             {
-                var Parent = GetComplete<Parent>(dto.Name, dto.FirstLastName, dto.SecondLastName, string.Empty).FirstOrDefault();
+                var Parent = GetComplete<Parent>(dto.Name, dto.FirstLastName, dto.SecondLastName, 0).FirstOrDefault();
                 if (Parent != null) return Result<string>.SetError("Parent exists");
                 Context.Save(mapper.Map<Parent>(dto));
                 return Result<string>.SetOk("Parent Create with Success");

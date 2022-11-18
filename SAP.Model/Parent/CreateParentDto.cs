@@ -21,12 +21,12 @@ namespace SAP.Model.Parent
 
         public string? PlaceBorn { get; set; }
 
-        public string BloodType { get; set; }
+        public int BloodTypeId { get; set; }
 
         public string DocumentNumber { get; set; }
 
         public int DocumentTypeId { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
     }
 }

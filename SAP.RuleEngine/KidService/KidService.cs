@@ -52,7 +52,7 @@ namespace SAP.RuleEngine.KidService
 
         public Result<KidsResult> GetKid(GetKidDto dto)
         {
-            var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.Sex);
+            var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.SexTypeId);
             if(dto.BornDate != null) kid = kid.Where(x => x.BornDate == dto.BornDate);
             if(dto.StartDate != null) kid = kid.Where(x => x.StartDate == dto.StartDate);
             return kid.FirstOrDefault() == null ? Result<KidsResult>.SetError("Doesnt Exists") : Result<KidsResult>.SetOk(mapper.Map<KidsResult>(kid.First()));
@@ -67,7 +67,7 @@ namespace SAP.RuleEngine.KidService
         {
             try
             {
-                var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, string.Empty).FirstOrDefault();
+                var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, 0).FirstOrDefault();
                 if(kid != null) return Result<string>.SetError("kid exists");
                 Context.Save(mapper.Map<Kid>(dto));
                 return Result<string>.SetOk("Kid Create with Success");

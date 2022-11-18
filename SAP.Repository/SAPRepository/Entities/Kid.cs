@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAP.Repository.SAPRepository.Entities
 {
-    public class Kid : BaseTrace, IName, IFirstLastName, ISecondLastName, ISex
+    public class Kid : BaseTrace, IName, IFirstLastName, ISecondLastName, ISexType
     {
         public string Name { get; set; } = string.Empty;
 
@@ -11,7 +11,11 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public string? SecondLastName { get; set; }
 
-        public string Sex { get; set; } = string.Empty;
+        public int SexTypeId { get; set; }
+
+        [ForeignKey("SexTypeId")]
+
+        public SexType SexType { get; set; }
 
         public DateTime? BornDate { get; set; }
 
@@ -21,7 +25,11 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public string PlaceBorn { get; set; } = string.Empty;
 
-        public string BloodType { get; set; } = string.Empty;
+        public int BloodTypeId { get; set; }
+
+        [ForeignKey("BloodTypeId")]
+
+        public BloodType BloodType { get; set; }
 
         public string DocumentNumber { get; set; } = string.Empty;
 

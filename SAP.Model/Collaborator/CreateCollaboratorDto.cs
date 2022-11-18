@@ -19,7 +19,8 @@ namespace SAP.Model.Collaborator
         public DateTime? EndDate { get; set; }
         public int DocumentTypeId { get; set; }
         public string DocumentNumber { get; set; }
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
+        public int BloodTypeId { get; set; }
         public int BranchOfficeId { get; set; }
         public int CityId { get; set; }
         public string Email { get; set; }

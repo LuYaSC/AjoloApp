@@ -14,6 +14,6 @@ namespace SAP.Model.Parent
 
         public string SecondLastName { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
     }
 }

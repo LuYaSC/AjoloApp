@@ -60,7 +60,7 @@ namespace SAP.RuleEngine.CollaboratorService
 
         public Result<string> CreateCollaborator(CreateCollaboratorDto dto)
         {
-            var collaborator = GetComplete<Collaborator>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.Sex);
+            var collaborator = GetComplete<Collaborator>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.SexTypeId);
             if (collaborator.FirstOrDefault() != null) return Result<string>.SetError("Collab Exists");
 
             var newUserCollab = authService.Register(new RegisterModel

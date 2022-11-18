@@ -264,6 +264,45 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AuditPaymentTypes");
                 });
 
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BloodType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Initial")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("BloodTypes");
+                });
+
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BranchOffice", b =>
                 {
                     b.Property<int>("Id")
@@ -350,6 +389,9 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BloodTypeId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("BornDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -383,9 +425,8 @@ namespace SAP.Repository.Migrations
                     b.Property<string>("SecondLastName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SexTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
@@ -401,7 +442,11 @@ namespace SAP.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BloodTypeId");
+
                     b.HasIndex("DocumentTypeId");
+
+                    b.HasIndex("SexTypeId");
 
                     b.HasIndex("UserCreation");
 
@@ -505,9 +550,8 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BloodType")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("BloodTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("BornDate")
                         .HasColumnType("timestamp with time zone");
@@ -546,9 +590,8 @@ namespace SAP.Repository.Migrations
                     b.Property<string>("SecondLastName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SexTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone");
@@ -561,7 +604,11 @@ namespace SAP.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BloodTypeId");
+
                     b.HasIndex("DocumentTypeId");
+
+                    b.HasIndex("SexTypeId");
 
                     b.HasIndex("UserCreation");
 
@@ -1299,9 +1346,8 @@ namespace SAP.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("BloodType")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("BloodTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("DateCreation")
                         .HasColumnType("timestamp with time zone");
@@ -1337,9 +1383,8 @@ namespace SAP.Repository.Migrations
                     b.Property<string>("SecondLastName")
                         .HasColumnType("text");
 
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SexTypeId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("UserCreation")
                         .HasColumnType("integer");
@@ -1349,7 +1394,11 @@ namespace SAP.Repository.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BloodTypeId");
+
                     b.HasIndex("DocumentTypeId");
+
+                    b.HasIndex("SexTypeId");
 
                     b.HasIndex("UserCreation");
 
@@ -1651,6 +1700,45 @@ namespace SAP.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sessions");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.SexType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateCreation")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DateModification")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Initial")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("UserCreation")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserModification")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserCreation");
+
+                    b.HasIndex("UserModification");
+
+                    b.ToTable("SexTypes");
                 });
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Turn", b =>
@@ -1991,6 +2079,25 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BloodType", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BranchOffice", b =>
                 {
                     b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
@@ -2031,9 +2138,21 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Collaborator", b =>
                 {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.BloodType", "BloodType")
+                        .WithMany()
+                        .HasForeignKey("BloodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.SexType", "SexType")
+                        .WithMany()
+                        .HasForeignKey("SexTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2055,7 +2174,11 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("BloodType");
+
                     b.Navigation("DocumentType");
+
+                    b.Navigation("SexType");
 
                     b.Navigation("User");
 
@@ -2120,9 +2243,21 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Kid", b =>
                 {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.BloodType", "BloodType")
+                        .WithMany()
+                        .HasForeignKey("BloodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.SexType", "SexType")
+                        .WithMany()
+                        .HasForeignKey("SexTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2138,7 +2273,11 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("BloodType");
+
                     b.Navigation("DocumentType");
+
+                    b.Navigation("SexType");
 
                     b.Navigation("UserCreated");
 
@@ -2382,9 +2521,21 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Parent", b =>
                 {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.BloodType", "BloodType")
+                        .WithMany()
+                        .HasForeignKey("BloodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.SexType", "SexType")
+                        .WithMany()
+                        .HasForeignKey("SexTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2400,7 +2551,11 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("BloodType");
+
                     b.Navigation("DocumentType");
+
+                    b.Navigation("SexType");
 
                     b.Navigation("UserCreated");
 
@@ -2524,6 +2679,25 @@ namespace SAP.Repository.Migrations
                 });
 
             modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Room", b =>
+                {
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                        .WithMany()
+                        .HasForeignKey("UserCreation")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                        .WithMany()
+                        .HasForeignKey("UserModification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserCreated");
+
+                    b.Navigation("UserModificated");
+                });
+
+            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.SexType", b =>
                 {
                     b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
                         .WithMany()

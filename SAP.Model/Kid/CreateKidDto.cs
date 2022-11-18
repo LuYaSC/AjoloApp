@@ -15,7 +15,7 @@ namespace SAP.Model.Kid
 
         public string? SecondLastName { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
 
         public DateTime? BornDate { get; set; }
 
@@ -25,30 +25,10 @@ namespace SAP.Model.Kid
 
         public string PlaceBorn { get; set; }
 
-        public string BloodType { get; set; }
+        public int BloodTypeId { get; set; }
 
         public string DocumentNumber { get; set; }
 
         public int DocumentTypeId { get; set; }
-
-        public int AgePregnancyMother { get; set; }
-
-        public bool IsPlanified { get; set; }
-
-        public bool ThreatenedAbortion { get; set; }
-
-        public bool PrenatalCheckup { get; set; }
-
-        public bool UrineTest { get; set; }
-
-        public string XRaysThirdMonth { get; set; }
-
-        public string MotherDrink { get; set; }
-
-        public string Medicaments { get; set; }
-
-        public string PhysicalsConditions { get; set; }
-
-        public string PsychologicalConditions { get; set; }
     }
 }

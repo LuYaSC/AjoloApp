@@ -14,7 +14,7 @@ namespace SAP.Model.Kid
 
         public string SecondLastName { get; set; }
 
-        public string Sex { get; set; }
+        public int SexTypeId { get; set; }
 
         public DateTime? BornDate { get; set; }
 
