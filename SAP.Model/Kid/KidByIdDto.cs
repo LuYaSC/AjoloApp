@@ -9,5 +9,7 @@ namespace SAP.Model.Kid
     public class KidByIdDto
     {
         public int Id { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

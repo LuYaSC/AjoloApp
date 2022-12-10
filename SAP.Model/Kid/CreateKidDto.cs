@@ -29,6 +29,6 @@ namespace SAP.Model.Kid
 
         public string DocumentNumber { get; set; }
 
-        public int DocumentTypeId { get; set; }
+        public int DocumentTypeId { get; set; }       
     }
 }

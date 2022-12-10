@@ -34,5 +34,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> UpdateKid([FromBody] UpdateKidDto dto) => service.UpdateKid(dto);
+
+        [HttpPost]
+        public Result<string> ActivateOrDeactivate([FromBody] KidByIdDto dto) => service.ActivateOrDeactivate(dto);
     }
 }

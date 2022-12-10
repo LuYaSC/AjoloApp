@@ -38,6 +38,8 @@ namespace SAP.Model.Kid
 
         public bool IsPlanified { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public bool ThreatenedAbortion { get; set; }
 
         public bool PrenatalCheckup { get; set; }

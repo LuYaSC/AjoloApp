@@ -19,5 +19,7 @@ namespace SAP.RuleEngine.KidService
         Result<string> CreateKid(CreateKidDto dto);
 
         Result<string> UpdateKid(UpdateKidDto dto);
+
+        Result<string> ActivateOrDeactivate(KidByIdDto dto);
     }
 }

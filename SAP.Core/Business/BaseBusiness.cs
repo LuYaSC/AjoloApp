@@ -36,6 +36,7 @@
     {
         public int userId;
         public bool seeIsDeleted = false;
+        public List<string> roles;
         public BaseBusiness(CONTEXT context, IPrincipal userInfo, IConfiguration configuration = null)
             : base(configuration, userInfo)
         {
@@ -44,6 +45,7 @@
             this.UserInfo = userInfo;
             var claimsIdentity = (ClaimsIdentity) userInfo.Identity;
             userId = userInfo != null ? int.Parse(claimsIdentity.Claims.Where(x => x.Type == "identifier").FirstOrDefault()?.Value) : 0;
+            roles = claimsIdentity.Claims.Where(x => x.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").Select(x => x.Value).ToList();
         }
 
         public void Dispose()
@@ -79,13 +81,13 @@
         public virtual IQueryable<T> List()
         {
             var isLogical = typeof(T).GetInterfaces().Contains(typeof(ILogicalDelete));
-            if (!isLogical)
+            var isAdmin = roles.Where(x => x == "ADMIN").SingleOrDefault();
+            if (isLogical && isAdmin != null)
             {
                 return this.Context.Set<T>();
             }
             else
             {
-                
                 var returnCol = this.Context.Set<T>().Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
@@ -95,14 +97,15 @@
             where ENTITY : BaseTrace
         {
             var isLogical = typeof(T).GetInterfaces().Contains(typeof(ILogicalDelete));
-            if (!isLogical)
+            var isAdmin = roles.Where(x => x == "ADMIN").ToList();
+            if (isLogical && isAdmin.Any())
             {
                 return this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated);
             }
             else
             {
                 var returnCol = this.Context.Set<ENTITY>().Include(x => x.UserCreated)
-                                            .Include(x => x.UserModificated).Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
+                                           .Include(x => x.UserModificated).Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
         }

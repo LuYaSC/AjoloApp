@@ -205,7 +205,7 @@ namespace SAP.Repository.SAPRepository
            where TypeKey : IEquatable<TypeKey>, IConvertible
         {
             var claimsIdentity = userInfo != null ? (ClaimsIdentity)this.userInfo.Identity : null;
-
+            Entry(entity).State = EntityState.Modified;
             if (entity is IDateModification)
             {
                 (entity as IDateModification).DateModification = DateTime.UtcNow;

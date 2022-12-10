@@ -53,8 +53,8 @@ namespace SAP.RuleEngine.KidService
         public Result<KidsResult> GetKid(GetKidDto dto)
         {
             var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, dto.SexTypeId);
-            if(dto.BornDate != null) kid = kid.Where(x => x.BornDate == dto.BornDate);
-            if(dto.StartDate != null) kid = kid.Where(x => x.StartDate == dto.StartDate);
+            if (dto.BornDate != null) kid = kid.Where(x => x.BornDate == dto.BornDate);
+            if (dto.StartDate != null) kid = kid.Where(x => x.StartDate == dto.StartDate);
             return kid.FirstOrDefault() == null ? Result<KidsResult>.SetError("Doesnt Exists") : Result<KidsResult>.SetOk(mapper.Map<KidsResult>(kid.First()));
         }
 
@@ -68,11 +68,11 @@ namespace SAP.RuleEngine.KidService
             try
             {
                 var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, 0).FirstOrDefault();
-                if(kid != null) return Result<string>.SetError("kid exists");
+                if (kid != null) return Result<string>.SetError("kid exists");
                 Context.Save(mapper.Map<Kid>(dto));
                 return Result<string>.SetOk("Kid Create with Success");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Result<string>.SetError($"Doesnt kid create {ex.Message}");
             }
@@ -83,14 +83,29 @@ namespace SAP.RuleEngine.KidService
             try
             {
                 var kid = Get(dto.Id);
-                if(kid == null) return Result<string>.SetError("Doesnt exists kid");
-                Context.Save(mapper.Map<Kid>(kid));
+                if (kid == null) return Result<string>.SetError("Doesnt exists kid");
+                mapper.Map(
+                      source: dto,
+                      destination: kid,
+                      sourceType: typeof(UpdateKidDto),
+                      destinationType: typeof(Kid)
+                );
+                Context.Save(kid);
                 return Result<string>.SetOk("Kid Create with Success");
             }
             catch (Exception ex)
             {
                 return Result<string>.SetError("Doesnt kid create");
             }
+        }
+
+        public Result<string> ActivateOrDeactivate(KidByIdDto dto)
+        {
+            var kid = Get(dto.Id);
+            if (kid == null) return Result<string>.SetError("Doesnt exists kid");
+            kid.IsDeleted = dto.IsDeleted;
+            Context.Save(kid);
+            return Result<string>.SetOk("Disabled with success");
         }
     }
 }
