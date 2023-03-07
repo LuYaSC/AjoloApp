@@ -17,6 +17,8 @@ PortabilityAnalysis*.html
 *.AssemblyReference.cache
 **/bin/**/AssemblyReference.cache
 **/*.suo
+**/bin/**/*AssemblyReference.cache
+
 
 # Xamarin Studio / monodevelop user-specific
 *.userprefs
