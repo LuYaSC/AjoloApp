@@ -40,3 +40,17 @@ C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Repository\obj\Debug\net6.0\r
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.pdb
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.genruntimeconfig.cache
 C:\Users\luisj\Desktop\Projects\PequelandiaSAP\SAP.Repository\obj\Debug\net6.0\ref\SAP.Repository.dll
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\bin\Debug\net6.0\SAP.Repository.deps.json
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\bin\Debug\net6.0\SAP.Repository.runtimeconfig.json
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\bin\Debug\net6.0\SAP.Repository.dll
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\bin\Debug\net6.0\SAP.Repository.pdb
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.csproj.AssemblyReference.cache
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.AssemblyInfoInputs.cache
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.AssemblyInfo.cs
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.csproj.CoreCompileInputs.cache
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.dll
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\refint\SAP.Repository.dll
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.pdb
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\SAP.Repository.genruntimeconfig.cache
+C:\Users\luisj\OneDrive\Escritorio\Projects\Personal\Ajolotitos\SAP\SAP.Repository\obj\Debug\net6.0\ref\SAP.Repository.dll

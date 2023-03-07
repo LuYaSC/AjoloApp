@@ -7,6 +7,8 @@ PortabilityAnalysis*.html
 *.suo
 *.user
 *.sln.docstates
+*.dll
+*.pdb
 
 # Xamarin Studio / monodevelop user-specific
 *.userprefs

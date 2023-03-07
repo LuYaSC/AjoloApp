@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Usu+r5wfl6q3zSNvyy/fzJEJ3Ls/l+2tI8L1Omg5KgSN4glLRtCtzTloeOhBrIEQiTdaqC4+RtEQJ6PGqFOZBg==",
+  "dgSpecHash": "cDUQvWSoNOiJgBCn0j/GYYU+fbr6MOf+uN5/TuC+yFKW01DP09bp1cOC4xSBDXqwb44WppCYnzHsAgsAo4XDoQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
+  "projectFilePath": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luisj\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\luisj\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.8\\microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512",

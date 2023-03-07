@@ -1381,21 +1381,19 @@
   },
   "packageFolders": {
     "C:\\Users\\luisj\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
+      "projectUniqueName": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
       "projectName": "SAP.RuleEngine",
-      "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
+      "projectPath": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.RuleEngine\\SAP.RuleEngine.csproj",
       "packagesPath": "C:\\Users\\luisj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.RuleEngine\\obj\\",
+      "outputPath": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.RuleEngine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\luisj\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1406,19 +1404,19 @@
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://gitlab.webpt.com/api/v4/projects/5419/packages/nuget/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj": {
-              "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Core\\SAP.Core.csproj"
+            "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.Core\\SAP.Core.csproj": {
+              "projectPath": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.Core\\SAP.Core.csproj"
             },
-            "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj": {
-              "projectPath": "C:\\Users\\luisj\\Desktop\\Projects\\PequelandiaSAP\\SAP.Model\\SAP.Model.csproj"
+            "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.Model\\SAP.Model.csproj": {
+              "projectPath": "C:\\Users\\luisj\\OneDrive\\Escritorio\\Projects\\Personal\\Ajolotitos\\SAP\\SAP.Model\\SAP.Model.csproj"
             }
           }
         }
@@ -1458,7 +1456,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
