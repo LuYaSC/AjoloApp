@@ -11,6 +11,7 @@ PortabilityAnalysis*.html
 *.pdb
 *.suo
 *.v2
+*.cache
 
 # Xamarin Studio / monodevelop user-specific
 *.userprefs
