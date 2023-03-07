@@ -12,6 +12,9 @@ PortabilityAnalysis*.html
 *.suo
 *.v2
 *.cache
+.vs/
+.vs/PequelandiaSAO/v17/*.suo
+*.AssemblyReference.cache
 
 # Xamarin Studio / monodevelop user-specific
 *.userprefs
