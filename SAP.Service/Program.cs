@@ -42,6 +42,7 @@ builder.Services.AddScoped<ITypeBusinessService<Relationship>, TypeBusinessServi
 builder.Services.AddScoped<ITypeBusinessService<DocumentType>, TypeBusinessService<DocumentType>>();
 builder.Services.AddScoped<ITypeBusinessService<SexType>, TypeBusinessService<SexType>>();
 builder.Services.AddScoped<ITypeBusinessService<BloodType>, TypeBusinessService<BloodType>>();
+builder.Services.AddScoped<ITypeBusinessService<MaritalStatus>, TypeBusinessService<MaritalStatus>>();
 #endregion
 
 builder.Services.AddScoped<IKidService, KidService>();

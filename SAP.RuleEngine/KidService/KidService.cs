@@ -69,7 +69,7 @@ namespace SAP.RuleEngine.KidService
             {
                 var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, 0).FirstOrDefault();
                 if (kid != null) return Result<string>.SetError("kid exists");
-                Context.Save(mapper.Map<Kid>(dto));
+                Context.Save(mapper.Map(dto, kid));
                 return Result<string>.SetOk("Kid Create with Success");
             }
             catch (Exception ex)

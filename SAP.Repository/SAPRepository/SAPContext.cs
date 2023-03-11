@@ -42,6 +42,8 @@ namespace SAP.Repository.SAPRepository
         public DbSet<UserDetail> UserDetails { get; set; }
         public DbSet<SexType> SexTypes { get; set; }
         public DbSet<BloodType> BloodTypes { get; set; }
+        public DbSet<MaritalStatus> MaritalStatus { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -34,6 +34,8 @@ namespace SAP.Model.Parent
 
         public string UserModification { get; set; }
 
+        public string MaritalStatus { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime DateCreation { get; set; }

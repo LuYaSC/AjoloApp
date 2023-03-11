@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SAP.Repository.SAPRepository;
@@ -11,9 +12,10 @@ using SAP.Repository.SAPRepository;
 namespace SAP.Repository.Migrations
 {
     [DbContext(typeof(SAPContext))]
-    partial class SAPContextModelSnapshot : ModelSnapshot
+    [Migration("20230311030941_AddingMaritalStatusTable")]
+    partial class AddingMaritalStatusTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1408,9 +1410,6 @@ namespace SAP.Repository.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("MaritalStatusId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -1439,8 +1438,6 @@ namespace SAP.Repository.Migrations
                     b.HasIndex("BloodTypeId");
 
                     b.HasIndex("DocumentTypeId");
-
-                    b.HasIndex("MaritalStatusId");
 
                     b.HasIndex("SexTypeId");
 
@@ -2596,12 +2593,6 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.MaritalStatus", "MaritalStatus")
-                        .WithMany()
-                        .HasForeignKey("MaritalStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SAP.Repository.SAPRepository.Entities.SexType", "SexType")
                         .WithMany()
                         .HasForeignKey("SexTypeId")
@@ -2623,8 +2614,6 @@ namespace SAP.Repository.Migrations
                     b.Navigation("BloodType");
 
                     b.Navigation("DocumentType");
-
-                    b.Navigation("MaritalStatus");
 
                     b.Navigation("SexType");
 

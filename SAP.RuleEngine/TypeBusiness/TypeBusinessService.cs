@@ -63,7 +63,7 @@ namespace SAP.RuleEngine.TypeBusinessService
                 Save(new T
                 {
                     Description = dto.Description.Trim().ToUpper(),
-                    Initial = dto.Initial.Trim().ToUpper(),
+                    Initial = dto.Initial?.Trim().ToUpper(),
                     IsDeleted = false
                 });
                 return Result<string>.SetOk("Create Success"); ;

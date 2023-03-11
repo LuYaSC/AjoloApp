@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAP.RuleEngine.ParentService
 {
@@ -21,8 +22,9 @@ namespace SAP.RuleEngine.ParentService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Parent, ParentsResult>()
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                    .ForMember(d => d.MaritalStatus, o => o.MapFrom(s => s.MaritalStatus.Description))
+                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
+                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateParentDto, Parent>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateParentDto, Parent>().AfterMap<TrimAllStringProperty>();
             });
@@ -42,7 +44,7 @@ namespace SAP.RuleEngine.ParentService
 
         public Result<List<ParentsResult>> GetAllParents()
         {
-            return Result<List<ParentsResult>>.SetOk(mapper.Map<List<ParentsResult>>(ListComplete<Parent>()));
+            return Result<List<ParentsResult>>.SetOk(mapper.Map<List<ParentsResult>>(ListComplete<Parent>().Include(x => x.MaritalStatus)));
         }
 
         public Result<string> CreateParent(CreateParentDto dto)
@@ -66,7 +68,7 @@ namespace SAP.RuleEngine.ParentService
             {
                 var Parent = Get(dto.Id);
                 if (Parent == null) return Result<string>.SetError("Doesnt exists Parent");
-                Context.Save(mapper.Map<Parent>(Parent));
+                Context.Save(mapper.Map(dto, Parent));
                 return Result<string>.SetOk("Parent Create with Success");
             }
             catch (Exception ex)

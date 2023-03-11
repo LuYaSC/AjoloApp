@@ -28,5 +28,7 @@ namespace SAP.Model.Parent
         public int DocumentTypeId { get; set; }
 
         public int SexTypeId { get; set; }
+
+        public int MaritalStatusId { get; set; }
     }
 }

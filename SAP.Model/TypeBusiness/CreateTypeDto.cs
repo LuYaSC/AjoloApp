@@ -10,6 +10,6 @@ namespace SAP.Model.TypeBusiness
     {
         public string Description { get; set; }
 
-        public string Initial { get; set; }
+        public string? Initial { get; set; }
     }
 }

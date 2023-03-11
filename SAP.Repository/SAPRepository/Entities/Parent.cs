@@ -42,5 +42,11 @@ namespace SAP.Repository.SAPRepository.Entities
         [ForeignKey("SexTypeId")]
 
         public SexType SexType { get; set; }
+
+        public int MaritalStatusId { get; set; }
+
+        [ForeignKey("MaritalStatusId")]
+
+        public MaritalStatus MaritalStatus { get; set; }
     }
 }
