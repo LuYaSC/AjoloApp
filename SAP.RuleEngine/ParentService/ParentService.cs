@@ -23,6 +23,9 @@ namespace SAP.RuleEngine.ParentService
             {
                 cfg.CreateMap<Parent, ParentsResult>()
                     .ForMember(d => d.MaritalStatus, o => o.MapFrom(s => s.MaritalStatus.Description))
+                    .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.DocumentType.Description))
+                    .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
+                    .ForMember(d => d.BloodType, o => o.MapFrom(s => s.BloodType.Description))
                     .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                     .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateParentDto, Parent>().AfterMap<TrimAllStringProperty>();
@@ -44,7 +47,8 @@ namespace SAP.RuleEngine.ParentService
 
         public Result<List<ParentsResult>> GetAllParents()
         {
-            return Result<List<ParentsResult>>.SetOk(mapper.Map<List<ParentsResult>>(ListComplete<Parent>().Include(x => x.MaritalStatus)));
+            return Result<List<ParentsResult>>.SetOk(mapper.Map<List<ParentsResult>>(ListComplete<Parent>().Include(x => x.MaritalStatus).Include(x => x.DocumentType)
+                .Include(x => x.BloodType).Include(x => x.SexType)));
         }
 
         public Result<string> CreateParent(CreateParentDto dto)

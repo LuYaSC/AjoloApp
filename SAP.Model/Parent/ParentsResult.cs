@@ -26,6 +26,8 @@ namespace SAP.Model.Parent
 
         public string BloodType { get; set; }
 
+        public string DocumentType { get; set; }
+
         public string DocumentNumber { get; set; }
 
         public string Sex { get; set; }

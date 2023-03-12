@@ -25,6 +25,9 @@ namespace SAP.RuleEngine.KidService
             {
                 cfg.CreateMap<Kid, KidsResult>()
                    .ForMember(d => d.Age, o => o.MapFrom(s => CalculateAge(s.BornDate.Value)))
+                   .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
+                   .ForMember(d => d.BloodType, o => o.MapFrom(s => s.BloodType.Description))
+                   .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.DocumentType.Description))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
@@ -60,7 +63,7 @@ namespace SAP.RuleEngine.KidService
 
         public Result<List<KidsResult>> GetAllKids()
         {
-            return Result<List<KidsResult>>.SetOk(mapper.Map<List<KidsResult>>(ListComplete<Kid>().Include(x => x.DocumentType)));
+            return Result<List<KidsResult>>.SetOk(mapper.Map<List<KidsResult>>(ListComplete<Kid>().Include(x => x.DocumentType).Include(x => x.SexType).Include(x => x.BloodType)));
         }
 
         public Result<string> CreateKid(CreateKidDto dto)
@@ -69,7 +72,7 @@ namespace SAP.RuleEngine.KidService
             {
                 var kid = GetComplete<Kid>(dto.Name, dto.FirstLastName, dto.SecondLastName, 0).FirstOrDefault();
                 if (kid != null) return Result<string>.SetError("kid exists");
-                Context.Save(mapper.Map(dto, kid));
+                Context.Save(mapper.Map<Kid>(dto));
                 return Result<string>.SetOk("Kid Create with Success");
             }
             catch (Exception ex)
