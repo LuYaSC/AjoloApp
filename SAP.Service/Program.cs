@@ -54,6 +54,7 @@ builder.Services.AddScoped<IAssignationRoomService, AssignationRoomService>();
 builder.Services.AddScoped<IAssignationTutorService, AssignationTutorService>();
 builder.Services.AddScoped<IEnrolledChildrenService, EnrolledChildrenService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IRolesBusinessService, RolesBusinessService>();
 
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<SAPContext>(options => options.UseNpgsql(mySqlConnectionStr));

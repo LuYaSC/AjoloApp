@@ -29,6 +29,10 @@ namespace SAP.Repository.SAPRepository.Entities
 
         public string DocumentNumber { get; set; }
 
+        public string Address { get; set; }
+
+        public string PhoneNumber { get; set; }
+
         public int DocumentTypeId { get; set; }
 
         [ForeignKey("DocumentTypeId")]

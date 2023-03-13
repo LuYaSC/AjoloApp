@@ -25,5 +25,7 @@ namespace SAP.Model.Collaborator
         public int CityId { get; set; }
         public string Email { get; set; }
         public List<int> Roles { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace SAP.Core.Business
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using SAP.Repository.SAPRepository;

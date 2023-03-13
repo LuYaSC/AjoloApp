@@ -32,7 +32,7 @@ namespace SAP.Service.Controllers
         [HttpPost]
         public Result<string> CreateCollaborator([FromBody] CreateCollaboratorDto dto) => service.CreateCollaborator(dto);
 
-        //[HttpPost]
-        //public Result<string> UpdateCollaborator([FromBody] UpdateCollaboratorDto dto) => service.UpdateCollaborator(dto);
+        [HttpPost]
+        public Result<string> UpdateCollaborator([FromBody] UpdateCollaboratorDto dto) => service.UpdateCollaborator(dto);
     }
 }

@@ -116,10 +116,7 @@ namespace SAP.RuleEngine.AuthenticationService
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded) return await Task.FromResult(new RegisterResult { IsValid = false, Message = result.Errors.First().Description });
-            //{
-            //    Status = "Error",
-            //    Message = result.Errors.First().Description
-            //});
+          
             var newUser = await Context.Users.Where(x => x.UserName == user.UserName).FirstOrDefaultAsync();
             if (model.HaveDetail)
             {
@@ -149,7 +146,6 @@ namespace SAP.RuleEngine.AuthenticationService
             if (!result.Succeeded)
                 return await Task.FromResult(new RegisterResult { IsValid = false, 
                                              Message = "User creation failed! Please check user details and try again." });
-            //return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
             return await Task.FromResult(new RegisterResult
             {

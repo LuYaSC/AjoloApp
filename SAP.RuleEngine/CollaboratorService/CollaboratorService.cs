@@ -25,24 +25,26 @@ namespace SAP.RuleEngine.CollaboratorService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Collaborator, CollaboratorsResult>()
-                   .ForMember(d => d.UserAssigned, o => o.MapFrom(s => s.User.Email))
                    .ForMember(d => d.BranchOfficeAssigned, o => o.MapFrom(s => s.User.UserDetail.BranchOffice.Description))
                    .ForMember(d => d.CityAssigned, o => o.MapFrom(s => s.User.UserDetail.City.Description))
                    .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.DocumentType.Description))
+                   .ForMember(d => d.BloodType, o => o.MapFrom(s => s.BloodType.Description))
+                   .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
+                   .ForMember(d => d.Email, o => o.MapFrom(s => s.User.Email))
                    .ForMember(d => d.Roles, o => o.MapFrom(s => roles))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>()
                             .ForMember(d => d.UserId, o => o.MapFrom(s => newUserId));
-                //cfg.CreateMap<UpdateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
+                cfg.CreateMap<UpdateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>();
             });
             mapper = new Mapper(config);
         }
 
         public Result<List<CollaboratorsResult>> GetCollaborators()
         {
-            var listCollab = ListComplete<Collaborator>().Include(x => x.User).Include(x => x.User.UserDetail.BranchOffice).Include(x => x.User.UserDetail.City)
-                                                         .Include(x => x.DocumentType);
+            var listCollab = ListComplete<Collaborator>().Include(x => x.User).Include(x => x.User.UserDetail.BranchOffice).Include(x => x.User.UserDetail.City).Include(x => x.BloodType)
+                                                         .Include(x => x.DocumentType).Include(x => x.SexType);
             GetRoles(listCollab.ToList());
             return listCollab.Any() ? Result<List<CollaboratorsResult>>.SetOk(mapper.Map<List<CollaboratorsResult>>(listCollab)) :
                  Result<List<CollaboratorsResult>>.SetError("Doest exist data");
@@ -50,8 +52,8 @@ namespace SAP.RuleEngine.CollaboratorService
 
         public Result<CollaboratorsResult> GetCollaboratorById(CollaboratorByIdDto dto)
         {
-            var collaborator = Context.Collaborators.Include(x => x.User).Include(x => x.User.UserDetail.BranchOffice).Include(x => x.User.UserDetail.City)
-                                                    .Include(x => x.DocumentType).Include(x => x.UserCreated).Include(x => x.UserModificated)
+            var collaborator = Context.Collaborators.Include(x => x.User).Include(x => x.User.UserDetail.BranchOffice).Include(x => x.User.UserDetail.City).Include(x => x.BloodType)
+                                                    .Include(x => x.DocumentType).Include(x => x.UserCreated).Include(x => x.UserModificated).Include(x => x.SexType)
                                                     .Where(x => x.Id == dto.Id).ToList();
             GetRoles(collaborator);
             return collaborator.Any() ? Result<CollaboratorsResult>.SetOk(mapper.Map<CollaboratorsResult>(collaborator.First())) :
@@ -71,7 +73,7 @@ namespace SAP.RuleEngine.CollaboratorService
                 Username = dto.Email,
                 HaveDetail = true,
                 Roles = dto.Roles,
-                Password = $"Peq{dto.DocumentNumber}-{DateTime.Now.Year}$"
+                Password = $"Sapg{dto.DocumentNumber}-{DateTime.Now.Year}$"
             });
             //Creation new User
             if(!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");
@@ -82,29 +84,14 @@ namespace SAP.RuleEngine.CollaboratorService
             return collab.UserId != 0 ? Result<string>.SetOk("User created with success") : Result<string>.SetError("User dont created");
         }
 
-        public Result<string> Update(UpdateCollaboratorDto dto)
+        public Result<string> UpdateCollaborator(UpdateCollaboratorDto dto)
         {
             var collaborator = GetById<Collaborator>(dto.Id);
             if (collaborator == null) return Result<string>.SetError("Collab doesnt Exists");
 
-            return null;
-            //var newUserCollab = authService.Register(new RegisterModel
-            //{
-            //    BranchOfficeId = dto.BranchOfficeId,
-            //    CityId = dto.CityId,
-            //    Email = dto.Email,
-            //    Username = dto.Email,
-            //    HaveDetail = true,
-            //    Roles = dto.Roles,
-            //    Password = $"Peq{dto.DocumentNumber}-{DateTime.Now.Year}$"
-            //});
-            ////Creation new User
-            //if (!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");
-            //newUserId = newUserCollab.Result.UserId;
-
-            ////Creation Collab
-            //var collab = Context.Save(mapper.Map<Collaborator>(dto));
-            //return collab.UserId != 0 ? Result<string>.SetOk("User created with success") : Result<string>.SetError("User dont created");
+            Save(mapper.Map(dto, collaborator));
+            return Result<string>.SetOk("Actualizado con exito");
+           
         }
 
         #region private Methods

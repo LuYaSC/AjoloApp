@@ -15,5 +15,7 @@ namespace SAP.RuleEngine.CollaboratorService
         Result<CollaboratorsResult> GetCollaboratorById(CollaboratorByIdDto dto);
 
         Result<string> CreateCollaborator(CreateCollaboratorDto dto);
+
+        Result<string> UpdateCollaborator(UpdateCollaboratorDto dto);
     }
 }
