@@ -76,9 +76,9 @@ namespace SAP.RuleEngine.CollaboratorService
                 Password = $"Sapg{dto.DocumentNumber}-{DateTime.Now.Year}$"
             });
             //Creation new User
-            if(!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");
+            if (!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");
             newUserId = newUserCollab.Result.UserId;
-            
+
             //Creation Collab
             var collab = Context.Save(mapper.Map<Collaborator>(dto));
             return collab.UserId != 0 ? Result<string>.SetOk("User created with success") : Result<string>.SetError("User dont created");
@@ -87,14 +87,75 @@ namespace SAP.RuleEngine.CollaboratorService
         public Result<string> UpdateCollaborator(UpdateCollaboratorDto dto)
         {
             var collaborator = GetById<Collaborator>(dto.Id);
-            if (collaborator == null) return Result<string>.SetError("Collab doesnt Exists");
+            if (collaborator == null)
+            {
+                return Result<string>.SetError("Collab doesnt Exists");
+            }
 
             Save(mapper.Map(dto, collaborator));
-            return Result<string>.SetOk("Actualizado con exito");
-           
+
+            var users = Context.Users.Where(x => x.Email == dto.Email).ToList();
+            if (!users.Any())
+            {
+                return Result<string>.SetError("Email no existe para ningun usuario");
+            }
+
+            if (users.Count > 1)
+            {
+                return Result<string>.SetError("Email ya existe para otro usuario");
+            }
+
+            var user = users.Single();
+            user.Email = dto.Email;
+
+            UpdateUserRole(user.Id, dto.Roles.First());
+
+            return Result<string>.SetOk("Collaborator updated successfully.");
         }
 
         #region private Methods
+
+        private void UpdateUserRole(int userId, int roleDto)
+        {
+            var userRoles = Context.UserRoles.Where(x => x.UserId == userId).ToList();
+            var roleId = roleDto;
+
+            if (!userRoles.Any())
+            {
+                Context.Add(new UserRole
+                {
+                    RoleId = roleId,
+                    DateCreation = DateTime.UtcNow,
+                    IsDeleted = false,
+                    UserId = userId
+                });
+                Context.SaveChanges();
+                return;
+            }
+
+            userRoles.ForEach(r => r.IsDeleted = true);
+            var existingRole = userRoles.SingleOrDefault(r => r.RoleId == roleId);
+
+            if (existingRole != null)
+            {
+                existingRole.IsDeleted = false;
+                Context.SaveChanges();
+                return;
+            }
+
+            userRoles.ForEach(r => r.IsDeleted = true);
+
+            Context.Add(new UserRole
+            {
+                RoleId = roleId,
+                DateCreation = DateTime.UtcNow,
+                IsDeleted = false,
+                UserId = userId
+            });
+
+            Context.SaveChanges();
+        }
+     
         private void GetRoles(List<Collaborator> listCollab)
         {
             foreach (var list in listCollab)

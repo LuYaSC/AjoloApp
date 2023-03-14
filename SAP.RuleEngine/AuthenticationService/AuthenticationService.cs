@@ -101,7 +101,6 @@ namespace SAP.RuleEngine.AuthenticationService
             var userExists = await userManager.FindByNameAsync(model.Username);
             if (userExists != null)
                 return await Task.FromResult(new RegisterResult { IsValid = false, Message = "User already exists!" });
-                //return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
             User user = new User()
             {

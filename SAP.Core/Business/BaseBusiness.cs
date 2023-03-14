@@ -101,12 +101,12 @@
             var isAdmin = roles.Where(x => x == "ADMIN").ToList();
             if (isLogical && isAdmin.Any())
             {
-                return this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated);
+                return this.Context.Set<ENTITY>().Include(x => x.UserCreated).Include(x => x.UserModificated).OrderBy(x => x.DateCreation);
             }
             else
             {
                 var returnCol = this.Context.Set<ENTITY>().Include(x => x.UserCreated)
-                                           .Include(x => x.UserModificated).Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
+                                           .Include(x => x.UserModificated).OrderBy(x => x.DateCreation).Where(x => seeIsDeleted || (x as BaseLogicalDelete<TypeKey>).IsDeleted == false);
                 return returnCol;
             }
         }
