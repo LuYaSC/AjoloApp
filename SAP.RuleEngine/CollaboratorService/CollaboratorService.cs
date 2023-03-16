@@ -54,7 +54,7 @@ namespace SAP.RuleEngine.CollaboratorService
         {
             var collaborator = Context.Collaborators.Include(x => x.User).Include(x => x.User.UserDetail.BranchOffice).Include(x => x.User.UserDetail.City).Include(x => x.BloodType)
                                                     .Include(x => x.DocumentType).Include(x => x.UserCreated).Include(x => x.UserModificated).Include(x => x.SexType)
-                                                    .Where(x => x.Id == dto.Id).ToList();
+                                                    .Where(x => x.Id == dto.Id).OrderBy(x => x.DateCreation).ToList();
             GetRoles(collaborator);
             return collaborator.Any() ? Result<CollaboratorsResult>.SetOk(mapper.Map<CollaboratorsResult>(collaborator.First())) :
                Result<CollaboratorsResult>.SetError("Doest exist data");

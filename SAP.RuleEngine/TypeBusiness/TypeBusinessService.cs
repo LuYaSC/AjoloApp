@@ -32,7 +32,7 @@ namespace SAP.RuleEngine.TypeBusinessService
 
         public Result<List<GetTypeResult>> GetAll()
         {
-            var data = Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated).ToList();
+            var data = Context.Set<T>().Include(x => x.UserCreated).Include(x => x.UserModificated).OrderBy(x => x.DateCreation).ToList();
             return data.Any() ? Result<List<GetTypeResult>>.SetOk(mapper.Map<List<GetTypeResult>>(data)) :
               Result<List<GetTypeResult>>.SetError("No se encontraron Registros");
         }
