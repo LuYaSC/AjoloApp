@@ -1,10 +1,5 @@
 ﻿using SAP.Repository.SAPRepository.Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SAP.Repository.SAPRepository.Entities
 {
@@ -42,5 +37,7 @@ namespace SAP.Repository.SAPRepository.Entities
         public string NumberBill { get; set; }
 
         public string Observations { get; set; }
+
+        public bool IsVerified { get; set; }
     }
 }

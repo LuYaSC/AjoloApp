@@ -13,9 +13,9 @@ namespace SAP.Model.AssignationTutor
 
         public string KidName { get; set; }
 
-        public int ParentName { get; set; }
+        public string ParentName { get; set; }
 
-        public int Relation { get; set; }
+        public string Relation { get; set; }
 
         public string Observations { get; set; }
 
@@ -28,5 +28,7 @@ namespace SAP.Model.AssignationTutor
         public DateTime DateCreation { get; set; }
 
         public DateTime DateModification { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

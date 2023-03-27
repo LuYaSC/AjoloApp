@@ -30,6 +30,11 @@ namespace SAP.Repository.SAPRepository.Entities
         [ForeignKey("BranchOfficeId")]
         public virtual BranchOffice BranchOffice { get; set; }
 
+        public int CityId { get; set; }
+
+        [ForeignKey("CityId")]
+        public virtual City City { get; set; }
+
         public string Observations { get; set; }
     }
 }

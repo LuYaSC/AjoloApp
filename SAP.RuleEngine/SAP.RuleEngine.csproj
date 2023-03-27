@@ -16,4 +16,8 @@
     <ProjectReference Include="..\SAP.Model\SAP.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DashboardService\" />
+  </ItemGroup>
+
 </Project>

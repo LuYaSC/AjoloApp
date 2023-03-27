@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SAP.Repository.SAPRepository;
@@ -11,9 +12,10 @@ using SAP.Repository.SAPRepository;
 namespace SAP.Repository.Migrations
 {
     [DbContext(typeof(SAPContext))]
-    partial class SAPContextModelSnapshot : ModelSnapshot
+    [Migration("20230326202713_addingfieldisVerifiedpaymenttable")]
+    partial class addingfieldisVerifiedpaymenttable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,9 +123,6 @@ namespace SAP.Repository.Migrations
                     b.Property<int>("BranchOfficeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("CollaboratorId")
                         .HasColumnType("integer");
 
@@ -158,8 +157,6 @@ namespace SAP.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BranchOfficeId");
-
-                    b.HasIndex("CityId");
 
                     b.HasIndex("CollaboratorId");
 
@@ -2026,12 +2023,6 @@ namespace SAP.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SAP.Repository.SAPRepository.Entities.Collaborator", "Collaborator")
                         .WithMany()
                         .HasForeignKey("CollaboratorId")
@@ -2069,8 +2060,6 @@ namespace SAP.Repository.Migrations
                         .IsRequired();
 
                     b.Navigation("BranchOffice");
-
-                    b.Navigation("City");
 
                     b.Navigation("Collaborator");
 
