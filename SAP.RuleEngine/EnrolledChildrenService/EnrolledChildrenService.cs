@@ -3,7 +3,6 @@ using SAP.Core.Business;
 using SAP.Model.EnrolledChildren;
 using SAP.Repository.SAPRepository.Entities;
 using SAP.Repository.SAPRepository;
-using SAP.RuleEngine.EnrolledChildrenService;
 using System.Security.Principal;
 using Microsoft.EntityFrameworkCore;
 

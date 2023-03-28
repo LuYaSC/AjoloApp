@@ -6,6 +6,7 @@ using SAP.Repository.SAPRepository;
 using SAP.RuleEngine.AssignationRoomService;
 using System.Security.Principal;
 using Microsoft.EntityFrameworkCore;
+using SAP.Model.AssignationTutor;
 
 namespace SAP.RuleEngine.AssignationRoomService
 {
@@ -23,6 +24,7 @@ namespace SAP.RuleEngine.AssignationRoomService
                    .ForMember(d => d.Turn, o => o.MapFrom(s => s.Turn.Description))
                    .ForMember(d => d.Modality, o => o.MapFrom(s => s.Modality.Description))
                    .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.BranchOffice.Description))
+                   .ForMember(d => d.City, o => o.MapFrom(s => s.City.Description))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateAssignedRoomDto, AssignedRoom>().AfterMap<TrimAllStringProperty>();
@@ -31,37 +33,78 @@ namespace SAP.RuleEngine.AssignationRoomService
             mapper = new Mapper(config);
         }
 
+        public Result<List<AssignationRoomResult>> GetFilter(CreateAssignedRoomDto dto)
+        {
+            var assignationsFilter = ListComplete<AssignedRoom>()
+                .Include(x => x.Collaborator).Include(x => x.Room).Include(x => x.Turn)
+                .Include(x => x.Modality).Include(x => x.BranchOffice).Include(x => x.City)
+                .Where(x => dto.CollaboratorId != 0 ? x.CollaboratorId == dto.CollaboratorId : true)
+                .Where(x => dto.RoomId != 0 ? x.RoomId == dto.RoomId : true)
+                .Where(x => dto.TurnId != 0 ? x.TurnId == dto.TurnId : true)
+                .Where(x => dto.ModalityId != 0 ? x.ModalityId == dto.ModalityId : true)
+                .Where(x => dto.BranchOfficeId != 0 ? x.BranchOfficeId == dto.BranchOfficeId : true)
+                .Where(x => dto.CityId != 0 ? x.CityId == dto.CityId : true)
+                .OrderBy(x => x.DateCreation).OrderBy(x => x.CollaboratorId).ToList();
+            return assignationsFilter.Any() ? Result<List<AssignationRoomResult>>.SetOk(mapper.Map<List<AssignationRoomResult>>(assignationsFilter))
+                                    : Result<List<AssignationRoomResult>>.SetError("Doesnt Exist Data");
+        }
+
         public Result<List<AssignationRoomResult>> GetAll()
         {
-            var assingations = ListComplete<AssignedRoom>().Include(x => x.Collaborator).Include(x => x.Room).Include(x => x.Turn)
-                                                           .Include(x => x.Modality).Include(x => x.BranchOffice).ToList();
+            var assingations = ListComplete<AssignedRoom>()
+                .Include(x => x.Collaborator).Include(x => x.Room).Include(x => x.Turn).Include(x => x.City)
+                .Include(x => x.Modality).Include(x => x.BranchOffice).OrderBy(x => x.DateCreation).OrderBy(x => x.CollaboratorId).ToList();
             return assingations.Any() ? Result<List<AssignationRoomResult>>.SetOk(mapper.Map<List<AssignationRoomResult>>(assingations))
                                       : Result<List<AssignationRoomResult>>.SetError("Doesnt Exist Data");
         }
 
-        public Result<string> Create(List<CreateAssignedRoomDto> dto)
+        public Result<string> Create(CreateAssignedRoomDto dto)
         {
             try
             {
-                dto.ForEach(x => Context.Save(mapper.Map<AssignedRoom>(x)));
+                var existsData = List();
+                if (existsData.Where(x => x.CollaboratorId == dto.CollaboratorId && x.RoomId == dto.RoomId &&
+                x.TurnId == dto.TurnId && x.ModalityId == dto.ModalityId && x.BranchOfficeId == dto.BranchOfficeId).FirstOrDefault() == null)
+                {
+                    Context.Save(mapper.Map<AssignedRoom>(dto));
+                }
+                else
+                {
+                    return Result<string>.SetError("Registro Existente");
+                }
             }
             catch (Exception ex)
             {
-                return Result<string>.SetError("Not Saved");
+                return Result<string>.SetError("No fue posible Guardar Reintente porfavor");
             }
-            return Result<string>.SetOk("Saved with success");
+            return Result<string>.SetOk("Operacion Realizada con Exito");
         }
 
-        public Result<string> Update(List<UpdateAssignedRoomDto> dto)
+        public Result<string> Update(UpdateAssignedRoomDto dto)
         {
-            foreach (var list in dto)
+            var row = GetById<AssignedRoom>(dto.Id);
+            if (row != null)
             {
-                var row = GetById<AssignedRoom>(list.Id);
-                if (row != null)
-                {
-                    row = mapper.Map<AssignedRoom>(row);
-                    Context.Save(row);
-                }
+                Context.Save(mapper.Map(dto, row));
+            }
+            else
+            {
+                Result<string>.SetOk("Registro no encontrado");
+            }
+            return Result<string>.SetOk("Success");
+        }
+
+        public Result<string> DisableOrEnable(UpdateAssignedRoomDto dto)
+        {
+            var row = GetById<AssignedRoom>(dto.Id);
+            if (row != null)
+            {
+                row.IsDeleted = dto.IsDeleted;
+                Save(row);
+            }
+            else
+            {
+                Result<string>.SetOk("Registro no encontrado");
             }
             return Result<string>.SetOk("Success");
         }

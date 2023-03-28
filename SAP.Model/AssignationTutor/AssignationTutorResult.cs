@@ -11,7 +11,11 @@ namespace SAP.Model.AssignationTutor
     {
         public int Id { get; set; }
 
+        public int KidId { get; set; }
+
         public string KidName { get; set; }
+
+        public int ParentId { get; set; }
 
         public string ParentName { get; set; }
 

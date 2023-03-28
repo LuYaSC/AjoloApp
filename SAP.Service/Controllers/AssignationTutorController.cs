@@ -18,13 +18,19 @@ namespace SAP.Service.Controllers
             this.service = service;
         }
 
+        [HttpPost]
+        public Result<string> DisableOrEnable([FromBody] UpdateAssignedTutorDto dto) => service.DisableOrEnable(dto);
+
+        [HttpPost]
+        public Result<List<AssignationTutorResult>> GetFilter([FromBody] CreateAssignedTutorDto dto) => service.GetFilter(dto);
+
         [HttpGet]
         public Result<List<AssignationTutorResult>> GetAll() => service.GetAll();
 
         [HttpPost]
-        public Result<string> Create([FromBody] List<CreateAssignedTutorDto> dto) => service.Create(dto);
+        public Result<string> Create([FromBody] CreateAssignedTutorDto dto) => service.Create(dto);
 
         [HttpPost]
-        public Result<string> Update([FromBody] List<UpdateAssignedTutorDto> dto) => service.Update(dto);
+        public Result<string> Update([FromBody] UpdateAssignedTutorDto dto) => service.Update(dto);
     }
 }

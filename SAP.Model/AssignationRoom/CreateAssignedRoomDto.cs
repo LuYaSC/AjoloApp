@@ -19,6 +19,8 @@ namespace SAP.Model.AssignationRoom
 
         public int BranchOfficeId { get; set; }
 
+        public int CityId { get; set; }
+
         public string Observations { get; set; }
     }
 }

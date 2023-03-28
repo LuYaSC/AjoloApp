@@ -1,25 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SAP.Model.AssignationRoom
+﻿namespace SAP.Model.AssignationRoom
 {
     public class AssignationRoomResult
     {
         public int Id { get; set; }
 
-        public int Collaborator { get; set; }
+        public int CollaboratorId { get; set; }
 
-        public int Room { get; set; }
+        public string Collaborator { get; set; }
 
-        public int Turn { get; set; }
+        public int RoomId { get; set; }
 
-        public int Modality { get; set; }
+        public string Room { get; set; }
 
-        public int BranchOffice { get; set; }
+        public int TurnId { get; set; }
+
+        public string Turn { get; set; }
+
+        public int ModalityId { get; set; }
+
+        public string Modality { get; set; }
+
+        public int BranchOfficeId { get; set; }
+
+        public string BranchOffice { get; set; }
+
+        public int CityId { get; set; }
+
+        public string City { get; set; }
 
         public string UserCreation { get; set; }
 
@@ -30,5 +37,7 @@ namespace SAP.Model.AssignationRoom
         public DateTime DateModification { get; set; }
 
         public string Observations { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

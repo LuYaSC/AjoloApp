@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SAP.Core.Business;
 using SAP.Model.AssignationRoom;
+using SAP.Model.AssignationTutor;
 using SAP.RuleEngine.AssignationRoomService;
 
 namespace SAP.Service.Controllers
@@ -18,13 +19,19 @@ namespace SAP.Service.Controllers
             this.service = service;
         }
 
+        [HttpPost]
+        public Result<List<AssignationRoomResult>> GetFilter([FromBody] CreateAssignedRoomDto dto) => service.GetFilter(dto);
+
         [HttpGet]
         public Result<List<AssignationRoomResult>> GetAll() => service.GetAll();
 
         [HttpPost]
-        public Result<string> Create([FromBody] List<CreateAssignedRoomDto> dto) => service.Create(dto);
+        public Result<string> Create([FromBody] CreateAssignedRoomDto dto) => service.Create(dto);
 
         [HttpPost]
-        public Result<string> Update([FromBody] List<UpdateAssignedRoomDto> dto) => service.Update(dto);
+        public Result<string> Update([FromBody] UpdateAssignedRoomDto dto) => service.Update(dto);
+
+        [HttpPost]
+        public Result<string> DisableOrEnable([FromBody] UpdateAssignedRoomDto dto) => service.DisableOrEnable(dto);
     }
 }
