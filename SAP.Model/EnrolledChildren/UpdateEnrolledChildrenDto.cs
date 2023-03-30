@@ -9,5 +9,7 @@ namespace SAP.Model.EnrolledChildren
     public class UpdateEnrolledChildrenDto : CreateEnrolledChildrenDto
     {
         public int Id { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

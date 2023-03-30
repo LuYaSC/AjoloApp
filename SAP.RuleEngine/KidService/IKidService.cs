@@ -14,6 +14,8 @@ namespace SAP.RuleEngine.KidService
 
         Result<List<KidsResult>> GetAllKids();
 
+        Result<List<GetDetailKidResult>> GetDetailKid(GetDetailKidDto dto);
+
         Result<KidsResult> GetKid(GetKidDto dto);
 
         Result<string> CreateKid(CreateKidDto dto);

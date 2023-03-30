@@ -1,14 +1,19 @@
 ﻿using SAP.Core.Business;
+using SAP.Model.AssignationRoom;
 using SAP.Model.EnrolledChildren;
 
 namespace SAP.RuleEngine.EnrolledChildrenService
 {
     public interface IEnrolledChildrenService
     {
+        Result<List<EnrolledChildrenResult>> GetFilter(EnrollFilterDto dto);
+
         Result<List<EnrolledChildrenResult>> GetAll();
 
-        Result<string> Create(List<CreateEnrolledChildrenDto> dto);
+        Result<EnrollChildrenDetailResult> GetDetail(UpdateAssignedRoomDto dto);
 
-        Result<string> Update(List<UpdateEnrolledChildrenDto> dto);
+        Result<string> Create(CreateEnrolledChildrenDto dto);
+
+        Result<string> Update(UpdateEnrolledChildrenDto dto);
     }
 }

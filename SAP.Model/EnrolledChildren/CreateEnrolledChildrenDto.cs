@@ -8,6 +8,8 @@ namespace SAP.Model.EnrolledChildren
 {
     public class CreateEnrolledChildrenDto
     {
+        public int KidId { get; set; }
+
         public int AssignedTutorId { get; set; }
 
         public int AssignedRoomId { get; set; }

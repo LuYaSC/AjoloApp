@@ -58,6 +58,8 @@ namespace SAP.RuleEngine.AssignationRoomService
                                       : Result<List<AssignationRoomResult>>.SetError("Doesnt Exist Data");
         }
 
+       
+
         public Result<string> Create(CreateAssignedRoomDto dto)
         {
             try

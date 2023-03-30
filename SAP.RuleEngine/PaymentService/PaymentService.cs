@@ -44,7 +44,8 @@ namespace SAP.RuleEngine.PaymentService
                                                       .Include(x => x.AssignedTutor.Parent).Include(x => x.AssignedRoom.Collaborator)
                                                       .Include(x => x.AssignedRoom.Room).Include(x => x.AssignedRoom.Turn)
                                                       .Include(x => x.AssignedRoom.Modality).Include(x => x.AssignedRoom.BranchOffice)
-                                                      .Include(x => x.PaymentOperation).Include(x => x.PaymentType).Include(x => x.AuditPaymentType).ToList();
+                                                      .Include(x => x.PaymentOperation).Include(x => x.PaymentType)
+                                                      .Include(x => x.AuditPaymentType).ToList();
 
             return payments.Any() ? Result<List<PaymentResult>>.SetOk(mapper.Map<List<PaymentResult>>(payments))
                                       : Result<List<PaymentResult>>.SetError("Doesnt Exist Data");

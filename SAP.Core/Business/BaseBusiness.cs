@@ -111,6 +111,18 @@
             }
         }
 
+        public string CalculateAge(DateTime bornDate)
+        {
+            TimeSpan dateDiff = DateTime.Now - bornDate;
+            DateTime age = new DateTime(dateDiff.Ticks);
+
+            var Years = age.Year - 1;
+            var Month = age.Month - 1;
+            var Days = age.Day - 1;
+
+            return $"{Years} años{(Month > 0 ? $", {Month} meses" : "")} {(Days > 0 ? $"y {Days} dias" : "")}";
+        }
+
         public virtual void Remove(TypeKey id)
         {
             var entity = this.Get(id);

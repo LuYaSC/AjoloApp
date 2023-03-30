@@ -9,7 +9,10 @@ namespace SAP.Model.EnrolledChildren
 {
     public class EnrolledChildrenResult
     {
+        public int Id { get; set; }
         public string Parent { get; set; }
+
+        public int KidId { get; set; }
 
         public string Kid { get; set; }
 
@@ -34,5 +37,7 @@ namespace SAP.Model.EnrolledChildren
         public DateTime DateCreation { get; set; }
 
         public DateTime DateModification { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

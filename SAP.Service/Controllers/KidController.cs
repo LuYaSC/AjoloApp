@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAP.Core.Business;
 using SAP.Model.Kid;
-using SAP.Repository.SAPRepository.Entities;
 using SAP.RuleEngine.KidService;
 
 namespace SAP.Service.Controllers
@@ -37,5 +36,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> ActivateOrDeactivate([FromBody] KidByIdDto dto) => service.ActivateOrDeactivate(dto);
+
+        [HttpPost]
+        public Result<List<GetDetailKidResult>> GetDetailKid([FromBody] GetDetailKidDto dto) => service.GetDetailKid(dto);
     }
 }

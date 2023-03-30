@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAP.Core.Business;
+using SAP.Model.AssignationRoom;
 using SAP.Model.EnrolledChildren;
 using SAP.RuleEngine.EnrolledChildrenService;
 
@@ -18,13 +19,19 @@ namespace SAP.Service.Controllers
             this.service = service;
         }
 
+        [HttpPost]
+        public Result<List<EnrolledChildrenResult>> GetFilter([FromBody] EnrollFilterDto dto) => service.GetFilter(dto);
+
+        [HttpPost]
+        public Result<EnrollChildrenDetailResult> GetDetail([FromBody] UpdateAssignedRoomDto dto) => service.GetDetail(dto);
+
         [HttpGet]
         public Result<List<EnrolledChildrenResult>> GetAll() => service.GetAll();
 
         [HttpPost]
-        public Result<string> Create([FromBody] List<CreateEnrolledChildrenDto> dto) => service.Create(dto);
+        public Result<string> Create([FromBody] CreateEnrolledChildrenDto dto) => service.Create(dto);
 
         [HttpPost]
-        public Result<string> Update([FromBody] List<UpdateEnrolledChildrenDto> dto) => service.Update(dto);
+        public Result<string> Update([FromBody] UpdateEnrolledChildrenDto dto) => service.Update(dto);
     }
 }
