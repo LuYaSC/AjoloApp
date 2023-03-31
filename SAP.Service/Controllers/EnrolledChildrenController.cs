@@ -33,5 +33,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> Update([FromBody] UpdateEnrolledChildrenDto dto) => service.Update(dto);
+
+        [HttpPost]
+        public Result<string> ActivateOrDeactivate([FromBody] UpdateEnrolledChildrenDto dto) => service.ActivateOrDeactivate(dto);
     }
 }

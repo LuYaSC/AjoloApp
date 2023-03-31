@@ -9,6 +9,7 @@ namespace SAP.Model.Kid
     public class GetDetailKidResult
     {
         //kid data
+        public string KidName { get; set; }
 
         public string AgeKid { get; set; }
 

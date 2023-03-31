@@ -29,6 +29,17 @@ namespace SAP.RuleEngine.AssignationRoomService
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateAssignedRoomDto, AssignedRoom>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateAssignedRoomDto, AssignedRoom>().AfterMap<TrimAllStringProperty>();
+                cfg.CreateMap<AssignedRoom, AssignationRoomDetailResult>()
+                    .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.Collaborator.Name} {s.Collaborator.FirstLastName} {s.Collaborator.SecondLastName}"))
+                    .ForMember(d => d.CollaboratorSex, o => o.MapFrom(s => s.Collaborator.SexType.Description))
+                    .ForMember(d => d.CollaboratorCity, o => o.MapFrom(s => s.Collaborator.User.UserDetail.City.Description))
+                    .ForMember(d => d.CollaboratorBranchOffice, o => o.MapFrom(s => s.Collaborator.User.UserDetail.BranchOffice.Description))
+                    .ForMember(d => d.CollaboratorEmail, o => o.MapFrom(s => s.Collaborator.User.Email))
+                    .ForMember(d => d.CollaboratorStartDate, o => o.MapFrom(s => s.Collaborator.StartDate))
+                    .ForMember(d => d.Room, o => o.MapFrom(s => s.Room.Description))
+                    .ForMember(d => d.City, o => o.MapFrom(s => s.City.Description))
+                    .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.BranchOffice.Description))
+                    .ForMember(d => d.Modality, o => o.MapFrom(s => s.Modality.Description));
             });
             mapper = new Mapper(config);
         }
@@ -58,6 +69,18 @@ namespace SAP.RuleEngine.AssignationRoomService
                                       : Result<List<AssignationRoomResult>>.SetError("Doesnt Exist Data");
         }
 
+        public Result<AssignationRoomDetailResult> GetDetail(AssignationRoomDetailDto dto)
+        {
+            var data = Context.AssignedRooms.Where(x => x.Id == dto.Id)
+                .Include(x => x.Collaborator).Include(x => x.Room).Include(x => x.Turn).Include(x => x.Modality)
+                .Include(x => x.BranchOffice).Include(x => x.City).Include(x => x.Collaborator.SexType)
+                .Include(x => x.Collaborator.User)
+                .Include(x => x.Collaborator.User.UserDetail.BranchOffice)
+                .Include(x => x.Collaborator.User.UserDetail.City).FirstOrDefault();
+            
+            return data != null ? Result<AssignationRoomDetailResult>.SetOk(mapper.Map<AssignationRoomDetailResult>(data))
+                : Result<AssignationRoomDetailResult>.SetError("Asignacion inexistente verifique porfavor");
+        }
        
 
         public Result<string> Create(CreateAssignedRoomDto dto)

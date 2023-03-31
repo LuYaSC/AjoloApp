@@ -33,5 +33,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> DisableOrEnable([FromBody] UpdateAssignedRoomDto dto) => service.DisableOrEnable(dto);
+
+        [HttpPost]
+        public Result<AssignationRoomDetailResult> GetDetail([FromBody] AssignationRoomDetailDto dto) => service.GetDetail(dto);
     }
 }

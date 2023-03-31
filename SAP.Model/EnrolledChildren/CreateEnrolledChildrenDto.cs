@@ -15,5 +15,9 @@ namespace SAP.Model.EnrolledChildren
         public int AssignedRoomId { get; set; }
 
         public string Observations { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public bool GeneratePayments { get; set; }
     }
 }

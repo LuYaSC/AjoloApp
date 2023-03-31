@@ -33,6 +33,7 @@ namespace SAP.RuleEngine.KidService
                 cfg.CreateMap<CreateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<AssignedTutor, GetDetailKidResult>()
+                    .ForMember(d => d.KidName, o => o.MapFrom(s => $"{s.Kid.Name} {s.Kid.FirstLastName} {s.Kid.SecondLastName}"))
                     .ForMember(d => d.AgeKid, o => o.MapFrom(s => CalculateAge(s.Kid.BornDate.Value)))
                     .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.Kid.DocumentType.Description))
                     .ForMember(d => d.DocumentNumber, o => o.MapFrom(s => s.Kid.DocumentNumber))
@@ -66,7 +67,7 @@ namespace SAP.RuleEngine.KidService
         public Result<List<GetDetailKidResult>> GetDetailKid(GetDetailKidDto dto)
         {
             var data = Context.AssignedTutors.Where(x => x.KidId == dto.KidId)
-                .Include(x => x.Kid)
+                .Include(x => x.Kid).Include(x => x.Kid.DocumentType)
                 .Include(x => x.Parent).Include(x => x.Parent.MaritalStatus).Include(x => x.Relationship).ToList();
             var result = mapper.Map<List<GetDetailKidResult>>(data);
 

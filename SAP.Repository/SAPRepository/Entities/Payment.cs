@@ -5,15 +5,10 @@ namespace SAP.Repository.SAPRepository.Entities
 {
     public class Payment : BaseTrace
     {
-        public int AssignedTutorId { get; set; }
+        public int EnrolledChildrenId { get; set; }
 
-        [ForeignKey("AssignedTutorId")]
-        public virtual AssignedTutor AssignedTutor { get; set; }
-
-        public int AssignedRoomId { get; set; }
-
-        [ForeignKey("AssignedRoomId")]
-        public virtual AssignedRoom AssignedRoom { get; set; }
+        [ForeignKey("EnrolledChildrenId")]
+        public virtual EnrolledChildren EnrolledChildren { get; set; }
 
         public int PaymentTypeId { get; set; }
 
@@ -29,6 +24,8 @@ namespace SAP.Repository.SAPRepository.Entities
 
         [ForeignKey("AuditPaymentId")]
         public virtual AuditPaymentType AuditPaymentType { get; set; }
+
+        public DateTime DateToPay { get; set; }
 
         public decimal Amount { get; set; }
 

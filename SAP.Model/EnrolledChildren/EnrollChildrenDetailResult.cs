@@ -15,7 +15,11 @@ namespace SAP.Model.EnrolledChildren
         //Data for Kids
         public string KidName { get; set; }
 
+        public int KidId { get; set; }
+
         public DateTime BornDateKid { get; set; }
+
+        public int AssignedRoomId { get; set; }
 
         public string AgeKid { get; set; }
 

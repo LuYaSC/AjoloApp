@@ -15,5 +15,7 @@ namespace SAP.RuleEngine.EnrolledChildrenService
         Result<string> Create(CreateEnrolledChildrenDto dto);
 
         Result<string> Update(UpdateEnrolledChildrenDto dto);
+
+        Result<string> ActivateOrDeactivate(UpdateEnrolledChildrenDto dto);
     }
 }

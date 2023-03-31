@@ -17,16 +17,16 @@ namespace SAP.RuleEngine.PaymentService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Payment, PaymentResult>()
-                   .ForMember(d => d.Parent, o => o.MapFrom(s => $"{s.AssignedTutor.Parent.Name} {s.AssignedTutor.Parent.FirstLastName} " +
-                                                                 $"{s.AssignedTutor.Parent.SecondLastName}"))
-                   .ForMember(d => d.Kid, o => o.MapFrom(s => $"{s.AssignedTutor.Kid.Name} {s.AssignedTutor.Kid.FirstLastName} " +
-                                                              $"{s.AssignedTutor.Kid.SecondLastName}"))
-                   .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.AssignedRoom.Collaborator.Name} {s.AssignedRoom.Collaborator.FirstLastName} " +
-                                                                       $"{s.AssignedRoom.Collaborator.SecondLastName}"))
-                   .ForMember(d => d.Room, o => o.MapFrom(s => s.AssignedRoom.Room.Description))
-                   .ForMember(d => d.Turn, o => o.MapFrom(s => s.AssignedRoom.Turn.Description))
-                   .ForMember(d => d.Modality, o => o.MapFrom(s => s.AssignedRoom.Modality.Description))
-                   .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.AssignedRoom.BranchOffice.Description))
+                   .ForMember(d => d.Parent, o => o.MapFrom(s => $"{s.EnrolledChildren.AssignedTutor.Parent.Name} {s.EnrolledChildren.AssignedTutor.Parent.FirstLastName} " +
+                                                                 $"{s.EnrolledChildren.AssignedTutor.Parent.SecondLastName}"))
+                   .ForMember(d => d.Kid, o => o.MapFrom(s => $"{s.EnrolledChildren.AssignedTutor.Kid.Name} {s.EnrolledChildren.AssignedTutor.Kid.FirstLastName} " +
+                                                              $"{s.EnrolledChildren.AssignedTutor.Kid.SecondLastName}"))
+                   .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.EnrolledChildren.AssignedRoom.Collaborator.Name} {s.EnrolledChildren.AssignedRoom.Collaborator.FirstLastName} " +
+                                                                       $"{s.EnrolledChildren.AssignedRoom.Collaborator.SecondLastName}"))
+                   .ForMember(d => d.Room, o => o.MapFrom(s => s.EnrolledChildren.AssignedRoom.Room.Description))
+                   .ForMember(d => d.Turn, o => o.MapFrom(s => s.EnrolledChildren.AssignedRoom.Turn.Description))
+                   .ForMember(d => d.Modality, o => o.MapFrom(s => s.EnrolledChildren.AssignedRoom.Modality.Description))
+                   .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.EnrolledChildren.AssignedRoom.BranchOffice.Description))
                    .ForMember(d => d.PaymentOperation, o => o.MapFrom(s => s.PaymentOperation.Description))
                    .ForMember(d => d.PaymentType, o => o.MapFrom(s => s.PaymentType.Description))
                    .ForMember(d => d.AuditPayment, o => o.MapFrom(s => s.AuditPaymentType.Description))
@@ -40,12 +40,12 @@ namespace SAP.RuleEngine.PaymentService
 
         public Result<List<PaymentResult>> GetAll()
         {
-            var payments = ListComplete<Payment>().Include(x => x.AssignedTutor).Include(x => x.AssignedRoom).Include(x => x.AssignedTutor.Kid)
-                                                      .Include(x => x.AssignedTutor.Parent).Include(x => x.AssignedRoom.Collaborator)
-                                                      .Include(x => x.AssignedRoom.Room).Include(x => x.AssignedRoom.Turn)
-                                                      .Include(x => x.AssignedRoom.Modality).Include(x => x.AssignedRoom.BranchOffice)
-                                                      .Include(x => x.PaymentOperation).Include(x => x.PaymentType)
-                                                      .Include(x => x.AuditPaymentType).ToList();
+            var payments = ListComplete<Payment>().Include(x => x.EnrolledChildren.AssignedTutor).Include(x => x.EnrolledChildren.AssignedRoom).Include(x => x.EnrolledChildren.AssignedTutor.Kid)
+                                                      .Include(x => x.EnrolledChildren.AssignedTutor.Parent).Include(x => x.EnrolledChildren.AssignedRoom.Collaborator)
+                                                      .Include(x => x.EnrolledChildren.AssignedRoom.Room).Include(x => x.EnrolledChildren.AssignedRoom.Turn)
+                                                      .Include(x => x.EnrolledChildren.AssignedRoom.Modality).Include(x => x.EnrolledChildren.AssignedRoom.BranchOffice)
+                                                      .Include(x => x.PaymentOperation).Include(x => x.PaymentType).Include(x => x.AuditPaymentType)
+                                                      .OrderBy(x => x.DateCreation).ToList();
 
             return payments.Any() ? Result<List<PaymentResult>>.SetOk(mapper.Map<List<PaymentResult>>(payments))
                                       : Result<List<PaymentResult>>.SetError("Doesnt Exist Data");

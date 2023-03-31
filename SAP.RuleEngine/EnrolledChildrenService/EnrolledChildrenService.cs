@@ -9,6 +9,7 @@ using SAP.Model.AssignationRoom;
 using System.Dynamic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using SAP.Model.Kid;
 
 namespace SAP.RuleEngine.EnrolledChildrenService
 {
@@ -28,11 +29,13 @@ namespace SAP.RuleEngine.EnrolledChildrenService
                                                               $"{s.AssignedTutor.Kid.SecondLastName}"))
                    .ForMember(d => d.Collaborator, o => o.MapFrom(s => $"{s.AssignedRoom.Collaborator.Name} {s.AssignedRoom.Collaborator.FirstLastName} " +
                                                                        $"{s.AssignedRoom.Collaborator.SecondLastName}"))
+                   .ForMember(d => d.KidId, o => o.MapFrom(s => s.AssignedTutor.KidId))
                    .ForMember(d => d.Room, o => o.MapFrom(s => s.AssignedRoom.Room.Description))
                    .ForMember(d => d.Turn, o => o.MapFrom(s => s.AssignedRoom.Turn.Description))
                    .ForMember(d => d.Modality, o => o.MapFrom(s => s.AssignedRoom.Modality.Description))
                    .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.AssignedRoom.BranchOffice.Description))
                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
+                   .ForMember(d => d.AssignedRoomId, o => o.MapFrom(s => s.AssignedRoomId))
                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
                 cfg.CreateMap<CreateEnrolledChildrenDto, EnrolledChildren>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateEnrolledChildrenDto, EnrolledChildren>().AfterMap<TrimAllStringProperty>();
@@ -40,6 +43,8 @@ namespace SAP.RuleEngine.EnrolledChildrenService
                     //Kid Data
                     .ForMember(d => d.KidName, o => o.MapFrom(s => $"{s.AssignedTutor.Kid.Name} {s.AssignedTutor.Kid.FirstLastName} " +
                                                               $"{s.AssignedTutor.Kid.SecondLastName}"))
+                    .ForMember(d => d.KidId, o => o.MapFrom(s => s.AssignedTutor.KidId))
+                    .ForMember(d => d.KidId, o => o.MapFrom(s => s.AssignedRoomId))
                     .ForMember(d => d.BloodTypeKid, o => o.MapFrom(s => s.AssignedTutor.Kid.BloodType.Description))
                     .ForMember(d => d.SexKid, o => o.MapFrom(s => s.AssignedTutor.Kid.SexType.Description))
                     .ForMember(d => d.BornDateKid, o => o.MapFrom(s => s.AssignedTutor.Kid.BornDate))
@@ -121,7 +126,15 @@ namespace SAP.RuleEngine.EnrolledChildrenService
                 {
                     return Result<string>.SetError("El menor ya fue registrado en esa sala");
                 }
-                Context.Save(mapper.Map<EnrolledChildren>(dto));
+                var enrollData = Context.Save(mapper.Map<EnrolledChildren>(dto));
+                if (dto.GeneratePayments && !Context.Payments.Where(x => x.EnrolledChildrenId == enrollData.Id).Any())
+                {
+                    if (enrollData == null)
+                    {
+                        return Result<string>.SetError("La operacion no se realizo correctamente, verifique y vuelva a intertarlo");
+                    }
+                    GeneratePayments(enrollData, dto);
+                }
             }
             catch (Exception ex)
             {
@@ -136,10 +149,60 @@ namespace SAP.RuleEngine.EnrolledChildrenService
             var row = GetById<EnrolledChildren>(dto.Id);
             if (row != null)
             {
-                row = mapper.Map<EnrolledChildren>(row);
-                Context.Save(row);
+                dto.AssignedTutorId = row.AssignedTutorId;
+                Context.Save(mapper.Map(dto, row));
+                return Result<string>.SetOk("Operacion Exitosa");
             }
-            return Result<string>.SetOk("Success");
+            else
+            { return Result<string>.SetError("No se pudo realizar la operacion"); }
+        }
+
+        public Result<string> ActivateOrDeactivate(UpdateEnrolledChildrenDto dto)
+        {
+            var data = Get(dto.Id);
+            if (data == null) return Result<string>.SetError("El registro no existe, revise porfavor");
+            data.IsDeleted = dto.IsDeleted;
+            Context.Save(data);
+            return Result<string>.SetOk("Operacion Exitosa");
+        }
+
+        private (int currentMonth, int monthsToDecember) CalculateMonthsToDecember(DateTime date)
+        {
+            int currentMonth = date.Month;
+            int monthsToDecember;
+
+            if (currentMonth == 12)
+            {
+                monthsToDecember = 0;
+            }
+            else
+            {
+                monthsToDecember = 12 - currentMonth;
+            }
+
+            return (currentMonth, monthsToDecember);
+        }
+
+        private void GeneratePayments(EnrolledChildren enrollData, CreateEnrolledChildrenDto dto)
+        {
+            var calculateMonths = CalculateMonthsToDecember(enrollData.DateCreation);
+            for (var i = 1; i <= calculateMonths.monthsToDecember; i++)
+            {
+                var dateToPay = new DateTime(enrollData.DateCreation.Year, enrollData.DateCreation.Month + i, 9, 12, 0, 0, DateTimeKind.Utc);
+                Context.Save(new Payment
+                {
+                    Amount = dto.Amount,
+                    EnrolledChildrenId = enrollData.Id,
+                    Description = "Pago Autogenerado en la Inscripcion",
+                    IsVerified = false,
+                    NumberBill = string.Empty,
+                    DateToPay = dateToPay,
+                    AuditPaymentId = Context.AuditPaymentTypes.Where(x => x.Description.Contains("SIN SELECCIONAR")).FirstOrDefault().Id,
+                    PaymentTypeId = Context.PaymentTypes.Where(x => x.Description.Contains("SIN SELECCIONAR")).FirstOrDefault().Id,
+                    PaymentOperationId = Context.PaymentOperations.Where(x => x.Description.Contains("REGISTRADO")).FirstOrDefault().Id,
+                    Observations = "Pagos Generados con exito",
+                });
+            }
         }
     }
 }
