@@ -9,9 +9,7 @@ namespace SAP.Model.Payment
 {
     public class CreatePaymentDto
     {
-        public int AssignedTutorId { get; set; }
-
-        public int AssignedRoomId { get; set; }
+        public int EnrolledChildrenId { get; set; }
 
         public int PaymentTypeId { get; set; }
 
@@ -26,5 +24,7 @@ namespace SAP.Model.Payment
         public string NumberBill { get; set; }
 
         public string Observations { get; set; }
+
+        public bool IsVerified { get; set; }
     }
 }

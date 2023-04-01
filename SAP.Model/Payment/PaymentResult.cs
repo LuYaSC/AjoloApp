@@ -9,6 +9,8 @@ namespace SAP.Model.Payment
 {
     public class PaymentResult
     {
+        public int Id { get; set; }
+
         public string Parent { get; set; }
 
         public string Kid { get; set; }
@@ -23,9 +25,15 @@ namespace SAP.Model.Payment
 
         public string BranchOffice { get; set; }
 
+        public int PaymentTypeId { get; set; }
+
         public string PaymentType { get; set; }
 
+        public int PaymentOperationId { get; set; }
+
         public string PaymentOperation { get; set; }
+
+        public int AuditPaymentId { get; set; }
 
         public string AuditPayment { get; set; }
 
@@ -44,5 +52,6 @@ namespace SAP.Model.Payment
         public DateTime DateCreation { get; set; }
 
         public DateTime DateModification { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

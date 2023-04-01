@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SAP.Model.Payment
 {
-    public class UpdatePaymentDto : CreatePaymentDto
+    public class PaymentDetailDto
     {
         public int Id { get; set; }
 

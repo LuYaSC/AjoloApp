@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SAP.Model.Payment
 {
-    public class UpdatePaymentDto : CreatePaymentDto
+    public class PaymentFilterDto
     {
-        public int Id { get; set; }
+        public int KidId { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public int RoomId { get; set; }
+
+        public int BranchOfficeId { get; set; }
     }
 }
