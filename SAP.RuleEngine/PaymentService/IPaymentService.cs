@@ -16,9 +16,9 @@ namespace SAP.RuleEngine.PaymentService
 
         Result<PaymentDetailResult> GetDetail(PaymentDetailDto dto);
 
-        Result<string> Create(List<CreatePaymentDto> dto);
+        Result<string> Create(CreatePaymentDto dto);
 
-        Result<string> Update(List<UpdatePaymentDto> dto);
+        Result<string> Update(UpdatePaymentDto dto);
 
         Result<string> ActivateOrDeactivate(PaymentDetailDto dto);
     }

@@ -113,6 +113,10 @@
 
         public string CalculateAge(DateTime bornDate)
         {
+            if(bornDate > DateTime.UtcNow)
+            {
+                return "-";
+            }
             TimeSpan dateDiff = DateTime.Now - bornDate;
             DateTime age = new DateTime(dateDiff.Ticks);
 

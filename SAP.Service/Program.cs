@@ -10,6 +10,7 @@ using SAP.RuleEngine.AssignationRoomService;
 using SAP.RuleEngine.AssignationTutorService;
 using SAP.RuleEngine.AuthenticationService;
 using SAP.RuleEngine.CollaboratorService;
+using SAP.RuleEngine.DashboardService;
 using SAP.RuleEngine.EnrolledChildrenService;
 using SAP.RuleEngine.KidService;
 using SAP.RuleEngine.ParentService;
@@ -47,8 +48,9 @@ builder.Services.AddScoped<ITypeBusinessService<MaritalStatus>, TypeBusinessServ
 
 builder.Services.AddScoped<IKidService, KidService>();
 builder.Services.AddScoped<IParentService, ParentService>();
-builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<ICollaboratorService, CollaboratorService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 builder.Services.AddScoped<IAssignationRoomService, AssignationRoomService>();
 builder.Services.AddScoped<IAssignationTutorService, AssignationTutorService>();

@@ -8,16 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SAP.Core\SAP.Core.csproj" />
     <ProjectReference Include="..\SAP.Model\SAP.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DashboardService\" />
   </ItemGroup>
 
 </Project>

@@ -22,10 +22,10 @@ namespace SAP.Service.Controllers
         public Result<List<PaymentResult>> GetAll() => service.GetAll();
 
         [HttpPost]
-        public Result<string> Create([FromBody] List<CreatePaymentDto> dto) => service.Create(dto);
+        public Result<string> Create([FromBody] CreatePaymentDto dto) => service.Create(dto);
 
         [HttpPost]
-        public Result<string> Update([FromBody] List<UpdatePaymentDto> dto) => service.Update(dto);
+        public Result<string> Update([FromBody] UpdatePaymentDto dto) => service.Update(dto);
 
         [HttpPost]
         public Result<PaymentDetailResult> GetDetail([FromBody] PaymentDetailDto dto) => service.GetDetail(dto);

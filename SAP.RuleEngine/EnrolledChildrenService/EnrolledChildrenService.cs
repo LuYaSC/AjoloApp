@@ -188,7 +188,7 @@ namespace SAP.RuleEngine.EnrolledChildrenService
             var calculateMonths = CalculateMonthsToDecember(enrollData.DateCreation);
             for (var i = 1; i <= calculateMonths.monthsToDecember; i++)
             {
-                var dateToPay = new DateTime(enrollData.DateCreation.Year, enrollData.DateCreation.Month + i, 9, 12, 0, 0, DateTimeKind.Utc);
+                var dateToPay = new DateTime(enrollData.DateCreation.Year, enrollData.DateCreation.Month, 9, 12, 0, 0, DateTimeKind.Utc);
                 Context.Save(new Payment
                 {
                     Amount = dto.Amount,
@@ -197,9 +197,9 @@ namespace SAP.RuleEngine.EnrolledChildrenService
                     IsVerified = false,
                     NumberBill = string.Empty,
                     DateToPay = dateToPay,
-                    AuditPaymentId = Context.AuditPaymentTypes.Where(x => x.Description.Contains("SIN SELECCIONAR")).FirstOrDefault().Id,
-                    PaymentTypeId = Context.PaymentTypes.Where(x => x.Description.Contains("SIN SELECCIONAR")).FirstOrDefault().Id,
-                    PaymentOperationId = Context.PaymentOperations.Where(x => x.Description.Contains("REGISTRADO")).FirstOrDefault().Id,
+                    AuditPaymentId = Context.AuditPaymentTypes.Where(x => x.Description.Contains("NO ESPECIFICADO")).FirstOrDefault().Id,
+                    PaymentTypeId = Context.PaymentTypes.Where(x => x.Description.Contains("NO ESPECIFICADO")).FirstOrDefault().Id,
+                    PaymentOperationId = Context.PaymentOperations.Where(x => x.Description.Contains("REGISTRO AUTOMATICO")).FirstOrDefault().Id,
                     Observations = "Pagos Generados con exito",
                 });
             }

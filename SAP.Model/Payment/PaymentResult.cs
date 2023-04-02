@@ -53,5 +53,6 @@ namespace SAP.Model.Payment
 
         public DateTime DateModification { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsVerified { get; set; }
     }
 }

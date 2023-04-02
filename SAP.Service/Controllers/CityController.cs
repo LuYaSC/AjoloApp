@@ -30,5 +30,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> Create([FromBody] CreateTypeDto dto) => service.Create(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("LISTA DE CIUDADES REGISTRADAS");
     }
 }

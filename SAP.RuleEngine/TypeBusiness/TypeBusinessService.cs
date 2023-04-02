@@ -1,10 +1,14 @@
-﻿using System.Security.Principal;
+﻿using System.Data;
+using System.Security.Principal;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SAP.Core.Business;
 using SAP.Model.TypeBusiness;
 using SAP.Repository.Base;
 using SAP.Repository.SAPRepository;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace SAP.RuleEngine.TypeBusinessService
 {
@@ -72,6 +76,88 @@ namespace SAP.RuleEngine.TypeBusinessService
             {
                 return Result<string>.SetError($"{ex.Message}");
             }
+        }
+
+        public Result<ReportResult> GeneratePdf(string title)
+        {
+            var list = Context.Set<T>().Include(x => x.UserCreated)
+                        .Include(x => x.UserModificated).OrderBy(x => x.DateCreation).ToList();
+
+            var description = "Esta lista esta generada con datos hasta la fecha";
+
+            // Crear un documento PDF
+            Document document = new Document(PageSize.LETTER, 50, 50, 50, 50);
+
+            // Crear un objeto MemoryStream para almacenar el PDF generado
+            MemoryStream stream = new MemoryStream();
+
+            // Crear un escritor de PDF que escriba en el MemoryStream
+            PdfWriter writer = PdfWriter.GetInstance(document, stream);
+
+            document.Open();
+
+            // Agregar el título y la descripción
+            Paragraph titleParagraph = new Paragraph(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK));
+            titleParagraph.Alignment = Element.ALIGN_CENTER;
+            //titleParagraph.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            titleParagraph.SpacingAfter = 20f; // Espacio después del título
+            document.Add(titleParagraph);
+
+            Paragraph descriptionParagraph = new Paragraph("Esta lista está generada con datos hasta la fecha", FontFactory.GetFont(FontFactory.HELVETICA, 12));
+            descriptionParagraph.Alignment = Element.ALIGN_CENTER;
+            descriptionParagraph.SpacingAfter = 10f; // Espacio después de la descripción
+            document.Add(descriptionParagraph);
+
+            // Agregar la tabla
+            PdfPTable table = new PdfPTable(5);
+            table.WidthPercentage = 100;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Nombre", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Iniciales", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Usuario de Creación", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Fecha de Creación", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Usuario de Modificación", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            // Contenido de las celdas
+            Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+            foreach (var row in list)
+            {
+                table.AddCell(new PdfPCell(new Phrase(row.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.Initial, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.UserCreated.UserName, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.DateCreation.ToString(), cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.UserModificated.UserName, cellFont)));
+            }
+
+            document.Add(table);
+
+            // Cerrar el documento
+            document.Close();
+            var result = new ReportResult { ReportName = $"{title}", Report = stream.ToArray() };
+
+            // Devolver el PDF generado como un array de bytes
+            return result.Report.Length > 0 ? Result<ReportResult>.SetOk(result) 
+                                            : Result<ReportResult>.SetError("No se pudo generar el reporte");
+
         }
 
     }

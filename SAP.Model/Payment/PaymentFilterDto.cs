@@ -13,5 +13,7 @@ namespace SAP.Model.Payment
         public int RoomId { get; set; }
 
         public int BranchOfficeId { get; set; }
+
+        public int PaymentOperationId { get; set; }
     }
 }

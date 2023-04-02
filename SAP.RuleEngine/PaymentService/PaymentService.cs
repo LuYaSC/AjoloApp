@@ -66,6 +66,7 @@ namespace SAP.RuleEngine.PaymentService
                             .Where(x => dto.KidId != 0 ? x.EnrolledChildren.AssignedTutor.KidId == dto.KidId : true)
                             .Where(x => dto.RoomId != 0 ? x.EnrolledChildren.AssignedRoom.RoomId == dto.RoomId : true)
                             .Where(x => dto.BranchOfficeId != 0 ? x.EnrolledChildren.AssignedRoom.BranchOfficeId == dto.BranchOfficeId : true)
+                            .Where(x => dto.PaymentOperationId != 0 ? x.PaymentOperationId == dto.PaymentOperationId : true)
                             .OrderBy(x => x.DateCreation).ToList();
 
             return payments.Any() ? Result<List<PaymentResult>>.SetOk(mapper.Map<List<PaymentResult>>(payments))
@@ -108,11 +109,11 @@ namespace SAP.RuleEngine.PaymentService
             return payment != null ? Result<PaymentDetailResult>.SetOk(mapper.Map<PaymentDetailResult>(payment)) :
                Result<PaymentDetailResult>.SetError("Pago no encontrado");
         }
-        public Result<string> Create(List<CreatePaymentDto> dto)
+        public Result<string> Create(CreatePaymentDto dto)
         {
             try
             {
-                dto.ForEach(x => Context.Save(mapper.Map<Payment>(x)));
+                Context.Save(mapper.Map<Payment>(dto));
             }
             catch (Exception ex)
             {
@@ -121,18 +122,15 @@ namespace SAP.RuleEngine.PaymentService
             return Result<string>.SetOk("Saved with success");
         }
 
-        public Result<string> Update(List<UpdatePaymentDto> dto)
+        public Result<string> Update(UpdatePaymentDto dto)
         {
-            foreach (var list in dto)
+
+            var row = GetById<Payment>(dto.Id);
+            if (row != null)
             {
-                var row = GetById<Payment>(list.Id);
-                if (row != null)
-                {
-                    row = mapper.Map<Payment>(row);
-                    Context.Save(row);
-                }
+                Context.Save(mapper.Map(dto, row));
             }
-            return Result<string>.SetOk("Success");
+            return Result<string>.SetOk("Actualizacion Exitosa");
         }
 
         public Result<string> ActivateOrDeactivate(PaymentDetailDto dto)
