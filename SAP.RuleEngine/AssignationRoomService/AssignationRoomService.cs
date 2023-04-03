@@ -25,8 +25,8 @@ namespace SAP.RuleEngine.AssignationRoomService
                    .ForMember(d => d.Modality, o => o.MapFrom(s => s.Modality.Description))
                    .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.BranchOffice.Description))
                    .ForMember(d => d.City, o => o.MapFrom(s => s.City.Description))
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreateAssignedRoomDto, AssignedRoom>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateAssignedRoomDto, AssignedRoom>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<AssignedRoom, AssignationRoomDetailResult>()

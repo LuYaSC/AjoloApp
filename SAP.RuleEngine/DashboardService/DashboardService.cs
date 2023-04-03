@@ -15,19 +15,6 @@ namespace SAP.RuleEngine.DashboardService
         {
             var config = new MapperConfiguration(cfg =>
             {
-                //cfg.CreateMap<Collaborator, CollaboratorsResult>()
-                //   .ForMember(d => d.BranchOfficeAssigned, o => o.MapFrom(s => s.User.UserDetail.BranchOffice.Description))
-                //   .ForMember(d => d.CityAssigned, o => o.MapFrom(s => s.User.UserDetail.City.Description))
-                //   .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.DocumentType.Description))
-                //   .ForMember(d => d.BloodType, o => o.MapFrom(s => s.BloodType.Description))
-                //   .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
-                //   .ForMember(d => d.Email, o => o.MapFrom(s => s.User.Email))
-                //   .ForMember(d => d.Roles, o => o.MapFrom(s => roles))
-                //   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                //   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
-                //cfg.CreateMap<CreateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>()
-                //            .ForMember(d => d.UserId, o => o.MapFrom(s => newUserId));
-                //cfg.CreateMap<UpdateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>();
             });
             mapper = new Mapper(config);
         }
@@ -37,22 +24,28 @@ namespace SAP.RuleEngine.DashboardService
             var result = new DashboardResult();
 
             //first Section
-            var payments = Context.Payments.Include(x => x.PaymentOperation).ToList();
+            var payments = Context.Payments.Include(x => x.PaymentOperation).Include(x => x.PaymentType).ToList();
             var collaborators = Context.Collaborators.Include(x => x.User).Include(x => x.User.UserDetail).Include(x => x.User.UserDetail.BranchOffice)
                                                     .Include(x => x.User.UserDetail.City).ToList();
             var enrollChildren = Context.EnrolledChildrens.Include(x => x.AssignedRoom).ToList();
-            result.QuantityRegisteredPayments = payments.Where(x => x.PaymentOperation.Description == "REGISTRO AUTOMATICO").Count();
-            result.TotalRegisteredPayments = payments.Where(x => x.PaymentOperation.Description == "REGISTRO AUTOMATICO").Sum(x => x.Amount);
-            result.QuantityPayedPayments = payments.Where(x => x.PaymentOperation.Description == "PAGADO").Count();
-            result.TotalPayedPayments = payments.Where(x => x.PaymentOperation.Description == "PAGADO").Sum(x => x.Amount); ;
-            result.QuantityPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description == "PAGADO PARCIALMENTE").Count();
-            result.TotalPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description == "PAGADO PARCIALMENTE").Sum(x => x.Amount);
-            result.QuantityUnpayPayments = payments.Where(x => x.PaymentOperation.Description == "MORA").Count();
-            result.TotalUnpayPayments = payments.Where(x => x.PaymentOperation.Description == "MORA").Sum(x => x.Amount);
+            result.QuantityRegisteredPayments = payments.Where(x => x.PaymentOperation.Description.Contains("ADELANTADO")).Count();
+            result.TotalRegisteredPayments = payments.Where(x => x.PaymentOperation.Description.Contains("ADELANTADO")).Sum(x => x.Amount);
+            result.QuantityPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO")).Count();
+            result.TotalPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO")).Sum(x => x.Amount); ;
+            result.QuantityPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO PARCIALMENTE")).Count();
+            result.TotalPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO PARCIALMENTE")).Sum(x => x.Amount);
+            result.QuantityUnpayPayments = payments.Where(x => x.PaymentOperation.Description.Contains("MORA")).Count();
+            result.TotalUnpayPayments = payments.Where(x => x.PaymentOperation.Description.Contains("MORA")).Sum(x => x.Amount);
 
             //TO DO Second Sectiion
 
-
+            //Section TypePayments
+            result.QuantityCashPayments = payments.Where(x => x.PaymentType.Description.Contains("EFECTIVO")).Count();
+            result.TotalCashPayments = payments.Where(x => x.PaymentType.Description.Contains("EFECTIVO")).Sum(s => s.Amount);
+            result.QuantityQrPayments = payments.Where(x => x.PaymentType.Description.Contains("CODIGO QR")).Count();
+            result.TotalQrPayments = payments.Where(x => x.PaymentType.Description.Contains("CODIGO QR")).Sum(s => s.Amount);
+            result.QuantityTransferPayments = payments.Where(x => x.PaymentType.Description.Contains("TRASNFERENCIA BANCARIA")).Count();
+            result.TotalTransferPayments = payments.Where(x => x.PaymentType.Description.Contains("TRASNFERENCIA BANCARIA")).Sum(s => s.Amount);
             //Third Section
             result.QuantityTotalChildren = Context.Kids.Count();
             result.QuantityTotalParents = Context.Parents.Count();

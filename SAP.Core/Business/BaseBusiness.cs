@@ -113,18 +113,41 @@
 
         public string CalculateAge(DateTime bornDate)
         {
-            if(bornDate > DateTime.UtcNow)
+            try
+            {
+                if (bornDate.Date > DateTime.UtcNow.Date)
+                {
+                    return "-";
+                }
+                TimeSpan dateDiff = DateTime.Now - bornDate;
+                DateTime age = new DateTime(dateDiff.Ticks);
+
+                var Years = age.Year - 1;
+                var Month = age.Month - 1;
+                var Days = age.Day - 1;
+
+                return $"{Years} años{(Month > 0 ? $", {Month} meses" : "")} {(Days > 0 ? $"y {Days} dias" : "")}";
+            }
+            catch(Exception ex)
             {
                 return "-";
             }
-            TimeSpan dateDiff = DateTime.Now - bornDate;
-            DateTime age = new DateTime(dateDiff.Ticks);
+        }
+        public (int currentMonth, int monthsToDecember) CalculateMonthsToDecember(DateTime date)
+        {
+            int currentMonth = date.Month;
+            int monthsToDecember;
 
-            var Years = age.Year - 1;
-            var Month = age.Month - 1;
-            var Days = age.Day - 1;
+            if (currentMonth == 12)
+            {
+                monthsToDecember = 0;
+            }
+            else
+            {
+                monthsToDecember = 12 - currentMonth;
+            }
 
-            return $"{Years} años{(Month > 0 ? $", {Month} meses" : "")} {(Days > 0 ? $"y {Days} dias" : "")}";
+            return (currentMonth, monthsToDecember);
         }
 
         public virtual void Remove(TypeKey id)
@@ -149,6 +172,8 @@
             var data = Context.Set<T>().FirstOrDefault();
             return Result<string>.SetOk(string.Empty);
         }
+
+        public string CutUser(string user) => user.Split('@')[0];
 
         protected CONTEXT Context;
     }

@@ -32,8 +32,8 @@ namespace SAP.RuleEngine.PaymentService
                    .ForMember(d => d.PaymentOperation, o => o.MapFrom(s => s.PaymentOperation.Description))
                    .ForMember(d => d.PaymentType, o => o.MapFrom(s => s.PaymentType.Description))
                    .ForMember(d => d.AuditPayment, o => o.MapFrom(s => s.AuditPaymentType.Description))
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreatePaymentDto, Payment>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdatePaymentDto, Payment>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<Payment, PaymentDetailResult>()

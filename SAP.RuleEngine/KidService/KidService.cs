@@ -28,8 +28,8 @@ namespace SAP.RuleEngine.KidService
                     .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
                     .ForMember(d => d.BloodType, o => o.MapFrom(s => s.BloodType.Description))
                     .ForMember(d => d.DocumentType, o => o.MapFrom(s => s.DocumentType.Description))
-                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                    .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                    .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                    .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateKidDto, Kid>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<AssignedTutor, GetDetailKidResult>()

@@ -32,6 +32,19 @@ namespace SAP.Model.Dashboard
 
         //second section Chart for Inscriptions
 
+        //paymentType Section
+
+        public int QuantityCashPayments { get; set; }
+
+        public decimal TotalCashPayments { get; set; }
+
+        public int QuantityQrPayments { get; set; }
+
+        public decimal TotalQrPayments { get; set; }
+
+        public int QuantityTransferPayments { get; set; }
+
+        public decimal TotalTransferPayments { get; set; }
 
         //third Section dates in general
 

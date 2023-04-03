@@ -20,8 +20,8 @@ namespace SAP.RuleEngine.AssignationTutorService
                    .ForMember(d => d.KidName, o => o.MapFrom(s => $"{s.Kid.Name} {s.Kid.FirstLastName} {s.Kid.SecondLastName}"))
                    .ForMember(d => d.ParentName, o => o.MapFrom(s => $"{s.Parent.Name} {s.Parent.FirstLastName} {s.Parent.SecondLastName}"))
                    .ForMember(d => d.Relation, o => o.MapFrom(s => s.Relationship.Description))
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreateAssignedTutorDto, AssignedTutor>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateAssignedTutorDto, AssignedTutor>().AfterMap<TrimAllStringProperty>();
             });

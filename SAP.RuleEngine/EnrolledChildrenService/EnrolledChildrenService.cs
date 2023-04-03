@@ -34,9 +34,9 @@ namespace SAP.RuleEngine.EnrolledChildrenService
                    .ForMember(d => d.Turn, o => o.MapFrom(s => s.AssignedRoom.Turn.Description))
                    .ForMember(d => d.Modality, o => o.MapFrom(s => s.AssignedRoom.Modality.Description))
                    .ForMember(d => d.BranchOffice, o => o.MapFrom(s => s.AssignedRoom.BranchOffice.Description))
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
                    .ForMember(d => d.AssignedRoomId, o => o.MapFrom(s => s.AssignedRoomId))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreateEnrolledChildrenDto, EnrolledChildren>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<UpdateEnrolledChildrenDto, EnrolledChildren>().AfterMap<TrimAllStringProperty>();
                 cfg.CreateMap<EnrolledChildren, EnrollChildrenDetailResult>()
@@ -166,43 +166,24 @@ namespace SAP.RuleEngine.EnrolledChildrenService
             return Result<string>.SetOk("Operacion Exitosa");
         }
 
-        private (int currentMonth, int monthsToDecember) CalculateMonthsToDecember(DateTime date)
-        {
-            int currentMonth = date.Month;
-            int monthsToDecember;
-
-            if (currentMonth == 12)
-            {
-                monthsToDecember = 0;
-            }
-            else
-            {
-                monthsToDecember = 12 - currentMonth;
-            }
-
-            return (currentMonth, monthsToDecember);
-        }
+      
 
         private void GeneratePayments(EnrolledChildren enrollData, CreateEnrolledChildrenDto dto)
         {
-            var calculateMonths = CalculateMonthsToDecember(enrollData.DateCreation);
-            for (var i = 1; i <= calculateMonths.monthsToDecember; i++)
+
+            Context.Save(new Payment
             {
-                var dateToPay = new DateTime(enrollData.DateCreation.Year, enrollData.DateCreation.Month, 9, 12, 0, 0, DateTimeKind.Utc);
-                Context.Save(new Payment
-                {
-                    Amount = dto.Amount,
-                    EnrolledChildrenId = enrollData.Id,
-                    Description = "Pago Autogenerado en la Inscripcion",
-                    IsVerified = false,
-                    NumberBill = string.Empty,
-                    DateToPay = dateToPay,
-                    AuditPaymentId = Context.AuditPaymentTypes.Where(x => x.Description.Contains("NO ESPECIFICADO")).FirstOrDefault().Id,
-                    PaymentTypeId = Context.PaymentTypes.Where(x => x.Description.Contains("NO ESPECIFICADO")).FirstOrDefault().Id,
-                    PaymentOperationId = Context.PaymentOperations.Where(x => x.Description.Contains("REGISTRO AUTOMATICO")).FirstOrDefault().Id,
-                    Observations = "Pagos Generados con exito",
-                });
-            }
+                Amount = dto.Amount,
+                EnrolledChildrenId = enrollData.Id,
+                Description = "Primer pago de Inscripcion",
+                IsVerified = true,
+                NumberBill = string.Empty,
+                DateToPay = DateTime.UtcNow,
+                AuditPaymentId = Context.AuditPaymentTypes.Where(x => x.Description.Contains("FACTURA VENTA")).FirstOrDefault().Id,
+                PaymentTypeId = Context.PaymentTypes.Where(x => x.Description.Contains("EFECTIVO")).FirstOrDefault().Id,
+                PaymentOperationId = Context.PaymentOperations.Where(x => x.Description.Contains("PAGADO")).FirstOrDefault().Id,
+                Observations = "Pago Generado Existosamente",
+            });
         }
     }
 }

@@ -32,8 +32,8 @@ namespace SAP.RuleEngine.CollaboratorService
                    .ForMember(d => d.Sex, o => o.MapFrom(s => s.SexType.Description))
                    .ForMember(d => d.Email, o => o.MapFrom(s => s.User.Email))
                    .ForMember(d => d.Roles, o => o.MapFrom(s => roles))
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
                 cfg.CreateMap<CreateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>()
                             .ForMember(d => d.UserId, o => o.MapFrom(s => newUserId));
                 cfg.CreateMap<UpdateCollaboratorDto, Collaborator>().AfterMap<TrimAllStringProperty>();
@@ -73,7 +73,8 @@ namespace SAP.RuleEngine.CollaboratorService
                 Username = dto.Email,
                 HaveDetail = true,
                 Roles = dto.Roles,
-                Password = $"Sapg{dto.DocumentNumber}-{DateTime.Now.Year}$"
+                //Password = $"Sapg{dto.DocumentNumber}-{DateTime.Now.Year}$"
+                Password = $"pato123AB$"
             });
             //Creation new User
             if (!newUserCollab.Result.IsValid) return Result<string>.SetError($"{newUserCollab.Result.Message}");

@@ -22,8 +22,8 @@ namespace SAP.RuleEngine.TypeBusinessService
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<T, GetTypeResult>()
-                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => s.UserCreated.UserName))
-                   .ForMember(d => d.UserModification, o => o.MapFrom(s => s.UserModificated.UserName));
+                   .ForMember(d => d.UserCreation, o => o.MapFrom(s => CutUser(s.UserCreated.UserName)))
+                   .ForMember(d => d.UserModification, o => o.MapFrom(s => CutUser(s.UserModificated.UserName)));
             });
             mapper = new Mapper(config);
         }
