@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SAP.Repository.SAPRepository;
@@ -11,9 +12,10 @@ using SAP.Repository.SAPRepository;
 namespace SAP.Repository.Migrations
 {
     [DbContext(typeof(SAPContext))]
-    partial class SAPContextModelSnapshot : ModelSnapshot
+    [Migration("20230404050739_AddingTableforLogs")]
+    partial class AddingTableforLogs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1316,6 +1318,9 @@ namespace SAP.Repository.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DateRequest")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("RequestBody")
                         .IsRequired()
                         .HasColumnType("text");
@@ -1328,10 +1333,11 @@ namespace SAP.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("RequestTime")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("RequestUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
 

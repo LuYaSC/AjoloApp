@@ -43,6 +43,7 @@ namespace SAP.Repository.SAPRepository
         public DbSet<SexType> SexTypes { get; set; }
         public DbSet<BloodType> BloodTypes { get; set; }
         public DbSet<MaritalStatus> MaritalStatus { get; set; }
+        public DbSet<ManageLog> ManageLogs { get; set; }
 
 
 

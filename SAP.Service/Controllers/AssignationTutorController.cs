@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SAP.Core.Business;
 using SAP.Model.AssignationTutor;
+using SAP.Repository.SAPRepository;
 using SAP.RuleEngine.AssignationTutorService;
 
 namespace SAP.Service.Controllers
@@ -12,6 +13,7 @@ namespace SAP.Service.Controllers
     public class AssignationTutorController : ControllerBase
     {
         IAssignationTutorService service;
+        SAPContext context;
 
         public AssignationTutorController(IAssignationTutorService service)
         {

@@ -8,6 +8,10 @@ namespace SAP.Model.TypeBusiness
 {
     public class GetTypeByIdDto
     {
+        public GetTypeByIdDto()
+        {
+        }
+
         public int Id { get; set; }
 
         public string Description { get; set; }
