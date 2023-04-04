@@ -21,5 +21,7 @@ namespace SAP.RuleEngine.PaymentService
         Result<string> Update(UpdatePaymentDto dto);
 
         Result<string> ActivateOrDeactivate(PaymentDetailDto dto);
+
+        Result<ReportResult> GeneratePdf(PaymentFilterDto dto, string title);
     }
 }

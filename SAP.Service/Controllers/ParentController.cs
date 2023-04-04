@@ -34,5 +34,11 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> UpdateParent([FromBody] UpdateParentDto dto) => service.UpdateParent(dto);
+
+        [HttpPost]
+        public Result<string> ActivateOrDeactivate(DeleteDto dto) => service.ActivateOrDeactivate(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("LISTA DE PADRES");
     }
 }

@@ -1,10 +1,5 @@
 ﻿using SAP.Core.Business;
 using SAP.Model.Parent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SAP.RuleEngine.ParentService
 {
@@ -19,5 +14,9 @@ namespace SAP.RuleEngine.ParentService
         Result<string> CreateParent(CreateParentDto dto);
 
         Result<string> UpdateParent(UpdateParentDto dto);
+
+        Result<string> ActivateOrDeactivate(DeleteDto dto);
+
+        Result<ReportResult> GeneratePdf(string title);
     }
 }

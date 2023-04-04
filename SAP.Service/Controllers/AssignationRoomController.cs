@@ -36,5 +36,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<AssignationRoomDetailResult> GetDetail([FromBody] AssignationRoomDetailDto dto) => service.GetDetail(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("Lista de Salas / Colaboradores Asignados");
     }
 }

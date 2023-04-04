@@ -36,5 +36,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> ActivateOrDeactivate([FromBody] UpdateEnrolledChildrenDto dto) => service.ActivateOrDeactivate(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf($"Lista de Inscritos ({DateTime.UtcNow.Year})");
     }
 }

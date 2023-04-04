@@ -32,5 +32,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> Update([FromBody] UpdateAssignedTutorDto dto) => service.Update(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("Lista de Padres / Niños");
     }
 }

@@ -39,5 +39,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<List<GetDetailKidResult>> GetDetailKid([FromBody] GetDetailKidDto dto) => service.GetDetailKid(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("LISTA DE NIÑOS");
     }
 }

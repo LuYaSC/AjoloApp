@@ -35,5 +35,8 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> ActivateOrDeactivate([FromBody] PaymentDetailDto dto) => service.ActivateOrDeactivate(dto);
+
+        [HttpPost]
+        public Result<ReportResult> GenerateReport([FromBody] PaymentFilterDto dto) => service.GeneratePdf(dto, $"Lista de Pagos ({DateTime.UtcNow.Year})");
     }
 }

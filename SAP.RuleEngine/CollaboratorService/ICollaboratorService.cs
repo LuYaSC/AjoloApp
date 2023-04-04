@@ -1,10 +1,5 @@
 ﻿using SAP.Core.Business;
 using SAP.Model.Collaborator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SAP.RuleEngine.CollaboratorService
 {
@@ -17,5 +12,9 @@ namespace SAP.RuleEngine.CollaboratorService
         Result<string> CreateCollaborator(CreateCollaboratorDto dto);
 
         Result<string> UpdateCollaborator(UpdateCollaboratorDto dto);
+
+        Result<string> ActivateOrDeactivate(DeleteDto dto);
+
+        Result<ReportResult> GeneratePdf(string title);
     }
 }

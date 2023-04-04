@@ -14,5 +14,7 @@ namespace SAP.RuleEngine.AssignationTutorService
         Result<string> Create(CreateAssignedTutorDto dto);
 
         Result<string> Update(UpdateAssignedTutorDto dto);
+
+        Result<ReportResult> GeneratePdf(string title);
     }
 }

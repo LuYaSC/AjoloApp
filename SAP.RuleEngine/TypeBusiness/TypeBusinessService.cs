@@ -152,7 +152,7 @@ namespace SAP.RuleEngine.TypeBusinessService
 
             // Cerrar el documento
             document.Close();
-            var result = new ReportResult { ReportName = $"{title}", Report = stream.ToArray() };
+            var result = new ReportResult { ReportName = $"{title}-{DateTime.Now}", Report = stream.ToArray() };
 
             // Devolver el PDF generado como un array de bytes
             return result.Report.Length > 0 ? Result<ReportResult>.SetOk(result) 

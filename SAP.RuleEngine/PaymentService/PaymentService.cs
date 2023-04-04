@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using Microsoft.EntityFrameworkCore;
 using SAP.Core.Business;
-using SAP.Model.AssignationRoom;
-using SAP.Model.EnrolledChildren;
 using SAP.Model.Payment;
 using SAP.Repository.SAPRepository;
 using SAP.Repository.SAPRepository.Entities;
@@ -140,6 +140,138 @@ namespace SAP.RuleEngine.PaymentService
             data.IsDeleted = dto.IsDeleted;
             Context.Save(data);
             return Result<string>.SetOk("Operacion Exitosa");
+        }
+
+        public Result<ReportResult> GeneratePdf(PaymentFilterDto dto, string title)
+        {
+            var list = ListComplete<Payment>().Include(x => x.EnrolledChildren.AssignedTutor).Include(x => x.EnrolledChildren.AssignedRoom).Include(x => x.EnrolledChildren.AssignedTutor.Kid)
+                            .Include(x => x.EnrolledChildren.AssignedTutor.Parent).Include(x => x.EnrolledChildren.AssignedRoom.Collaborator)
+                            .Include(x => x.EnrolledChildren.AssignedRoom.Room).Include(x => x.EnrolledChildren.AssignedRoom.Turn)
+                            .Include(x => x.EnrolledChildren.AssignedRoom.Modality).Include(x => x.EnrolledChildren.AssignedRoom.BranchOffice)
+                            .Include(x => x.PaymentOperation).Include(x => x.PaymentType).Include(x => x.AuditPaymentType)
+                            .Where(x => dto.KidId != 0 ? x.EnrolledChildren.AssignedTutor.KidId == dto.KidId : true)
+                            .Where(x => dto.RoomId != 0 ? x.EnrolledChildren.AssignedRoom.RoomId == dto.RoomId : true)
+                            .Where(x => dto.BranchOfficeId != 0 ? x.EnrolledChildren.AssignedRoom.BranchOfficeId == dto.BranchOfficeId : true)
+                            .Where(x => dto.PaymentOperationId != 0 ? x.PaymentOperationId == dto.PaymentOperationId : true)
+                            .OrderBy(x => x.DateCreation).ToList();
+
+            var description = "Esta lista esta generada con datos hasta la fecha";
+
+            // Crear un documento PDF
+            Document document = new Document(PageSize.A4.Rotate(), 50, 50, 50, 50);
+
+            // Crear un objeto MemoryStream para almacenar el PDF generado
+            MemoryStream stream = new MemoryStream();
+
+            // Crear un escritor de PDF que escriba en el MemoryStream
+            PdfWriter writer = PdfWriter.GetInstance(document, stream);
+
+            document.Open();
+
+            // Agregar el título y la descripción
+            Paragraph titleParagraph = new Paragraph(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK));
+            titleParagraph.Alignment = Element.ALIGN_CENTER;
+            //titleParagraph.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            titleParagraph.SpacingAfter = 20f; // Espacio después del título
+            document.Add(titleParagraph);
+
+            Paragraph descriptionParagraph = new Paragraph("Esta lista está generada con datos hasta la fecha", FontFactory.GetFont(FontFactory.HELVETICA, 12));
+            descriptionParagraph.Alignment = Element.ALIGN_CENTER;
+            descriptionParagraph.SpacingAfter = 10f; // Espacio después de la descripción
+            document.Add(descriptionParagraph);
+
+            // Agregar la tabla
+            PdfPTable table = new PdfPTable(12);
+            table.WidthPercentage = 100;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Niño", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Padre", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Sala", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Turno", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Sucursal", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Inicio Centro", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("NIT Padre", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Nro de Factura", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Monto", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Tipo de Pago", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Estado", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Detalle", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            // Contenido de las celdas
+            Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+            foreach (var row in list)
+            {
+                table.AddCell(new PdfPCell(new Phrase($"{row.EnrolledChildren.AssignedTutor.Kid.Name} {row.EnrolledChildren.AssignedTutor.Kid.FirstLastName} {row.EnrolledChildren.AssignedTutor.Kid.SecondLastName}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.EnrolledChildren.AssignedTutor.Parent.Name} {row.EnrolledChildren.AssignedTutor.Parent.FirstLastName} {row.EnrolledChildren.AssignedTutor.Parent.SecondLastName}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.EnrolledChildren.AssignedRoom.Room.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.EnrolledChildren.AssignedRoom.Turn.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.EnrolledChildren.AssignedRoom.BranchOffice.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.EnrolledChildren.AssignedTutor.Kid.StartDate.ToShortDateString()}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.EnrolledChildren.AssignedTutor.Parent.DocumentNumber, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.NumberBill, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.Amount} Bs.", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.PaymentType.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.PaymentOperation.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.Description, cellFont)));
+            }
+
+            document.Add(table);
+
+            // Cerrar el documento
+            document.Close();
+            var result = new ReportResult { ReportName = $"{title}-{DateTime.Now}", Report = stream.ToArray() };
+
+            // Devolver el PDF generado como un array de bytes
+            return result.Report.Length > 0 ? Result<ReportResult>.SetOk(result)
+                                            : Result<ReportResult>.SetError("No se pudo generar el reporte");
+
         }
     }
 }

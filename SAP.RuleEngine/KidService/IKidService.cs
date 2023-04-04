@@ -1,10 +1,5 @@
 ﻿using SAP.Core.Business;
 using SAP.Model.Kid;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SAP.RuleEngine.KidService
 {
@@ -23,5 +18,7 @@ namespace SAP.RuleEngine.KidService
         Result<string> UpdateKid(UpdateKidDto dto);
 
         Result<string> ActivateOrDeactivate(KidByIdDto dto);
+
+        Result<ReportResult> GeneratePdf(string title);
     }
 }

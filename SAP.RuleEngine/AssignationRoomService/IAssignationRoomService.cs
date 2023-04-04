@@ -16,5 +16,7 @@ namespace SAP.RuleEngine.AssignationRoomService
         Result<string> DisableOrEnable(UpdateAssignedRoomDto dto);
 
         Result<AssignationRoomDetailResult> GetDetail(AssignationRoomDetailDto dto);
+
+        Result<ReportResult> GeneratePdf(string title);
     }
 }

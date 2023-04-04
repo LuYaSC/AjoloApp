@@ -10,6 +10,8 @@ using System.Dynamic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using SAP.Model.Kid;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace SAP.RuleEngine.EnrolledChildrenService
 {
@@ -165,8 +167,128 @@ namespace SAP.RuleEngine.EnrolledChildrenService
             Context.Save(data);
             return Result<string>.SetOk("Operacion Exitosa");
         }
+        public Result<ReportResult> GeneratePdf(string title)
+        {
+            var list = ListComplete<EnrolledChildren>().Include(x => x.AssignedTutor).Include(x => x.AssignedRoom).Include(x => x.AssignedTutor.Kid)
+                        .Include(x => x.AssignedTutor.Parent).Include(x => x.AssignedRoom.Collaborator)
+                        .Include(x => x.AssignedRoom.Room).Include(x => x.AssignedRoom.Turn)
+                        .Include(x => x.AssignedRoom.Modality).Include(x => x.AssignedRoom.BranchOffice)
+                        .OrderBy(x => x.DateCreation).ToList();
 
-      
+            var description = "Esta lista esta generada con datos hasta la fecha";
+
+            // Crear un documento PDF
+            Document document = new Document(PageSize.A4.Rotate(), 50, 50, 50, 50);
+
+            // Crear un objeto MemoryStream para almacenar el PDF generado
+            MemoryStream stream = new MemoryStream();
+
+            // Crear un escritor de PDF que escriba en el MemoryStream
+            PdfWriter writer = PdfWriter.GetInstance(document, stream);
+
+            document.Open();
+
+            // Agregar el título y la descripción
+            Paragraph titleParagraph = new Paragraph(title, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK));
+            titleParagraph.Alignment = Element.ALIGN_CENTER;
+            //titleParagraph.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            titleParagraph.SpacingAfter = 20f; // Espacio después del título
+            document.Add(titleParagraph);
+
+            Paragraph descriptionParagraph = new Paragraph("Esta lista está generada con datos hasta la fecha", FontFactory.GetFont(FontFactory.HELVETICA, 12));
+            descriptionParagraph.Alignment = Element.ALIGN_CENTER;
+            descriptionParagraph.SpacingAfter = 10f; // Espacio después de la descripción
+            document.Add(descriptionParagraph);
+
+            // Agregar la tabla
+            PdfPTable table = new PdfPTable(11);
+            table.WidthPercentage = 100;
+
+            PdfPCell cell = new PdfPCell(new Phrase("Educadora", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Padre", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Telefono Tutor", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Niño", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Fecha de N. Niño", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Edad Niño", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Fecha de I. Centro", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Sala", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Turno", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Sucursal", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("Antiguedad", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.BackgroundColor = new BaseColor(255, 89, 114); // Color rosa
+            table.AddCell(cell);
+
+            // Contenido de las celdas
+            Font cellFont = FontFactory.GetFont(FontFactory.HELVETICA, 10);
+            foreach (var row in list)
+            {
+                table.AddCell(new PdfPCell(new Phrase($"{row.AssignedRoom.Collaborator.Name} {row.AssignedRoom.Collaborator.FirstLastName} {row.AssignedRoom.Collaborator.SecondLastName}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.AssignedTutor.Parent.Name} {row.AssignedTutor.Parent.FirstLastName} {row.AssignedTutor.Parent.SecondLastName}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.AssignedTutor.Parent.PhoneNumber, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.AssignedTutor.Kid.Name} {row.AssignedTutor.Kid.FirstLastName} {row.AssignedTutor.Kid.SecondLastName}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.AssignedTutor.Kid.BornDate.Value.ToShortDateString()}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(CalculateAge(row.AssignedTutor.Kid.BornDate.Value), cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.AssignedTutor.Kid.StartDate.ToShortDateString(), cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{row.AssignedRoom.Room.Description}", cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.AssignedRoom.Turn.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase(row.AssignedRoom.BranchOffice.Description, cellFont)));
+                table.AddCell(new PdfPCell(new Phrase($"{CalculateAge(row.AssignedTutor.Kid.StartDate)}", cellFont)));
+            }
+
+            document.Add(table);
+
+            // Cerrar el documento
+            document.Close();
+            var result = new ReportResult { ReportName = $"{title}-{DateTime.Now}", Report = stream.ToArray() };
+
+            // Devolver el PDF generado como un array de bytes
+            return result.Report.Length > 0 ? Result<ReportResult>.SetOk(result)
+                                            : Result<ReportResult>.SetError("No se pudo generar el reporte");
+
+        }
+
+
 
         private void GeneratePayments(EnrolledChildren enrollData, CreateEnrolledChildrenDto dto)
         {

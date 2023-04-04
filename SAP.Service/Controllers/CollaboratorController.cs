@@ -34,5 +34,11 @@ namespace SAP.Service.Controllers
 
         [HttpPost]
         public Result<string> UpdateCollaborator([FromBody] UpdateCollaboratorDto dto) => service.UpdateCollaborator(dto);
+
+        [HttpPost]
+        public Result<string> ActivateOrDeactivate(DeleteDto dto) => service.ActivateOrDeactivate(dto);
+
+        [HttpGet]
+        public Result<ReportResult> GenerateReport() => service.GeneratePdf("LISTA DE COLABORADORES");
     }
 }
