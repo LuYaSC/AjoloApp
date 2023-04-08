@@ -25,7 +25,7 @@ namespace SAP.Service.Controllers
         public Result<GetTypeResult> GetById([FromBody] GetTypeByIdDto dto)
         {
             var result = service.GetById(dto);
-            SaveRequest(dto);
+            SaveRequest(dto, result);
             return result;
         }
 
@@ -33,7 +33,7 @@ namespace SAP.Service.Controllers
         public Result<List<GetTypeResult>> GetAll()
         {
             var result = service.GetAll();
-            SaveRequest();
+            SaveRequest(response: result);
             return result;
         }
 
@@ -41,7 +41,7 @@ namespace SAP.Service.Controllers
         public Result<string> Update([FromBody] GetTypeByIdDto dto)
         {
             var result = service.Update(dto);
-            SaveRequest(dto);
+            SaveRequest(dto, result);
             return result;
         }
 
@@ -49,7 +49,7 @@ namespace SAP.Service.Controllers
         public Result<string> Create([FromBody] CreateTypeDto dto)
         {
             var result = service.Create(dto);
-            SaveRequest(dto);
+            SaveRequest(dto, result);
             return result;
         }
 
@@ -57,7 +57,7 @@ namespace SAP.Service.Controllers
         public Result<ReportResult> GenerateReport()
         {
             var result = service.GeneratePdf("Lista de Modalidades Registradas");
-            SaveRequest();
+            SaveRequest(response: result);
             return result;
         }
     }

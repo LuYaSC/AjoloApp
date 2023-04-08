@@ -19,6 +19,8 @@ namespace SAP.Repository.SAPRepository.Entities
         public string RequestHeaders { get; set; }
 
         public DateTime RequestTime { get; set; }
-        
+
+        public string ResponseBody { get; set; }
+
     }
 }

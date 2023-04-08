@@ -3,31 +3,53 @@ using Microsoft.AspNetCore.Mvc;
 using SAP.Core.Business;
 using SAP.Model.Roles;
 using SAP.RuleEngine.TypeBusinessService;
+using SAP.Service.Models;
 
 namespace SAP.Service.Controllers
 {
     [ApiController]
     [Authorize]
     [Route("api/[controller]/[action]")]
-    public class RolesController : ControllerBase
+    public class RolesController : BaseController
     {
         IRolesBusinessService service;
 
-        public RolesController(IRolesBusinessService service)
+        public RolesController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, IRolesBusinessService service)
+            : base(httpContextAccessor, configuration)
         {
             this.service = service;
         }
 
         [HttpPost]
-        public Result<RolesResult> GetById([FromBody] GetRolesDto dto) => service.GetById(dto);
+        public Result<RolesResult> GetById([FromBody] GetRolesDto dto)
+        {
+            var result = service.GetById(dto);
+            SaveRequest(dto, result);
+            return result;
+        }
 
         [HttpGet]
-        public Result<List<RolesResult>> GetAll() => service.GetAll();
+        public Result<List<RolesResult>> GetAll()
+        {
+            var result = service.GetAll();
+            SaveRequest(response: result);
+            return result;
+        }
 
         [HttpPost]
-        public Result<string> Update([FromBody] RolesDto dto) => service.Update(dto);
+        public Result<string> Update([FromBody] RolesDto dto)
+        {
+            var result = service.Update(dto);
+            SaveRequest(dto, result);
+            return result;
+        }
 
         [HttpPost]
-        public Result<string> Create([FromBody] RolesDto dto) => service.Create(dto);
+        public Result<string> Create([FromBody] RolesDto dto)
+        {
+            var result = service.Create(dto);
+            SaveRequest(dto, result);
+            return result;
+        }
     }
 }

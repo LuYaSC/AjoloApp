@@ -29,16 +29,5 @@ namespace SAM.Functions.Authorization.MicroService.Controllers
             return result.IsValid ? Ok(result) : StatusCode(StatusCodes.Status500InternalServerError,
                                                             new Response { Status = "Error", Message = result.Message });
         }
-
-        //[HttpPost]
-        //[Route("UpdateUser")]
-        //public async Task<IActionResult> UpdateUser([FromBody] RegisterModel model)
-        //{
-        //    var userExists = await userManager.FindByNameAsync(model.Username);
-        //    if (userExists == null)
-        //        return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User doesn't exists!" });
-
-        //    return null;
-        //}
     }
 }
