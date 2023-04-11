@@ -22,9 +22,10 @@ namespace SAP.RuleEngine.DashboardService
         public Result<DashboardResult> GetData()
         {
             var result = new DashboardResult();
+            ValidateUnPayPayments();
 
             //first Section
-            var payments = Context.Payments.Include(x => x.PaymentOperation).Include(x => x.PaymentType).ToList();
+            var payments = Context.Payments.Include(x => x.PaymentOperation).Include(x => x.PaymentType);
             var collaborators = Context.Collaborators.Include(x => x.User).Include(x => x.User.UserDetail).Include(x => x.User.UserDetail.BranchOffice)
                                                     .Include(x => x.User.UserDetail.City).ToList();
             var enrollChildren = Context.EnrolledChildrens.Include(x => x.AssignedRoom).ToList();
@@ -34,6 +35,7 @@ namespace SAP.RuleEngine.DashboardService
             result.TotalPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO")).Sum(x => x.Amount); ;
             result.QuantityPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO PARCIALMENTE")).Count();
             result.TotalPartiallyPayedPayments = payments.Where(x => x.PaymentOperation.Description.Contains("PAGADO PARCIALMENTE")).Sum(x => x.Amount);
+            var updateUnPayPayments = payments.Where(x => x.PaymentOperation.Description.Contains("MORA")).ToList();
             result.QuantityUnpayPayments = payments.Where(x => x.PaymentOperation.Description.Contains("MORA")).Count();
             result.TotalUnpayPayments = payments.Where(x => x.PaymentOperation.Description.Contains("MORA")).Sum(x => x.Amount);
 
@@ -68,6 +70,21 @@ namespace SAP.RuleEngine.DashboardService
                 }); 
             }
             return Result<DashboardResult>.SetOk(result);
+        }
+
+        private void ValidateUnPayPayments()
+        {
+            var unPayments = Context.Payments.Include(x => x.PaymentOperation)
+                .Where(x => x.PaymentOperationId == 6 || x.PaymentOperationId == 3).ToList();
+            foreach (var payment in unPayments)
+            {
+                if(DateTime.UtcNow.Date >  payment.DateToPay.Date)
+                {
+                    payment.PaymentOperationId = 4;
+                    payment.Observations = $"Pago en Mora fecha vencida: {payment.DateToPay.ToShortDateString()}";
+                    Context.SaveChanges();
+                }
+            }
         }
     }
 }

@@ -26,5 +26,7 @@ namespace SAP.Model.Payment
         public string Observations { get; set; }
 
         public bool IsVerified { get; set; }
+
+        public DateTime DateToPay { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace SAP.Model.Payment
     {
         public int Id { get; set; }
 
+        public int EnrolledChildrenId { get; set; }
+
         public string Parent { get; set; }
 
         public string Kid { get; set; }
@@ -52,7 +54,11 @@ namespace SAP.Model.Payment
         public DateTime DateCreation { get; set; }
 
         public DateTime DateModification { get; set; }
+
+        public DateTime DateToPay { get; set; }
+
         public bool IsDeleted { get; set; }
+
         public bool IsVerified { get; set; }
     }
 }

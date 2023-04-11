@@ -113,25 +113,46 @@ namespace SAP.RuleEngine.PaymentService
         {
             try
             {
-                Context.Save(mapper.Map<Payment>(dto));
+                var paymentBill = List().Where(x => x.NumberBill == dto.NumberBill).FirstOrDefault();
+                if(string.IsNullOrEmpty(dto.NumberBill) || paymentBill == null)
+                {
+                    Context.Save(mapper.Map<Payment>(dto));
+                }
+                else
+                {
+                    return Result<string>.SetError("Factura ya registrada, verifique porfavor");
+                }
             }
             catch (Exception ex)
             {
-                return Result<string>.SetError("Not Saved");
+                return Result<string>.SetError("No se realizo la operacion");
             }
-            return Result<string>.SetOk("Saved with success");
+            return Result<string>.SetOk("Operacion Exitosa");
         }
 
         public Result<string> Update(UpdatePaymentDto dto)
         {
-
+            var paymentBill = List().FirstOrDefault(x => x.NumberBill == dto.NumberBill);
             var row = GetById<Payment>(dto.Id);
+
             if (row != null)
             {
-                Context.Save(mapper.Map(dto, row));
+                if (string.IsNullOrEmpty(dto.NumberBill) || paymentBill == null || paymentBill.Id == row.Id)
+                {
+                    Context.Save(mapper.Map(dto, row));
+                    return Result<string>.SetOk("Actualización Exitosa");
+                }
+                else
+                {
+                    return Result<string>.SetError("Factura ya registrada, verifique por favor");
+                }
             }
-            return Result<string>.SetOk("Actualizacion Exitosa");
+            else
+            {
+                return Result<string>.SetError("No se encontró el registro de pago para actualizar");
+            }
         }
+
 
         public Result<string> ActivateOrDeactivate(PaymentDetailDto dto)
         {
