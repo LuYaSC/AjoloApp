@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.DataEngine.KidRepository
+namespace AjoloApp.DataEngine.KidRepository
 {
     public class KidRepository
     {

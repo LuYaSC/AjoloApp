@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SAP.Repository.SAPRepository.Base
+namespace AjoloApp.Repository.AjoloAppRepository.Base
 {
-    using SAP.Repository.SAPRepository.Entities;
+    using AjoloApp.Repository.AjoloAppRepository.Entities;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;

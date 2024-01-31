@@ -7,20 +7,20 @@ ENV ASPNETCORE_URLS=http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["SAP.Service/SAP.Service.csproj", "SAP.Service/"]
-COPY ["SAP.Model/SAP.Model.csproj", "SAP.Model/"]
-COPY ["SAP.Repository/SAP.Repository.csproj", "SAP.Repository/"]
-COPY ["SAP.RuleEngine/SAP.RuleEngine.csproj", "SAP.RuleEngine/"]
-COPY ["SAP.Core/SAP.Core.csproj", "SAP.Core/"]
-RUN dotnet restore "SAP.Service/SAP.Service.csproj"
+COPY ["AjoloApp.Service/AjoloApp.Service.csproj", "AjoloApp.Service/"]
+COPY ["AjoloApp.Model/AjoloApp.Model.csproj", "AjoloApp.Model/"]
+COPY ["AjoloApp.Repository/AjoloApp.Repository.csproj", "AjoloApp.Repository/"]
+COPY ["AjoloApp.RuleEngine/AjoloApp.RuleEngine.csproj", "AjoloApp.RuleEngine/"]
+COPY ["AjoloApp.Core/AjoloApp.Core.csproj", "AjoloApp.Core/"]
+RUN dotnet restore "AjoloApp.Service/AjoloApp.Service.csproj"
 COPY . .
-WORKDIR "/src/SAP.Service"
-RUN dotnet build "SAP.Service.csproj" -c Release -o /app/build
+WORKDIR "/src/AjoloApp.Service"
+RUN dotnet build "AjoloApp.Service.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SAP.Service.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "AjoloApp.Service.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SAP.Service.dll"]
+ENTRYPOINT ["dotnet", "AjoloApp.Service.dll"]

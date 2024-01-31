@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.Collaborator;
-using SAP.RuleEngine.CollaboratorService;
-using SAP.Service.Models;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Collaborator;
+using AjoloApp.RuleEngine.CollaboratorService;
+using AjoloApp.Service.Models;
 
-namespace SAP.Service.Controllers
+namespace AjoloApp.Service.Controllers
 {
     [ApiController]
     [Authorize]

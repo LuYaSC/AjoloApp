@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.EnrolledChildren
+namespace AjoloApp.Model.EnrolledChildren
 {
     public class EnrolledChildrenResult
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.TypeBusiness
+namespace AjoloApp.Model.TypeBusiness
 {
     public class GetTypeByIdDto
     {

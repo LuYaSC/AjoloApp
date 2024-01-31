@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace SAP.Model.Parent
+namespace AjoloApp.Model.Parent
 {
     public class ParentsResult
     {

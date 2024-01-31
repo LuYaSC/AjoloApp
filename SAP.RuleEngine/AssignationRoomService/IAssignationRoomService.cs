@@ -1,7 +1,7 @@
-﻿using SAP.Core.Business;
-using SAP.Model.AssignationRoom;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationRoom;
 
-namespace SAP.RuleEngine.AssignationRoomService
+namespace AjoloApp.RuleEngine.AssignationRoomService
 {
     public interface IAssignationRoomService
     {

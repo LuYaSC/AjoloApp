@@ -1,8 +1,8 @@
-﻿using SAP.Core.Business;
-using SAP.Model.AssignationRoom;
-using SAP.Model.EnrolledChildren;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationRoom;
+using AjoloApp.Model.EnrolledChildren;
 
-namespace SAP.RuleEngine.EnrolledChildrenService
+namespace AjoloApp.RuleEngine.EnrolledChildrenService
 {
     public interface IEnrolledChildrenService
     {

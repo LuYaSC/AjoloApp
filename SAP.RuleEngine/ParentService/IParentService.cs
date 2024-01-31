@@ -1,7 +1,7 @@
-﻿using SAP.Core.Business;
-using SAP.Model.Parent;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.Parent;
 
-namespace SAP.RuleEngine.ParentService
+namespace AjoloApp.RuleEngine.ParentService
 {
     public interface IParentService
     {

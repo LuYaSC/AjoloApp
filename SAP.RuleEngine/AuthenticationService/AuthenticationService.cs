@@ -4,22 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using SAP.Model.Authentication;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Model.Authentication;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace SAP.RuleEngine.AuthenticationService
+namespace AjoloApp.RuleEngine.AuthenticationService
 {
     public class AuthenticationService : IAuthenticationService
     {
         private readonly UserManager<User> userManager;
         private readonly IConfiguration _configuration;
-        SAPContext Context;
+        AjoloAppContext Context;
 
-        public AuthenticationService(UserManager<User> userManager, SAPContext Context, IConfiguration configuration)
+        public AuthenticationService(UserManager<User> userManager, AjoloAppContext Context, IConfiguration configuration)
         {
             this.userManager = userManager;
             _configuration = configuration;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.AssignationRoom
+namespace AjoloApp.Model.AssignationRoom
 {
     public class CreateAssignedRoomDto
     {

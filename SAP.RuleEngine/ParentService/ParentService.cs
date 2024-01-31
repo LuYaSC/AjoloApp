@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using SAP.Core.Business;
-using SAP.Model.Parent;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.Repository.SAPRepository;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Parent;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.Repository.AjoloAppRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +13,13 @@ using Microsoft.EntityFrameworkCore;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 
-namespace SAP.RuleEngine.ParentService
+namespace AjoloApp.RuleEngine.ParentService
 {
-    public class ParentService : BaseBusiness<Parent, SAPContext>, IParentService
+    public class ParentService : BaseBusiness<Parent, AjoloAppContext>, IParentService
     {
         public IMapper mapper;
 
-        public ParentService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public ParentService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

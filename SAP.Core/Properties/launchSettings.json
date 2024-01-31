@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SAP.Core": {
+    "AjoloApp.Core": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -1,7 +1,7 @@
-﻿using SAP.Core.Business;
-using SAP.Model.Collaborator;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.Collaborator;
 
-namespace SAP.RuleEngine.CollaboratorService
+namespace AjoloApp.RuleEngine.CollaboratorService
 {
     public interface ICollaboratorService
     {

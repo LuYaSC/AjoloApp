@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SAP.Repository.SAPRepository;
+using AjoloApp.Repository.AjoloAppRepository;
 
 #nullable disable
 
-namespace SAP.Repository.Migrations
+namespace AjoloApp.Repository.Migrations
 {
-    [DbContext(typeof(SAPContext))]
+    [DbContext(typeof(AjoloAppContext))]
     [Migration("20220824223950_addRelationTable")]
     partial class addRelationTable
     {
@@ -112,7 +112,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.AssignedRoom", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedRoom", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -174,7 +174,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AssignedRooms");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.AssignedTutor", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedTutor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,7 +228,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AssignedTutors");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BranchOffice", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.BranchOffice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -269,7 +269,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("BranchOffices");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.City", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -305,7 +305,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Collaborator", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Collaborator", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -364,7 +364,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Collaborators");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.DocumentType", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.DocumentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -400,7 +400,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("DocumentTypes");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Kid", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Kid", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -481,7 +481,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Kids");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.KidBackground", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -548,7 +548,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("KidBackgrounds");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Modality", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Modality", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -584,7 +584,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Modalities");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Parent", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Parent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -651,7 +651,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Parents");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Payment", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -704,7 +704,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.PaymentType", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.PaymentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -740,7 +740,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Relationship", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Relationship", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -776,7 +776,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Relationship");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Role", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -820,7 +820,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Room", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -856,7 +856,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Session", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Session", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -885,7 +885,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Sessions");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Turn", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Turn", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -921,7 +921,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("Turns");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.User", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1004,7 +1004,7 @@ namespace SAP.Repository.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserRole", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.UserRole", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
@@ -1035,7 +1035,7 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Role", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1044,7 +1044,7 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1053,7 +1053,7 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1062,58 +1062,58 @@ namespace SAP.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.AssignedRoom", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedRoom", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.AssignedTutor", "AssignedTutor")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedTutor", "AssignedTutor")
                         .WithMany()
                         .HasForeignKey("AssignedTutorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.BranchOffice", "BranchOffice")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.BranchOffice", "BranchOffice")
                         .WithMany()
                         .HasForeignKey("BranchOfficeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Collaborator", "Collaborator")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Collaborator", "Collaborator")
                         .WithMany()
                         .HasForeignKey("CollaboratorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Modality", "Modality")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Modality", "Modality")
                         .WithMany()
                         .HasForeignKey("ModalityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Room", "Room")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Turn", "Turn")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Turn", "Turn")
                         .WithMany()
                         .HasForeignKey("TurnId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1136,33 +1136,33 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.AssignedTutor", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedTutor", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Kid", "Kid")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Kid", "Kid")
                         .WithMany()
                         .HasForeignKey("KidId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Parent", "Parent")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Parent", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Relationship", "Relationship")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Relationship", "Relationship")
                         .WithMany()
                         .HasForeignKey("RelationshipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1179,21 +1179,21 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.BranchOffice", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.BranchOffice", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.City", "City")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.City", "City")
                         .WithMany()
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1206,15 +1206,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.City", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.City", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1225,27 +1225,27 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Collaborator", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Collaborator", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "User")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1260,15 +1260,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.DocumentType", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.DocumentType", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1279,27 +1279,27 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Kid", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Kid", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.KidBackground", "KidBackground")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.KidBackground", "KidBackground")
                         .WithMany()
                         .HasForeignKey("KidBackgroudId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1314,15 +1314,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.KidBackground", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.KidBackground", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1333,15 +1333,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Modality", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Modality", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1352,21 +1352,21 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Parent", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Parent", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.DocumentType", "DocumentType")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.DocumentType", "DocumentType")
                         .WithMany()
                         .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1379,27 +1379,27 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Payment", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Payment", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.AssignedRoom", "AssignedRoom")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.AssignedRoom", "AssignedRoom")
                         .WithMany()
                         .HasForeignKey("AssignedRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.PaymentType", "PaymentType")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1414,15 +1414,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.PaymentType", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.PaymentType", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1433,15 +1433,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Relationship", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Relationship", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1452,15 +1452,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Room", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Room", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1471,15 +1471,15 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.Turn", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.Turn", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserCreated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserCreated")
                         .WithMany()
                         .HasForeignKey("UserCreation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", "UserModificated")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", "UserModificated")
                         .WithMany()
                         .HasForeignKey("UserModification")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1490,21 +1490,21 @@ namespace SAP.Repository.Migrations
                     b.Navigation("UserModificated");
                 });
 
-            modelBuilder.Entity("SAP.Repository.SAPRepository.Entities.UserRole", b =>
+            modelBuilder.Entity("AjoloApp.Repository.AjoloAppRepository.Entities.UserRole", b =>
                 {
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.BranchOffice", "BranchOffice")
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.BranchOffice", "BranchOffice")
                         .WithMany()
                         .HasForeignKey("BranchOfficeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.Role", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SAP.Repository.SAPRepository.Entities.User", null)
+                    b.HasOne("AjoloApp.Repository.AjoloAppRepository.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

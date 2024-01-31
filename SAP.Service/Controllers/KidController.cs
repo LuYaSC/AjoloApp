@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.Kid;
-using SAP.RuleEngine.KidService;
-using SAP.Service.Models;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Kid;
+using AjoloApp.RuleEngine.KidService;
+using AjoloApp.Service.Models;
 
-namespace SAP.Service.Controllers
+namespace AjoloApp.Service.Controllers
 {
     [ApiController]
     [Authorize]

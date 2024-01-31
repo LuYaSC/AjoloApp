@@ -1,26 +1,26 @@
 ﻿using AutoMapper;
-using SAP.Core.Business;
-using SAP.Model.EnrolledChildren;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.Repository.SAPRepository;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.EnrolledChildren;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.Repository.AjoloAppRepository;
 using System.Security.Principal;
 using Microsoft.EntityFrameworkCore;
-using SAP.Model.AssignationRoom;
+using AjoloApp.Model.AssignationRoom;
 using System.Dynamic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using SAP.Model.Kid;
+using AjoloApp.Model.Kid;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 
-namespace SAP.RuleEngine.EnrolledChildrenService
+namespace AjoloApp.RuleEngine.EnrolledChildrenService
 {
-    public class EnrolledChildrenService : BaseBusiness<EnrolledChildren, SAPContext>, IEnrolledChildrenService
+    public class EnrolledChildrenService : BaseBusiness<EnrolledChildren, AjoloAppContext>, IEnrolledChildrenService
     {
         IMapper mapper;
         int quantityTutors = 0;
 
-        public EnrolledChildrenService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public EnrolledChildrenService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

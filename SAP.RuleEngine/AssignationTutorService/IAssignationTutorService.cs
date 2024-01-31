@@ -1,7 +1,7 @@
-﻿using SAP.Core.Business;
-using SAP.Model.AssignationTutor;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationTutor;
 
-namespace SAP.RuleEngine.AssignationTutorService
+namespace AjoloApp.RuleEngine.AssignationTutorService
 {
     public interface IAssignationTutorService
     {

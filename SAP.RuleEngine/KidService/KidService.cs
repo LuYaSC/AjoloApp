@@ -3,18 +3,18 @@ using AutoMapper;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.EntityFrameworkCore;
-using SAP.Core.Business;
-using SAP.Model.Kid;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Kid;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 
-namespace SAP.RuleEngine.KidService
+namespace AjoloApp.RuleEngine.KidService
 {
-    public class KidService : BaseBusiness<Kid, SAPContext>, IKidService
+    public class KidService : BaseBusiness<Kid, AjoloAppContext>, IKidService
     {
         IMapper mapper;
 
-        public KidService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public KidService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

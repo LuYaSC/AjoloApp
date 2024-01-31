@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.AssignationTutor
+namespace AjoloApp.Model.AssignationTutor
 {
     public class AssignationTutorResult
     {

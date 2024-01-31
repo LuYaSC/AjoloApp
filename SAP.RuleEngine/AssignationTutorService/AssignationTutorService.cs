@@ -2,19 +2,19 @@
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.EntityFrameworkCore;
-using SAP.Core.Business;
-using SAP.Model.AssignationTutor;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationTutor;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 using System.Security.Principal;
 
-namespace SAP.RuleEngine.AssignationTutorService
+namespace AjoloApp.RuleEngine.AssignationTutorService
 {
-    public class AssignationTutorService : BaseBusiness<AssignedTutor, SAPContext>, IAssignationTutorService
+    public class AssignationTutorService : BaseBusiness<AssignedTutor, AjoloAppContext>, IAssignationTutorService
     {
         IMapper mapper;
 
-        public AssignationTutorService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public AssignationTutorService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

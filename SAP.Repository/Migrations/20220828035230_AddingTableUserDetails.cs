@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace SAP.Repository.Migrations
+namespace AjoloApp.Repository.Migrations
 {
     public partial class AddingTableUserDetails : Migration
     {

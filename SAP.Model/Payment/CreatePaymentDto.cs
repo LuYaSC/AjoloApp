@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Payment
+namespace AjoloApp.Model.Payment
 {
     public class CreatePaymentDto
     {

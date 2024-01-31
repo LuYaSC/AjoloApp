@@ -1,0 +1,77 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32804.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.Service", "SAP.Service\AjoloApp.Service.csproj", "{6389A0F9-7AF3-40E2-A984-8DF5A831471F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.Core", "SAP.Core\AjoloApp.Core.csproj", "{4D36E252-3564-4C2A-A663-C498BFEE6CB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.DataEngine", "SAP.DataEngine\AjoloApp.DataEngine.csproj", "{921CD4D6-E868-4275-B9AD-6049D63802FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.Model", "SAP.Model\AjoloApp.Model.csproj", "{9CC53852-A174-42E0-A7DB-25C05E8F6319}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.RuleEngine", "SAP.RuleEngine\AjoloApp.RuleEngine.csproj", "{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AjoloApp.Repository", "SAP.Repository\AjoloApp.Repository.csproj", "{72F4F8D8-2096-4DFC-8A17-354D84450ADE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4B061E0F-CB7B-4B95-BF02-2C954B10D72A}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Base de datos NIÑOS  -San Pedro 2022.xlsx = Documentation\Base de datos NIÑOS  -San Pedro 2022.xlsx
+		Documentation\COMPROBANTES DE PAGO .docx = Documentation\COMPROBANTES DE PAGO .docx
+		Documentation\HOJA DE DATOS GENERALES pequelandia (1).docx = Documentation\HOJA DE DATOS GENERALES pequelandia (1).docx
+		Documentation\RENDICION DE CUENTAS PEQUELANDIA 2020-2021.xlsx = Documentation\RENDICION DE CUENTAS PEQUELANDIA 2020-2021.xlsx
+		Documentation\SEGUIMIENTO DE MENSUALIDADES.docx = Documentation\SEGUIMIENTO DE MENSUALIDADES.docx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9E60CAE-583D-4949-86A8-1838A2018744}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DumpDatabases", "DumpDatabases", "{275D03D4-D1C9-47E0-9A1F-A441F8128882}"
+	ProjectSection(SolutionItems) = preProject
+		DumpDatabases\dump-sap-202208252314 = DumpDatabases\dump-sap-202208252314
+		DumpDatabases\dump-sap-202208252315 = DumpDatabases\dump-sap-202208252315
+		DumpDatabases\dump-sap2-202208291941 = DumpDatabases\dump-sap2-202208291941
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6389A0F9-7AF3-40E2-A984-8DF5A831471F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6389A0F9-7AF3-40E2-A984-8DF5A831471F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6389A0F9-7AF3-40E2-A984-8DF5A831471F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6389A0F9-7AF3-40E2-A984-8DF5A831471F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D36E252-3564-4C2A-A663-C498BFEE6CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D36E252-3564-4C2A-A663-C498BFEE6CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D36E252-3564-4C2A-A663-C498BFEE6CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D36E252-3564-4C2A-A663-C498BFEE6CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921CD4D6-E868-4275-B9AD-6049D63802FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921CD4D6-E868-4275-B9AD-6049D63802FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921CD4D6-E868-4275-B9AD-6049D63802FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921CD4D6-E868-4275-B9AD-6049D63802FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CC53852-A174-42E0-A7DB-25C05E8F6319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC53852-A174-42E0-A7DB-25C05E8F6319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC53852-A174-42E0-A7DB-25C05E8F6319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC53852-A174-42E0-A7DB-25C05E8F6319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C81AF1-BA57-4EDC-BB4D-AF54D29E9A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F4F8D8-2096-4DFC-8A17-354D84450ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F4F8D8-2096-4DFC-8A17-354D84450ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F4F8D8-2096-4DFC-8A17-354D84450ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F4F8D8-2096-4DFC-8A17-354D84450ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57C94644-4784-464C-8A97-15F167370537}
+	EndGlobalSection
+EndGlobal

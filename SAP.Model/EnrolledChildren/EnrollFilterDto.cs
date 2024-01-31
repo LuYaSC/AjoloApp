@@ -1,4 +1,4 @@
-﻿namespace SAP.Model.EnrolledChildren
+﻿namespace AjoloApp.Model.EnrolledChildren
 {
     public class EnrollFilterDto
     {

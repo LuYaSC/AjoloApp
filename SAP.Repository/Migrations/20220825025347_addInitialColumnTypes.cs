@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SAP.Repository.Migrations
+namespace AjoloApp.Repository.Migrations
 {
     public partial class addInitialColumnTypes : Migration
     {

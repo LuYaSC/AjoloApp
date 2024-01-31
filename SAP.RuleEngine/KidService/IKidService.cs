@@ -1,7 +1,7 @@
-﻿using SAP.Core.Business;
-using SAP.Model.Kid;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.Kid;
 
-namespace SAP.RuleEngine.KidService
+namespace AjoloApp.RuleEngine.KidService
 {
     public interface IKidService
     {

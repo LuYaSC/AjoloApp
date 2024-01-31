@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Kid
+namespace AjoloApp.Model.Kid
 {
     public class GetDetailKidDto
     {

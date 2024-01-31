@@ -1,12 +1,12 @@
-﻿using SAP.Core.Business;
-using SAP.Model.Payment;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.Payment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.PaymentService
+namespace AjoloApp.RuleEngine.PaymentService
 {
     public interface IPaymentService
     {
