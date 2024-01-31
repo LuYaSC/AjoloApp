@@ -19,7 +19,7 @@ namespace SAP.Service.Models
             this.configuration = configuration;
         }
 
-        public async void SaveRequest([FromQueryAttribute] dynamic request = null, dynamic response = null)
+        protected async void SaveRequest([FromQueryAttribute] dynamic request = null, dynamic response = null)
         {
             try
             {
