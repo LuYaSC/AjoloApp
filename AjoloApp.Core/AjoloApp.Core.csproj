@@ -14,6 +14,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SAP.Repository\AjoloApp.Repository.csproj" />
+    <ProjectReference Include="..\AjoloApp.Repository\AjoloApp.Repository.csproj" />
   </ItemGroup>
 </Project>

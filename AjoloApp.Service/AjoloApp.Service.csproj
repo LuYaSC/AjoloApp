@@ -19,8 +19,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SAP.Model\AjoloApp.Model.csproj" />
-    <ProjectReference Include="..\SAP.Repository\AjoloApp.Repository.csproj" />
-    <ProjectReference Include="..\SAP.RuleEngine\AjoloApp.RuleEngine.csproj" />
+    <ProjectReference Include="..\AjoloApp.Model\AjoloApp.Model.csproj" />
+    <ProjectReference Include="..\AjoloApp.Repository\AjoloApp.Repository.csproj" />
+    <ProjectReference Include="..\AjoloApp.RuleEngine\AjoloApp.RuleEngine.csproj" />
   </ItemGroup>
 </Project>

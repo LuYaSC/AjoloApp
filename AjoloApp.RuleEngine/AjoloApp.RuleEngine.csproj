@@ -11,7 +11,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SAP.Core\AjoloApp.Core.csproj" />
-    <ProjectReference Include="..\SAP.Model\AjoloApp.Model.csproj" />
+    <ProjectReference Include="..\AjoloApp.Core\AjoloApp.Core.csproj" />
+    <ProjectReference Include="..\AjoloApp.Model\AjoloApp.Model.csproj" />
   </ItemGroup>
 </Project>
