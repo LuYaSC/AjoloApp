@@ -1,12 +1,12 @@
-﻿using SAP.Core.Business;
-using SAP.Model.Dashboard;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.RuleEngine.DashboardService
+namespace AjoloApp.RuleEngine.DashboardService
 {
     public interface IDashboardService
     {

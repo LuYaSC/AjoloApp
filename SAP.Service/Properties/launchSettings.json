@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SAP.Service": {
+    "AjoloApp.Service": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

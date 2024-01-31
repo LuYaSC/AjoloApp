@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.RuleEngine.AssignationRoomService;
-using SAP.RuleEngine.AssignationTutorService;
-using SAP.RuleEngine.AuthenticationService;
-using SAP.RuleEngine.CollaboratorService;
-using SAP.RuleEngine.DashboardService;
-using SAP.RuleEngine.EnrolledChildrenService;
-using SAP.RuleEngine.KidService;
-using SAP.RuleEngine.ParentService;
-using SAP.RuleEngine.PaymentService;
-using SAP.RuleEngine.TypeBusinessService;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.RuleEngine.AssignationRoomService;
+using AjoloApp.RuleEngine.AssignationTutorService;
+using AjoloApp.RuleEngine.AuthenticationService;
+using AjoloApp.RuleEngine.CollaboratorService;
+using AjoloApp.RuleEngine.DashboardService;
+using AjoloApp.RuleEngine.EnrolledChildrenService;
+using AjoloApp.RuleEngine.KidService;
+using AjoloApp.RuleEngine.ParentService;
+using AjoloApp.RuleEngine.PaymentService;
+using AjoloApp.RuleEngine.TypeBusinessService;
 using System.Security.Principal;
 using System.Text;
 
@@ -59,7 +59,7 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IRolesBusinessService, RolesBusinessService>();
 
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<SAPContext>(options => options.UseNpgsql(mySqlConnectionStr));
+builder.Services.AddDbContext<AjoloAppContext>(options => options.UseNpgsql(mySqlConnectionStr));
 builder.Services.AddIdentityCore<User>(
         //options =>
         //{
@@ -67,7 +67,7 @@ builder.Services.AddIdentityCore<User>(
         //}
         )
      .AddRoles<Role>()
-     .AddEntityFrameworkStores<SAPContext>();
+     .AddEntityFrameworkStores<AjoloAppContext>();
 //jwt
 builder.Services.AddAuthentication(options =>
 {

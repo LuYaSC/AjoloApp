@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.Dashboard;
-using SAP.RuleEngine.DashboardService;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Dashboard;
+using AjoloApp.RuleEngine.DashboardService;
 
-namespace SAP.Service.Controllers
+namespace AjoloApp.Service.Controllers
 {
     [ApiController]
     [Authorize]

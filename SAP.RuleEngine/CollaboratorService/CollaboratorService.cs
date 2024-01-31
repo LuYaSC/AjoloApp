@@ -2,26 +2,26 @@
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.EntityFrameworkCore;
-using SAP.Core.Business;
-using SAP.Model.Authentication;
-using SAP.Model.Collaborator;
-using SAP.Model.Kid;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.RuleEngine.AuthenticationService;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Authentication;
+using AjoloApp.Model.Collaborator;
+using AjoloApp.Model.Kid;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.RuleEngine.AuthenticationService;
 using System.Security.Cryptography;
 using System.Security.Principal;
 
-namespace SAP.RuleEngine.CollaboratorService
+namespace AjoloApp.RuleEngine.CollaboratorService
 {
-    public class CollaboratorService : BaseBusiness<Collaborator, SAPContext>, ICollaboratorService
+    public class CollaboratorService : BaseBusiness<Collaborator, AjoloAppContext>, ICollaboratorService
     {
         IMapper mapper;
         IAuthenticationService authService;
         int newUserId = 0;
         List<string> roles = new List<string>();
 
-        public CollaboratorService(SAPContext context, IPrincipal userInfo, IAuthenticationService authService) : base(context, userInfo)
+        public CollaboratorService(AjoloAppContext context, IPrincipal userInfo, IAuthenticationService authService) : base(context, userInfo)
         {
             this.authService = authService;
             var config = new MapperConfiguration(cfg =>

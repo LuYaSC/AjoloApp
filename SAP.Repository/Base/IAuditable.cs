@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SAP.Repository.SAPRepository.Base
+namespace AjoloApp.Repository.AjoloAppRepository.Base
 {
     public interface IUserCreation<TypeKey>
     {

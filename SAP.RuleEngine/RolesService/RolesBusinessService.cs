@@ -1,20 +1,20 @@
 ﻿using System.Data;
 using System.Security.Principal;
 using AutoMapper;
-using SAP.Core.Business;
-using SAP.Model.Roles;
-using SAP.Model.TypeBusiness;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Roles;
+using AjoloApp.Model.TypeBusiness;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 
-namespace SAP.RuleEngine.TypeBusinessService
+namespace AjoloApp.RuleEngine.TypeBusinessService
 {
     public class RolesBusinessService : IRolesBusinessService
     {
         IMapper mapper;
-        SAPContext Context;
+        AjoloAppContext Context;
 
-        public RolesBusinessService(SAPContext context, IPrincipal userInfo)
+        public RolesBusinessService(AjoloAppContext context, IPrincipal userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

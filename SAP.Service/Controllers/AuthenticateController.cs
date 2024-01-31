@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.Authentication;
-using SAP.RuleEngine.AuthenticationService;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Authentication;
+using AjoloApp.RuleEngine.AuthenticationService;
 
 
 namespace SAM.Functions.Authorization.MicroService.Controllers

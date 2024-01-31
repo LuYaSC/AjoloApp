@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 
-namespace SAP.Service.Models
+namespace AjoloApp.Service.Models
 {
     public class BaseController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace SAP.Service.Models
             this.configuration = configuration;
         }
 
-        public async void SaveRequest([FromQueryAttribute] dynamic request = null, dynamic response = null)
+        protected async void SaveRequest([FromQueryAttribute] dynamic request = null, dynamic response = null)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace SAP.Service.Models
 
                     var responseBody = response != null ? JsonConvert.SerializeObject(response) : null;
 
-                    using (var dbContext = new SAPContext(new DbContextOptionsBuilder<SAPContext>()
+                    using (var dbContext = new AjoloAppContext(new DbContextOptionsBuilder<AjoloAppContext>()
                             .UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
                              .Options))
                     {

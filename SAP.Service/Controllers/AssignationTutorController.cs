@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.AssignationTutor;
-using SAP.RuleEngine.AssignationTutorService;
-using SAP.Service.Models;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationTutor;
+using AjoloApp.RuleEngine.AssignationTutorService;
+using AjoloApp.Service.Models;
 
-namespace SAP.Service.Controllers
+namespace AjoloApp.Service.Controllers
 {
     [ApiController]
     [Authorize]

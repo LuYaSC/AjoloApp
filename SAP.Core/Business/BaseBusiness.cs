@@ -1,10 +1,10 @@
-﻿namespace SAP.Core.Business
+﻿namespace AjoloApp.Core.Business
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
-    using SAP.Repository.SAPRepository;
-    using SAP.Repository.SAPRepository.Base;
+    using AjoloApp.Repository.AjoloAppRepository;
+    using AjoloApp.Repository.AjoloAppRepository.Base;
     using System;
     using System.Linq;
     using System.Security.Claims;
@@ -23,7 +23,7 @@
 
     public abstract class BaseBusiness<T, CONTEXT> : BaseBusiness<T, int, CONTEXT>
         where T : class, IBase<int>
-        where CONTEXT : SAPContext
+        where CONTEXT : AjoloAppContext
     {
         public BaseBusiness(CONTEXT context, IPrincipal userInfo, IConfiguration configuration = null)
             : base(context, userInfo, configuration)
@@ -33,7 +33,7 @@
     public abstract class BaseBusiness<T, TypeKey, CONTEXT> : BaseBusiness, IBaseBusiness<T, TypeKey, CONTEXT>
         where T : class, IBase<TypeKey>
         where TypeKey : IEquatable<TypeKey>, IConvertible
-        where CONTEXT : SAPContext
+        where CONTEXT : AjoloAppContext
     {
         public int userId;
         public bool seeIsDeleted = false;

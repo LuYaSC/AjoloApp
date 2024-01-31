@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Core.Business
+namespace AjoloApp.Core.Business
 {
     public class ReportResult
     {

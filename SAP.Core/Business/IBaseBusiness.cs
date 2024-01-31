@@ -1,14 +1,14 @@
-﻿using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Base;
+﻿using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Base;
 using System;
 using System.Linq;
 
-namespace SAP.Core.Business
+namespace AjoloApp.Core.Business
 {
     public interface IBaseBusiness<T, TypeKey, CONTEXT>
        where T : IBase<TypeKey>
        where TypeKey : IEquatable<TypeKey>
-       where CONTEXT : SAPContext
+       where CONTEXT : AjoloAppContext
     {
         void Dispose();
 

@@ -2,22 +2,22 @@
 using System.Security.Principal;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SAP.Core.Business;
-using SAP.Model.TypeBusiness;
-using SAP.Repository.Base;
-using SAP.Repository.SAPRepository;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.TypeBusiness;
+using AjoloApp.Repository.Base;
+using AjoloApp.Repository.AjoloAppRepository;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 
-namespace SAP.RuleEngine.TypeBusinessService
+namespace AjoloApp.RuleEngine.TypeBusinessService
 {
-    public class TypeBusinessService<T> : BaseBusiness<T, SAPContext>, ITypeBusinessService<T>
+    public class TypeBusinessService<T> : BaseBusiness<T, AjoloAppContext>, ITypeBusinessService<T>
         where T : BaseType, new()
     {
         IMapper mapper;
 
-        public TypeBusinessService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public TypeBusinessService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

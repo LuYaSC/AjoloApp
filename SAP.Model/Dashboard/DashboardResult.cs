@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Dashboard
+namespace AjoloApp.Model.Dashboard
 {
     public class DashboardResult
     {

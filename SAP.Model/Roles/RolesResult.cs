@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Roles
+namespace AjoloApp.Model.Roles
 {
     public class RolesResult : RolesDto
     {

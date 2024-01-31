@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
-using SAP.Core.Business;
-using SAP.Model.AssignationRoom;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.Repository.SAPRepository;
-using SAP.RuleEngine.AssignationRoomService;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.AssignationRoom;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.RuleEngine.AssignationRoomService;
 using System.Security.Principal;
 using Microsoft.EntityFrameworkCore;
-using SAP.Model.AssignationTutor;
+using AjoloApp.Model.AssignationTutor;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 
-namespace SAP.RuleEngine.AssignationRoomService
+namespace AjoloApp.RuleEngine.AssignationRoomService
 {
-    public class AssignationRoomService : BaseBusiness<AssignedRoom, SAPContext>, IAssignationRoomService
+    public class AssignationRoomService : BaseBusiness<AssignedRoom, AjoloAppContext>, IAssignationRoomService
     {
         IMapper mapper;
 
-        public AssignationRoomService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public AssignationRoomService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

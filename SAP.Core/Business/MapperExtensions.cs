@@ -1,4 +1,4 @@
-﻿namespace SAP.Core.Business
+﻿namespace AjoloApp.Core.Business
 {
     using AutoMapper;
     using AutoMapper.Configuration;

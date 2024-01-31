@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAP.Model.Collaborator
+namespace AjoloApp.Model.Collaborator
 {
     public class CollaboratorByIdDto
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SAP.Core.Business
+namespace AjoloApp.Core.Business
 {
     public class Result<BODY>
     {

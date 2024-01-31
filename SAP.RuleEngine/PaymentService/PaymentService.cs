@@ -2,19 +2,19 @@
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Microsoft.EntityFrameworkCore;
-using SAP.Core.Business;
-using SAP.Model.Payment;
-using SAP.Repository.SAPRepository;
-using SAP.Repository.SAPRepository.Entities;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Payment;
+using AjoloApp.Repository.AjoloAppRepository;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
 using System.Security.Principal;
 
-namespace SAP.RuleEngine.PaymentService
+namespace AjoloApp.RuleEngine.PaymentService
 {
-    public class PaymentService : BaseBusiness<Payment, SAPContext>, IPaymentService
+    public class PaymentService : BaseBusiness<Payment, AjoloAppContext>, IPaymentService
     {
         IMapper mapper;
 
-        public PaymentService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public PaymentService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

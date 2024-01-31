@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SAP.Model.Authentication;
+using AjoloApp.Model.Authentication;
 
-namespace SAP.RuleEngine.AuthenticationService
+namespace AjoloApp.RuleEngine.AuthenticationService
 {
     public interface IAuthenticationService
     {

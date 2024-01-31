@@ -1,8 +1,8 @@
-﻿using SAP.Core.Business;
-using SAP.Model.TypeBusiness;
-using SAP.Repository.Base;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Model.TypeBusiness;
+using AjoloApp.Repository.Base;
 
-namespace SAP.RuleEngine.TypeBusinessService
+namespace AjoloApp.RuleEngine.TypeBusinessService
 {
     public interface ITypeBusinessService<T> where T : BaseType
     {

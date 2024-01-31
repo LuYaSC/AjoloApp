@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAP.Core.Business;
-using SAP.Model.Payment;
-using SAP.RuleEngine.PaymentService;
-using SAP.Service.Models;
+using AjoloApp.Core.Business;
+using AjoloApp.Model.Payment;
+using AjoloApp.RuleEngine.PaymentService;
+using AjoloApp.Service.Models;
 
-namespace SAP.Service.Controllers
+namespace AjoloApp.Service.Controllers
 {
     [ApiController]
     [Authorize]

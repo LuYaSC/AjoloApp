@@ -1,17 +1,17 @@
-﻿using SAP.Core.Business;
-using SAP.Repository.SAPRepository.Entities;
-using SAP.Repository.SAPRepository;
+﻿using AjoloApp.Core.Business;
+using AjoloApp.Repository.AjoloAppRepository.Entities;
+using AjoloApp.Repository.AjoloAppRepository;
 using AutoMapper;
 using System.Security.Principal;
-using SAP.Model.Dashboard;
+using AjoloApp.Model.Dashboard;
 using Microsoft.EntityFrameworkCore;
 
-namespace SAP.RuleEngine.DashboardService
+namespace AjoloApp.RuleEngine.DashboardService
 {
-    public class DashboardService : BaseBusiness<Collaborator, SAPContext>, IDashboardService
+    public class DashboardService : BaseBusiness<Collaborator, AjoloAppContext>, IDashboardService
     {
         IMapper mapper;
-        public DashboardService(SAPContext context, IPrincipal userInfo) : base(context, userInfo)
+        public DashboardService(AjoloAppContext context, IPrincipal userInfo) : base(context, userInfo)
         {
             var config = new MapperConfiguration(cfg =>
             {

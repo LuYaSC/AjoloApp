@@ -1,4 +1,4 @@
-﻿namespace SAP.Model.AssignationRoom
+﻿namespace AjoloApp.Model.AssignationRoom
 {
     public class AssignationRoomResult
     {
